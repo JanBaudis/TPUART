@@ -1,0 +1,83 @@
+\hypertarget{clock_8c}{}\section{clock.\+c File Reference}
+\label{clock_8c}\index{clock.\+c@{clock.\+c}}
+
+
+This file contains the Function to init, calibrate and change the clock.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{clock_8c_a43bafb28b29491ec7f871319b5a3b2f8}{F\+\_\+\+C\+PU}~32000000\+UL
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{clock_8c_a23a363c676847b1b84e6149472897fa2}{set\+\_\+clock\+\_\+32\+M\+Hz} (void)
+\begin{DoxyCompactList}\small\item\em This function inits, calibrates and changes the clock. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains the Function to init, calibrate and change the clock. 
+
+\begin{DoxyAuthor}{Author}
+Jan Baudis 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11.\+09.\+2016 14\+:24\+:30 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{clock_8c_a43bafb28b29491ec7f871319b5a3b2f8}{}\label{clock_8c_a43bafb28b29491ec7f871319b5a3b2f8} 
+\index{clock.\+c@{clock.\+c}!F\+\_\+\+C\+PU@{F\+\_\+\+C\+PU}}
+\index{F\+\_\+\+C\+PU@{F\+\_\+\+C\+PU}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{F\+\_\+\+C\+PU}{F\_CPU}}
+{\footnotesize\ttfamily \#define F\+\_\+\+C\+PU~32000000\+UL}
+
+
+
+\subsection{Function Documentation}
+\hypertarget{clock_8c_a23a363c676847b1b84e6149472897fa2}{}\label{clock_8c_a23a363c676847b1b84e6149472897fa2} 
+\index{clock.\+c@{clock.\+c}!set\+\_\+clock\+\_\+32\+M\+Hz@{set\+\_\+clock\+\_\+32\+M\+Hz}}
+\index{set\+\_\+clock\+\_\+32\+M\+Hz@{set\+\_\+clock\+\_\+32\+M\+Hz}!clock.\+c@{clock.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+clock\+\_\+32\+M\+Hz()}{set\_clock\_32MHz()}}
+{\footnotesize\ttfamily void set\+\_\+clock\+\_\+32\+M\+Hz (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function inits, calibrates and changes the clock. 
+
+It enables the 32k\+Hz ref Clock for the Autocalibration and also executes the calibration. Afterwards it enables and changes to the 32\+M\+Hz internal Clock and also disables the 2\+M\+Hz clock. Eventually it Locks the current Clock config.
+
+\begin{DoxyNote}{Note}
+The 32k\+Hz Clock remains active.
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]Since I am not sure if the 32k\+Hz Clock is enabled by default i wont disable it afterwards -\/ so look it up and maybe change it.\end{DoxyRefDesc}
+
+
+Definition at line 18 of file clock.\+c.
+
+
+
+References C\+L\+K\+S\+Y\+S\+\_\+\+Auto\+Calibration\+\_\+\+Enable(), C\+L\+K\+S\+Y\+S\+\_\+\+Configuration\+\_\+\+Lock(), C\+L\+K\+S\+Y\+S\+\_\+\+Disable(), C\+L\+K\+S\+Y\+S\+\_\+\+Enable, C\+L\+K\+S\+Y\+S\+\_\+\+Is\+Ready, and C\+L\+K\+S\+Y\+S\+\_\+\+Main\+\_\+\+Clock\+Source\+\_\+\+Select().
+
+
+
+Referenced by main().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{clock_8c_a23a363c676847b1b84e6149472897fa2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{clock_8c_a23a363c676847b1b84e6149472897fa2_icgraph}
+\end{center}
+\end{figure}
