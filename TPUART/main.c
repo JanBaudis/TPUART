@@ -5,6 +5,9 @@
 *****************************************************************************/
 
 #include "main.h"
+#include "UART.h"
+
+#define DEBUG_P
 
 
 /*! \brief This is the main-Function.
@@ -24,6 +27,11 @@ int main(void)
 	
 	while (true)
 	{
+		#ifdef DEBUG_P
+		send_string_pgm_to_usart(&USART_data_pc, PSTR("Init_complete!\n\r")); // Sends Debug Info to PC: Init is finished - but not sure if init was successful
+		#endif
+		
+		
 		
 	}
 	

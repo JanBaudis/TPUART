@@ -121,15 +121,15 @@ void send_string_to_usart(USART_data_t * usart_data, char *s){
 	}
 }
 
-
+/*
 int main(void)
 {
-	/* counter variable. */
+
 	uint8_t i;
 
 	
 
-	/* Send sendArray. */
+	/* Send sendArray. 
 	i = 0;
 	while (i < NUM_BYTES) {
 		bool byteToBuffer;
@@ -139,7 +139,7 @@ int main(void)
 		}
 	}
 
-	/* Fetch received data as it is received. */
+	/* Fetch received data as it is received. 
 	i = 0;
 	while (i < NUM_BYTES) {
 		if (USART_RXBufferData_Available(&USART_data_tp)) {
@@ -148,30 +148,33 @@ int main(void)
 		}
 	}
 
-	/* Test to see if sent data equals received data. */
-	/* Assume success first.*/
+	/* Test to see if sent data equals received data. 
+	/* Assume success first.
 	success = true;
 	for(i = 0; i < NUM_BYTES; i++) {
-		/* Check that each element is received correctly. */
+		/* Check that each element is received correctly. 
 		if (receiveArray[i] != sendArray[i]) {
 			success = false;
 		}
 	}
 
-	/* If success the program ends up inside the if statement.*/
+	/* If success the program ends up inside the if statement.
 	if(success){
 		while(true);
 	}else{
 	  	while(true);
 	}
 }
-
+/*
 
 /*! \brief Receive complete interrupt service routine.
  *
  *  Receive complete interrupt service routine.
  *  Calls the common receive complete handler with pointer to the correct USART
  *  as argument.
+ *
+ *	\todo Think about if volatile for the USART_data_tp is needed!
+ *
  */
 ISR(USARTC0_RXC_vect)
 {
@@ -184,6 +187,9 @@ ISR(USARTC0_RXC_vect)
  *  Data register empty  interrupt service routine.
  *  Calls the common data register empty complete handler with pointer to the
  *  correct USART as argument.
+ *
+ *	\todo Think about if volatile for the USART_data_tp is needed!
+ *
  */
 ISR(USARTC0_DRE_vect)
 {
@@ -195,6 +201,9 @@ ISR(USARTC0_DRE_vect)
  *  Receive complete interrupt service routine.
  *  Calls the common receive complete handler with pointer to the correct USART
  *  as argument.
+ *
+ *	\todo Think about if volatile for the USART_data_pc is needed!
+ *
  */
 ISR(USARTC1_RXC_vect)
 {
@@ -207,6 +216,9 @@ ISR(USARTC1_RXC_vect)
  *  Data register empty  interrupt service routine.
  *  Calls the common data register empty complete handler with pointer to the
  *  correct USART as argument.
+ *
+ *	\todo Think about if volatile for the USART_data_pc is needed!
+ *
  */
 ISR(USARTC1_DRE_vect)
 {

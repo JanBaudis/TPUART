@@ -7,6 +7,8 @@
 #ifndef CLOCK_H_
 #define CLOCK_H_
 
+#include "clksys_driver.h"
+
 void set_clock_32MHz(void);
 
 #endif /* CLOCK_H_ */
