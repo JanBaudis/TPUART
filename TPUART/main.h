@@ -1,7 +1,7 @@
 /*! \file *********************************************************************
- *  \brief		This file is the Headerfile for the main-File. It contains general things like the F_CPU Macro etc
+ *  \brief		This file is the Headerfile for the main-File. It contains general things like the F_CPU Macro etc.
  *  \author		Jan Baudis
-  *	\date		11.09.2016 14:24:45
+ *	\date		11.09.2016 14:24:45
 *****************************************************************************/
 
 /*! \mainpage TPUART
