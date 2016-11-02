@@ -3,6 +3,7 @@
  *				Many things taken from the esart_example_interrupt.c-File provided by Atmel
  *  \author		Jan Baudis
  *	\date		13.09.2016 16:17:44
+ *	\todo		Change the UART-Functions - add an extra value for the Port used and not an simple string to select it in the Function; For both the Init Functions and the Send Functions
 *****************************************************************************/
 
 #include "UART.h"
@@ -15,7 +16,8 @@
  *				- 1 stop bit
  *				- 19200 Baud
  *
- *		\todo Check if the TPUART2 Parity Specs from the DS also applies to the TPUART1 - TPUART1 Datasheet(p.10) is missing the parity specs - TPUART2 DS(p.21) says even, so lets try even
+ *		\todo Check if the TPUART2 Parity Specs from the DS also applies to the TPUART1 - TPUART1 Datasheet(p.10) is missing the parity specs - TPUART2 DS(p.21) says even, so lets try even; Merge the Init function
+ *
 */
 void usart_init_tpuart(void){
 	
@@ -55,12 +57,14 @@ void usart_init_tpuart(void){
  *				- 1 stop bit
  *				- 57600 Baud
  *
+ *		\todo	Merge the init Functions
+ *
 */
 void usart_init_pc(void){
 	
 	// Using the USART1 of Port C - so set the IO Pins as in- and output.
-	PORTC.DIRCLR   = PIN6_bm; // Sets PC2 (RXD0) as input.
-	PORTC.DIRSET   = PIN7_bm; // Sets PC3 (TXD0) as output.
+	PORTC.DIRCLR   = PIN6_bm; // Sets PC6 (RXD0) as input.
+	PORTC.DIRSET   = PIN7_bm; // Sets PC7 (TXD0) as output.
 	
 	/* Use USARTC1 and initialize buffers. */
 	USART_InterruptDriver_Initialize(&USART_data_pc, &USART_PC, USART_DREINTLVL_LO_gc);
@@ -90,17 +94,26 @@ void usart_init_pc(void){
 
 /*! \brief This Method uses the Program Space for Debug Strings and sends them to the given USART.
  *
- *		\param usart_data	The USART_data_t struct instance.
+ *		\param char[10]		The String to select the UART.
  *		\param addr			const char* to the pgmspace.
+ *		\todo				Change to the USART_data_t struct so we dont use the string anymore.
+ *
 */
-void send_string_pgm_to_usart(USART_data_t * usart_data, const char *addr){
+void send_string_pgm_to_usart(char *usart_port, const char *addr){
 	char c;
+	bool temp;
+	
 	while (1) {
 		bool byteToBuffer = false;
 		c = pgm_read_byte(addr++);
 		if (c == '\0') break; // When String Terminator reached break out of the while loop
 		while (!byteToBuffer) {
-			byteToBuffer = USART_TXBuffer_PutByte(&usart_data, c);
+			if (usart_port == "tpuart") {
+				temp = USART_TXBuffer_PutByte(&USART_data_tp, c);
+			} else if (usart_port == "pc")	{
+				temp = USART_TXBuffer_PutByte(&USART_data_pc, c);
+			}
+			byteToBuffer = temp;
 		}
 	}
 }
@@ -108,17 +121,54 @@ void send_string_pgm_to_usart(USART_data_t * usart_data, const char *addr){
 
 /*! \brief This Method sends Strings to the given USART.
  *
- *		\param usart_data	The USART_data_t struct instance.
- *		\param s			char*.
+ *		\param char[10]		The String to select the UART.
+ *		\param s			char* to transmit.
+ *		\todo				Change to the USART_data_t struct so we dont use the string anymore.
+ *
 */
-void send_string_to_usart(USART_data_t * usart_data, char *s){
+void send_string_to_usart(char *usart_port, char *s){
+	bool byteToBuffer;
+	bool temp;
+	
 	while (*s){ // so lange *s != '\0' also ungleich dem "String-Endezeichen(Terminator)"
-		bool byteToBuffer = false;
-		while (!byteToBuffer) {
-			byteToBuffer = USART_TXBuffer_PutByte(&usart_data, *s);
+		if (usart_port == "tpuart") {
+			temp = USART_TXBuffer_PutByte(&USART_data_tp, *s);
+			} else if (usart_port == "pc")	{
+			temp = USART_TXBuffer_PutByte(&USART_data_pc, *s);
 		}
-		s++;
+		byteToBuffer = temp;
+		if(byteToBuffer) s++;
 	}
+}
+
+
+/*! \brief This Method waits till one char is in the given USART-Buffer - No Timeout, Blocks!!!!.
+ *
+ *		\param char[10]		The String to select the UART.
+ *		\todo				Change to the USART_data_t struct so we dont use the string anymore. And change to a non-blocking function.
+ *
+*/
+char receive_char_from_usart(char *usart_port){
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart("pc", PSTR("receive_char_from_usart entered!\n\r")); // Sends Debug Info to PC
+	#endif
+	
+	char c;
+	
+	if (usart_port == "tpuart") {
+		while (!USART_RXBufferData_Available(&USART_data_tp));
+		c = USART_RXBuffer_GetByte(&USART_data_tp);
+	} else if (usart_port == "pc")	{
+		while (!USART_RXBufferData_Available(&USART_data_pc));
+		c = USART_RXBuffer_GetByte(&USART_data_pc);
+	}
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart("pc", PSTR("receive_char_from_usart about to quit!\n\r")); // Sends Debug Info to PC
+	#endif
+	
+	return c;
 }
 
 /*

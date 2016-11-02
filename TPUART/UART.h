@@ -27,8 +27,10 @@ USART_data_t USART_data_pc;
 
 void usart_init_tpuart(void);
 void usart_init_pc(void);
-void send_string_pgm_to_usart(USART_data_t * usart_data, const char *addr);
-void send_string_to_usart(USART_data_t * usart_data, char *s);
+void send_string_pgm_to_usart(char *usart_port, const char *addr);
+void send_string_to_usart(char *usart_port, char *s);
+
+char receive_char_from_usart(char *usart_port);
 
 
 #endif /* UART_H_ */

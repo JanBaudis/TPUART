@@ -12,6 +12,8 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
+
+
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 #include "clksys_driver.h"
@@ -20,10 +22,10 @@
 
 #ifndef F_CPU
 /*! \brief Define default CPU frequency, if this is not already defined. */
-#define F_CPU 2000000UL
+#define F_CPU 32000000UL
 #endif
 
-
+#define DEBUG
 
 
 #endif /* MAIN_H_ */
