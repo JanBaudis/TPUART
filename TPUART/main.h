@@ -19,13 +19,13 @@
 #include "clksys_driver.h"
 #include "clock.h"
 #include "UART.h"
+#include "shell.h"
 
 #ifndef F_CPU
 /*! \brief Define default CPU frequency, if this is not already defined. */
 #define F_CPU 32000000UL
 #endif
 
-#define DEBUG
 
 
 #endif /* MAIN_H_ */

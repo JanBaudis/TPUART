@@ -155,6 +155,12 @@
     <Compile Include="main.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="shell.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="shell.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="UART.c">
       <SubType>compile</SubType>
     </Compile>

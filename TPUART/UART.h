@@ -12,25 +12,37 @@
 #include "usart_driver.h"
 #include "avr_compiler.h"
 
+#include <string.h>
 
-/*! Use the USART0 of Port C for the TPUART*/
+
+
+
+/*! For easier handling you may define here telling Names for the Macros and Data-structs.*/
+/*! Use the USART0 of Port C for the TPUART.*/
 #define USART_TP USARTC0
 
-/*! Use the USART1 of Port C for the PC*/
+/*! Use the USART1 of Port C for the PC.*/
 #define USART_PC USARTC1
 
-/*! USART data struct used for TPUART. */
-USART_data_t USART_data_tp;
+/*! Defines for easier handling of the USART PORTs.*/
+#define USART_DATA_TP USART_data_c0
+#define USART_DATA_PC USART_data_c1
 
-/*! USART data struct used for PC. */
-USART_data_t USART_data_pc;
+
+
+/*! USART data struct used for USART 0 of Port C.*/
+USART_data_t USART_data_c0;
+
+/*! USART data struct used for USART 1 of Port C.*/
+USART_data_t USART_data_c1;
 
 void usart_init_tpuart(void);
 void usart_init_pc(void);
-void send_string_pgm_to_usart(char *usart_port, const char *addr);
-void send_string_to_usart(char *usart_port, char *s);
+void send_string_pgm_to_usart(USART_data_t *USART_data, const char *addr);
+void send_string_to_usart(USART_data_t *USART_data, char *s);
 
-char receive_char_from_usart(char *usart_port);
+char receive_char_from_usart(USART_data_t *USART_data);
+void receive_string_from_usart(USART_data_t *USART_data, char* string);
 
 
 #endif /* UART_H_ */
