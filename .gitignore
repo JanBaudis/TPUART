@@ -1,0 +1,7 @@
+#Project files
+[Bb]uild/
+
+#Debug files
+[Dd]ebug/
+
+*.o
