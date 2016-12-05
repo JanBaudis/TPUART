@@ -1,0 +1,20 @@
+digraph "receive_string_from_usart"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node29 [label="receive_string_from\l_usart",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node29 -> Node30 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node30 [label="send_string_pgm_to\l_usart",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_u_a_r_t_8c.html#ad7bb1da26c447116e627aef512f5fc84",tooltip="This Method uses the Program Space for e.g. Debug Strings and sends them to the given USART..."];
+  Node30 -> Node31 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node31 [label="USART_TXBuffer_PutByte",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$usart__driver_8c.html#ac6a0c12350c501c1b8189aca778f5129",tooltip="Put data (5-8 bit character). "];
+  Node31 -> Node32 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node32 [label="USART_TXBuffer_FreeSpace",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$usart__driver_8c.html#aecbd49900666abf476cf5cce10fb372a",tooltip="Test if there is data in the transmitter software buffer. "];
+  Node29 -> Node33 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node33 [label="send_string_to_usart",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_u_a_r_t_8c.html#a190114969cf3d32ab5e83509d7ab1569",tooltip="This Method sends Strings to the given USART. "];
+  Node33 -> Node31 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node29 -> Node34 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node34 [label="USART_RXBuffer_GetByte",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$usart__driver_8c.html#a36cca099e37ec451e52efebe4c60180e",tooltip="Get received data (5-8 bit character). "];
+  Node29 -> Node35 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node35 [label="USART_RXBufferData\l_Available",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$usart__driver_8c.html#ac65d5461255def6cd49b05a88d5aa411",tooltip="Test if there is data in the receive software buffer. "];
+}

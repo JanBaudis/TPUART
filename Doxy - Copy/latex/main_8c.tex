@@ -1,0 +1,88 @@
+\hypertarget{main_8c}{}\section{main.\+c File Reference}
+\label{main_8c}\index{main.\+c@{main.\+c}}
+
+
+This file is the main-\/\+File. It calls all the fancy Functions and so on.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}U\+A\+R\+T.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{main_8c_a69539018526f1fb80d3cf1c91bb08911}{U\+S\+A\+R\+T\+\_\+test} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$usart\+\_\+data)
+\item 
+int \hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\begin{DoxyCompactList}\small\item\em This is the main-\/\+Function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int volatile \hyperlink{main_8c_a37fd7702e47867237a1617ae4b4fab85}{ret\+\_\+pressed}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file is the main-\/\+File. It calls all the fancy Functions and so on. 
+
+\begin{DoxyAuthor}{Author}
+Jan Baudis 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+08.\+09.\+2016 01\+:50\+:07 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe} 
+\index{main.\+c@{main.\+c}!main@{main}}
+\index{main@{main}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This is the main-\/\+Function. 
+
+It calls all the fancy Functions. It does things. Enter the \char`\"{}\+Shell\char`\"{}! 
+
+Definition at line 29 of file main.\+c.
+
+
+
+References enter\+\_\+shell(), receive\+\_\+string\+\_\+from\+\_\+usart(), ret\+\_\+pressed, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), set\+\_\+clock\+\_\+32\+M\+Hz(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, usart\+\_\+init\+\_\+pc(), and usart\+\_\+init\+\_\+tpuart().
+
+Here is the call graph for this function\+:
+% FIG 1
+\hypertarget{main_8c_a69539018526f1fb80d3cf1c91bb08911}{}\label{main_8c_a69539018526f1fb80d3cf1c91bb08911} 
+\index{main.\+c@{main.\+c}!U\+S\+A\+R\+T\+\_\+test@{U\+S\+A\+R\+T\+\_\+test}}
+\index{U\+S\+A\+R\+T\+\_\+test@{U\+S\+A\+R\+T\+\_\+test}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+test()}{USART\_test()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+A\+R\+T\+\_\+test (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{usart\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 12 of file main.\+c.
+
+
+
+References Usart\+\_\+and\+\_\+buffer\+::buffer, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+RX, and U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+R\+X\+\_\+\+Tail.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{main_8c_a37fd7702e47867237a1617ae4b4fab85}{}\label{main_8c_a37fd7702e47867237a1617ae4b4fab85} 
+\index{main.\+c@{main.\+c}!ret\+\_\+pressed@{ret\+\_\+pressed}}
+\index{ret\+\_\+pressed@{ret\+\_\+pressed}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{ret\+\_\+pressed}{ret\_pressed}}
+{\footnotesize\ttfamily int volatile ret\+\_\+pressed}
+
+
+
+Definition at line 11 of file U\+A\+R\+T.\+c.
+
+
+
+Referenced by main().
+

@@ -1,0 +1,4 @@
+<map id="CLKSYS_AutoCalibration_Enable" name="CLKSYS_AutoCalibration_Enable">
+<area shape="rect" id="node2" href="$clock_8h.html#a23a363c676847b1b84e6149472897fa2" title="This function inits, calibrates and changes the clock. " alt="" coords="223,13,349,39"/>
+<area shape="rect" id="node3" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="This is the main&#45;Function. " alt="" coords="397,13,448,39"/>
+</map>

@@ -1,0 +1,124 @@
+\hypertarget{struct_u_s_a_r_t___buffer}{}\section{U\+S\+A\+R\+T\+\_\+\+Buffer Struct Reference}
+\label{struct_u_s_a_r_t___buffer}\index{U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}}
+
+
+{\ttfamily \#include \char`\"{}usart\+\_\+driver.\+h\char`\"{}}
+
+
+
+Collaboration diagram for U\+S\+A\+R\+T\+\_\+\+Buffer\+:
+% FIG 0
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint8\+\_\+t \hyperlink{struct_u_s_a_r_t___buffer_a3b83538f34138ed63ae42daeaa092639}{RX} \mbox{[}\hyperlink{usart__driver_8h_ac0999c0821d14cfab43e6f3c778c2b95}{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}\mbox{]}
+\item 
+volatile uint8\+\_\+t \hyperlink{struct_u_s_a_r_t___buffer_a392312bfc5a33886fa4c6999cea21ecc}{TX} \mbox{[}\hyperlink{usart__driver_8h_a21d527450b438bba8dab02e03f021ee3}{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}\mbox{]}
+\item 
+volatile uint8\+\_\+t \hyperlink{struct_u_s_a_r_t___buffer_aca7bb6ebcc2a3f266fac41649a250041}{R\+X\+\_\+\+Head}
+\item 
+volatile uint8\+\_\+t \hyperlink{struct_u_s_a_r_t___buffer_acbe55e05936cb836303c2fd41ec2d734}{R\+X\+\_\+\+Tail}
+\item 
+volatile uint8\+\_\+t \hyperlink{struct_u_s_a_r_t___buffer_ae18341a2700d746f90841b29ce8b05ca}{T\+X\+\_\+\+Head}
+\item 
+volatile uint8\+\_\+t \hyperlink{struct_u_s_a_r_t___buffer_ab4c125e286a5f36c1f44256fd35eb66d}{T\+X\+\_\+\+Tail}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 85 of file usart\+\_\+driver.\+h.
+
+
+
+\subsection{Field Documentation}
+\hypertarget{struct_u_s_a_r_t___buffer_a3b83538f34138ed63ae42daeaa092639}{}\label{struct_u_s_a_r_t___buffer_a3b83538f34138ed63ae42daeaa092639} 
+\index{U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}!RX@{RX}}
+\index{RX@{RX}!U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}}
+\subsubsection{\texorpdfstring{RX}{RX}}
+{\footnotesize\ttfamily volatile uint8\+\_\+t RX\mbox{[}\hyperlink{usart__driver_8h_ac0999c0821d14cfab43e6f3c778c2b95}{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}\mbox{]}}
+
+
+
+Definition at line 88 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by I\+S\+R(), U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte(), U\+S\+A\+R\+T\+\_\+\+R\+X\+Complete(), and U\+S\+A\+R\+T\+\_\+test().
+
+\hypertarget{struct_u_s_a_r_t___buffer_aca7bb6ebcc2a3f266fac41649a250041}{}\label{struct_u_s_a_r_t___buffer_aca7bb6ebcc2a3f266fac41649a250041} 
+\index{U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}!R\+X\+\_\+\+Head@{R\+X\+\_\+\+Head}}
+\index{R\+X\+\_\+\+Head@{R\+X\+\_\+\+Head}!U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+\+Head}{RX\_Head}}
+{\footnotesize\ttfamily volatile uint8\+\_\+t R\+X\+\_\+\+Head}
+
+
+
+Definition at line 92 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by I\+S\+R(), U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize(), U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available(), and U\+S\+A\+R\+T\+\_\+\+R\+X\+Complete().
+
+\hypertarget{struct_u_s_a_r_t___buffer_acbe55e05936cb836303c2fd41ec2d734}{}\label{struct_u_s_a_r_t___buffer_acbe55e05936cb836303c2fd41ec2d734} 
+\index{U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}!R\+X\+\_\+\+Tail@{R\+X\+\_\+\+Tail}}
+\index{R\+X\+\_\+\+Tail@{R\+X\+\_\+\+Tail}!U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+\+Tail}{RX\_Tail}}
+{\footnotesize\ttfamily volatile uint8\+\_\+t R\+X\+\_\+\+Tail}
+
+
+
+Definition at line 94 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize(), U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte(), U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available(), U\+S\+A\+R\+T\+\_\+\+R\+X\+Complete(), and U\+S\+A\+R\+T\+\_\+test().
+
+\hypertarget{struct_u_s_a_r_t___buffer_a392312bfc5a33886fa4c6999cea21ecc}{}\label{struct_u_s_a_r_t___buffer_a392312bfc5a33886fa4c6999cea21ecc} 
+\index{U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}!TX@{TX}}
+\index{TX@{TX}!U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}}
+\subsubsection{\texorpdfstring{TX}{TX}}
+{\footnotesize\ttfamily volatile uint8\+\_\+t TX\mbox{[}\hyperlink{usart__driver_8h_a21d527450b438bba8dab02e03f021ee3}{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}\mbox{]}}
+
+
+
+Definition at line 90 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by U\+S\+A\+R\+T\+\_\+\+Data\+Reg\+Empty(), and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+\hypertarget{struct_u_s_a_r_t___buffer_ae18341a2700d746f90841b29ce8b05ca}{}\label{struct_u_s_a_r_t___buffer_ae18341a2700d746f90841b29ce8b05ca} 
+\index{U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}!T\+X\+\_\+\+Head@{T\+X\+\_\+\+Head}}
+\index{T\+X\+\_\+\+Head@{T\+X\+\_\+\+Head}!U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}}
+\subsubsection{\texorpdfstring{T\+X\+\_\+\+Head}{TX\_Head}}
+{\footnotesize\ttfamily volatile uint8\+\_\+t T\+X\+\_\+\+Head}
+
+
+
+Definition at line 96 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by U\+S\+A\+R\+T\+\_\+\+Data\+Reg\+Empty(), U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize(), U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space(), and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+\hypertarget{struct_u_s_a_r_t___buffer_ab4c125e286a5f36c1f44256fd35eb66d}{}\label{struct_u_s_a_r_t___buffer_ab4c125e286a5f36c1f44256fd35eb66d} 
+\index{U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}!T\+X\+\_\+\+Tail@{T\+X\+\_\+\+Tail}}
+\index{T\+X\+\_\+\+Tail@{T\+X\+\_\+\+Tail}!U\+S\+A\+R\+T\+\_\+\+Buffer@{U\+S\+A\+R\+T\+\_\+\+Buffer}}
+\subsubsection{\texorpdfstring{T\+X\+\_\+\+Tail}{TX\_Tail}}
+{\footnotesize\ttfamily volatile uint8\+\_\+t T\+X\+\_\+\+Tail}
+
+
+
+Definition at line 98 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by U\+S\+A\+R\+T\+\_\+\+Data\+Reg\+Empty(), U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize(), and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{usart__driver_8h}{usart\+\_\+driver.\+h}\end{DoxyCompactItemize}

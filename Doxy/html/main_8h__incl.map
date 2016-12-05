@@ -1,5 +1,8 @@
 <map id="main.h" name="main.h">
-<area shape="rect" id="node3" href="$clksys__driver_8h.html" title="XMEGA Clock System driver header file. " alt="" coords="92,80,200,107"/>
-<area shape="rect" id="node8" href="$clock_8h.html" title="This file is the Headerfile for the clock&#45;File. It contains the prototypes of the functions and the u..." alt="" coords="225,80,289,107"/>
-<area shape="rect" id="node4" href="$avr__compiler_8h.html" title="This file implements some macros that makes the IAR C&#45;compiler and avr&#45;gcc work with the same code ba..." alt="" coords="93,155,199,181"/>
+<area shape="rect" id="node4" href="$clksys__driver_8h.html" title="XMEGA Clock System driver header file. " alt="" coords="405,155,513,181"/>
+<area shape="rect" id="node9" href="$clock_8h.html" title="This file is the Headerfile for the clock&#45;File. It contains the prototypes of the functions and the u..." alt="" coords="365,80,429,107"/>
+<area shape="rect" id="node10" href="$_u_a_r_t_8h.html" title="This File contains the Macros and so to use the Interrupt driven USART Driver provided by Atmel..." alt="" coords="297,155,363,181"/>
+<area shape="rect" id="node13" href="$shell_8h.html" title="Corresponding header&#45;File. " alt="" coords="229,80,289,107"/>
+<area shape="rect" id="node5" href="$avr__compiler_8h.html" title="This file implements some macros that makes the IAR C&#45;compiler and avr&#45;gcc work with the same code ba..." alt="" coords="312,304,417,331"/>
+<area shape="rect" id="node11" href="$usart__driver_8h.html" title="XMEGA USART driver header file. " alt="" coords="273,229,371,256"/>
 </map>

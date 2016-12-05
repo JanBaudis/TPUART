@@ -44,5 +44,7 @@ void send_string_to_usart(USART_data_t *USART_data, char *s);
 char receive_char_from_usart(USART_data_t *USART_data);
 void receive_string_from_usart(USART_data_t *USART_data, char* string);
 
+void flush_USART_RXBuffer(USART_data_t *USART_data);
+
 
 #endif /* UART_H_ */

@@ -8,7 +8,7 @@
 
 #include "UART.h"
 
-volatile int blabla = 0;
+volatile int ret_pressed = 0;
 
 
 
@@ -142,11 +142,9 @@ void send_string_to_usart(USART_data_t *USART_data, char *s){
 /*! \brief This Method reads out the data of the RingBuffer and returns a string.
  *
  *		\param USART_data	The USART_data_t struct instance.
+ *		\param output		The String-Pointer where the Output is stored
  *
 */
-
-
-
 void receive_string_from_usart(USART_data_t *USART_data, char *output){
 	
 	int i = 0;
@@ -162,9 +160,8 @@ void receive_string_from_usart(USART_data_t *USART_data, char *output){
 	
 	output[i]='\0';
 	
-	send_string_to_usart(&USART_DATA_PC, output);
-	
 	#ifdef DEBUG
+	send_string_to_usart(&USART_DATA_PC, output);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("receive_string_from_usart about to quit!\n\r")); // Sends Debug Info to PC
 	#endif
 }
@@ -192,6 +189,28 @@ char receive_char_from_usart(USART_data_t *USART_data){
 	
 	return c;
 }
+
+/*! \brief This Method flushs the RX Buffer
+ *
+ *		\param USART_data	The USART_data_t struct instance.
+ *
+*/
+void flush_USART_RXBuffer(USART_data_t *USART_data){
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("flush_USART_RXBuffer entered!\n\r")); // Sends Debug Info to PC
+	#endif
+	
+	while (USART_RXBufferData_Available(&(*USART_data))) {
+		uint8_t dump = 1;
+		dump = USART_RXBuffer_GetByte(&(*USART_data));
+	}
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("flush_USART_RXBuffer about to quit!\n\r")); // Sends Debug Info to PC
+	#endif
+}
+
 
 /*! \brief Receive complete interrupt service routine.
  *
@@ -236,15 +255,10 @@ ISR(USARTC1_RXC_vect)
 {
 	USART_RXComplete(&USART_DATA_PC);
 	
-	char output[10];
-
-	/*! If it receives the Return-Key(13) it changes */
+	/*! If it receives the Return-Key(13) it changes ret_pressed so the Shell can evalute the command */
 	if (USART_data_c1.buffer.RX[(USART_data_c1.buffer.RX_Head - 1) & USART_RX_BUFFER_MASK] == 0x0D) {
-		send_string_to_usart(&USART_DATA_PC, "Enter\n\r");
-		itoa(blabla, output, 2);
-		send_string_to_usart(&USART_DATA_PC, output);
-		blabla = 1;
-	}
+		ret_pressed = 1;
+	} 
 }
 
 

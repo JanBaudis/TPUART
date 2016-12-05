@@ -1,0 +1,879 @@
+\hypertarget{usart__driver_8h}{}\section{usart\+\_\+driver.\+h File Reference}
+\label{usart__driver_8h}\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+
+
+X\+M\+E\+GA U\+S\+A\+RT driver header file.  
+
+
+{\ttfamily \#include \char`\"{}avr\+\_\+compiler.\+h\char`\"{}}\newline
+Include dependency graph for usart\+\_\+driver.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_u_s_a_r_t___buffer}{U\+S\+A\+R\+T\+\_\+\+Buffer}
+\item 
+struct \hyperlink{struct_usart__and__buffer}{Usart\+\_\+and\+\_\+buffer}
+\begin{DoxyCompactList}\small\item\em Struct used when interrupt driven driver is used. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{usart__driver_8h_ac0999c0821d14cfab43e6f3c778c2b95}{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}~32
+\item 
+\#define \hyperlink{usart__driver_8h_a21d527450b438bba8dab02e03f021ee3}{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}~16
+\item 
+\#define \hyperlink{usart__driver_8h_a910e51ba6d0a14c09b1e64f42a13d709}{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK}~( \hyperlink{usart__driver_8h_ac0999c0821d14cfab43e6f3c778c2b95}{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE} -\/ 1 )
+\item 
+\#define \hyperlink{usart__driver_8h_a33e4c2dff471d7794193a77465f83a23}{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK}~( \hyperlink{usart__driver_8h_a21d527450b438bba8dab02e03f021ee3}{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE} -\/ 1 )
+\item 
+\#define \hyperlink{usart__driver_8h_acb44ea0800b644f2b62ffdc98bb2a20d}{U\+S\+A\+R\+T\+\_\+\+Format\+\_\+\+Set}(\+\_\+usart,  \+\_\+char\+Size,  \+\_\+parity\+Mode,  \+\_\+two\+Stop\+Bits)
+\begin{DoxyCompactList}\small\item\em Macro that sets the U\+S\+A\+RT frame format. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_aa3579b0bb442accdc655f578ba2b98a6}{U\+S\+A\+R\+T\+\_\+\+Baudrate\+\_\+\+Set}(\+\_\+usart,  \+\_\+bsel\+Value,  \+\_\+b\+Scale\+Factor)
+\begin{DoxyCompactList}\small\item\em Set U\+S\+A\+RT baud rate. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_a00e17fdbc093dda5612b7f78f3cbd00a}{U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Enable}(\+\_\+usart)~((\+\_\+usart)-\/$>$C\+T\+R\+LB $\vert$= U\+S\+A\+R\+T\+\_\+\+R\+X\+E\+N\+\_\+bm)
+\begin{DoxyCompactList}\small\item\em Enable U\+S\+A\+RT receiver. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_af128d0543a7ef2942896c11cb7a355ef}{U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Disable}(\+\_\+usart)~((\+\_\+usart)-\/$>$C\+T\+R\+LB \&= $\sim$U\+S\+A\+R\+T\+\_\+\+R\+X\+E\+N\+\_\+bm)
+\begin{DoxyCompactList}\small\item\em Disable U\+S\+A\+RT receiver. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_acc94677022e0a8113e12f494d6b47027}{U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Enable}(\+\_\+usart)~((\+\_\+usart)-\/$>$C\+T\+R\+LB $\vert$= U\+S\+A\+R\+T\+\_\+\+T\+X\+E\+N\+\_\+bm)
+\begin{DoxyCompactList}\small\item\em Enable U\+S\+A\+RT transmitter. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_a8653dc89f054cffe36dab3717f05d793}{U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Disable}(\+\_\+usart)~((\+\_\+usart)-\/$>$C\+T\+R\+LB \&= $\sim$U\+S\+A\+R\+T\+\_\+\+T\+X\+E\+N\+\_\+bm)
+\begin{DoxyCompactList}\small\item\em Disable U\+S\+A\+RT transmitter. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_a7f0150e28b00e9b57b3725e03c8ae845}{U\+S\+A\+R\+T\+\_\+\+Rxd\+Interrupt\+Level\+\_\+\+Set}(\+\_\+usart,  \+\_\+rxd\+Int\+Level)~((\+\_\+usart)-\/$>$C\+T\+R\+LA = ((\+\_\+usart)-\/$>$C\+T\+R\+LA \& $\sim$U\+S\+A\+R\+T\+\_\+\+R\+X\+C\+I\+N\+T\+L\+V\+L\+\_\+gm) $\vert$ \+\_\+rxd\+Int\+Level)
+\begin{DoxyCompactList}\small\item\em Set U\+S\+A\+RT R\+XD interrupt level. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_aa3eac7b49352a7439830a3f3d58cf4f4}{U\+S\+A\+R\+T\+\_\+\+Txd\+Interrupt\+Level\+\_\+\+Set}(\+\_\+usart,  \+\_\+txd\+Int\+Level)~(\+\_\+usart)-\/$>$C\+T\+R\+LA = ((\+\_\+usart)-\/$>$C\+T\+R\+LA \& $\sim$U\+S\+A\+R\+T\+\_\+\+T\+X\+C\+I\+N\+T\+L\+V\+L\+\_\+gm) $\vert$ \+\_\+txd\+Int\+Level
+\begin{DoxyCompactList}\small\item\em Set U\+S\+A\+RT T\+XD interrupt level. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_a9feab6c03a53a35274e3993b9db42453}{U\+S\+A\+R\+T\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set}(\+\_\+usart,  \+\_\+dre\+Int\+Level)~(\+\_\+usart)-\/$>$C\+T\+R\+LA = ((\+\_\+usart)-\/$>$C\+T\+R\+LA \& $\sim$U\+S\+A\+R\+T\+\_\+\+D\+R\+E\+I\+N\+T\+L\+V\+L\+\_\+gm) $\vert$ \+\_\+dre\+Int\+Level
+\begin{DoxyCompactList}\small\item\em Set U\+S\+A\+RT D\+RE interrupt level. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_a0d2169dba1444c4abc4352868f9134e0}{U\+S\+A\+R\+T\+\_\+\+Set\+Mode}(\+\_\+usart,  \+\_\+usart\+Mode)~((\+\_\+usart)-\/$>$C\+T\+R\+LC = ((\+\_\+usart)-\/$>$C\+T\+R\+LC \& ($\sim$U\+S\+A\+R\+T\+\_\+\+C\+M\+O\+D\+E\+\_\+gm)) $\vert$ \+\_\+usart\+Mode)
+\begin{DoxyCompactList}\small\item\em Set the mode the U\+S\+A\+RT run in. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_a73f335fabf259c7dd976ba1821346a63}{U\+S\+A\+R\+T\+\_\+\+Is\+T\+X\+Data\+Register\+Empty}(\+\_\+usart)~(((\+\_\+usart)-\/$>$S\+T\+A\+T\+US \& U\+S\+A\+R\+T\+\_\+\+D\+R\+E\+I\+F\+\_\+bm) != 0)
+\begin{DoxyCompactList}\small\item\em Check if data register empty flag is set. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_a09861522526fb7156f91d80366237557}{U\+S\+A\+R\+T\+\_\+\+Put\+Char}(\+\_\+usart,  \+\_\+data)~((\+\_\+usart)-\/$>$D\+A\+TA = \+\_\+data)
+\begin{DoxyCompactList}\small\item\em Put data (5-\/8 bit character). \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_a248d1e978ccc59ab18b22576cf105caf}{U\+S\+A\+R\+T\+\_\+\+Is\+R\+X\+Complete}(\+\_\+usart)~(((\+\_\+usart)-\/$>$S\+T\+A\+T\+US \& U\+S\+A\+R\+T\+\_\+\+R\+X\+C\+I\+F\+\_\+bm) != 0)
+\begin{DoxyCompactList}\small\item\em Checks if the RX complete interrupt flag is set. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart__driver_8h_a07265567505916d3b9578b476222e5ae}{U\+S\+A\+R\+T\+\_\+\+Get\+Char}(\+\_\+usart)~((\+\_\+usart)-\/$>$D\+A\+TA)
+\begin{DoxyCompactList}\small\item\em Get received data (5-\/8 bit character). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct_u_s_a_r_t___buffer}{U\+S\+A\+R\+T\+\_\+\+Buffer} \hyperlink{usart__driver_8h_af27d135e807dcd1846b6f175997c5f45}{U\+S\+A\+R\+T\+\_\+\+Buffer\+\_\+t}
+\item 
+typedef struct \hyperlink{struct_usart__and__buffer}{Usart\+\_\+and\+\_\+buffer} \hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Struct used when interrupt driven driver is used. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{usart__driver_8h_a73739bc5a8060fa175df2dd43bb6174a}{U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$usart\+\_\+data, U\+S\+A\+R\+T\+\_\+t $\ast$usart, U\+S\+A\+R\+T\+\_\+\+D\+R\+E\+I\+N\+T\+L\+V\+L\+\_\+t dre\+Int\+Level)
+\begin{DoxyCompactList}\small\item\em Initializes buffer and selects what U\+S\+A\+RT module to use. \end{DoxyCompactList}\item 
+void \hyperlink{usart__driver_8h_a5df0d3f812fd03444a7f2748f761a401}{U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$usart\+\_\+data, U\+S\+A\+R\+T\+\_\+\+D\+R\+E\+I\+N\+T\+L\+V\+L\+\_\+t dre\+Int\+Level)
+\begin{DoxyCompactList}\small\item\em Set U\+S\+A\+RT D\+RE interrupt level. \end{DoxyCompactList}\item 
+bool \hyperlink{usart__driver_8h_aecbd49900666abf476cf5cce10fb372a}{U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$usart\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Test if there is data in the transmitter software buffer. \end{DoxyCompactList}\item 
+bool \hyperlink{usart__driver_8h_ac6a0c12350c501c1b8189aca778f5129}{U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$usart\+\_\+data, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Put data (5-\/8 bit character). \end{DoxyCompactList}\item 
+bool \hyperlink{usart__driver_8h_ac65d5461255def6cd49b05a88d5aa411}{U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$usart\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Test if there is data in the receive software buffer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{usart__driver_8h_a36cca099e37ec451e52efebe4c60180e}{U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$usart\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Get received data (5-\/8 bit character). \end{DoxyCompactList}\item 
+bool \hyperlink{usart__driver_8h_a6c2c49f32a74cb6a84b16d8647d3e9b6}{U\+S\+A\+R\+T\+\_\+\+R\+X\+Complete} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$usart\+\_\+data)
+\begin{DoxyCompactList}\small\item\em RX Complete Interrupt Service Routine. \end{DoxyCompactList}\item 
+void \hyperlink{usart__driver_8h_a7fdb922f6b858bef8515e23229efd970}{U\+S\+A\+R\+T\+\_\+\+Data\+Reg\+Empty} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$usart\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Data Register Empty Interrupt Service Routine. \end{DoxyCompactList}\item 
+void \hyperlink{usart__driver_8h_abcbf436801dae8ea99e55d1dd58c311f}{U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Put\+Char} (U\+S\+A\+R\+T\+\_\+t $\ast$usart, uint16\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Put data (9 bit character). \end{DoxyCompactList}\item 
+uint16\+\_\+t \hyperlink{usart__driver_8h_ad98fa51459c8fc8a1d554cd0a8d81cd4}{U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Get\+Char} (U\+S\+A\+R\+T\+\_\+t $\ast$usart)
+\begin{DoxyCompactList}\small\item\em Get received data (9 bit character). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+X\+M\+E\+GA U\+S\+A\+RT driver header file. 
+
+This file contains the function prototypes and enumerator definitions for various configuration parameters for the X\+M\+E\+GA U\+S\+A\+RT driver.
+
+The driver is not intended for size and/or speed critical code, since most functions are just a few lines of code, and the function call overhead would decrease code performance. The driver is intended for rapid prototyping and documentation purposes for getting started with the X\+M\+E\+GA A\+DC module.
+
+For size and/or speed critical code, it is recommended to copy the function contents directly into your application instead of making a function call.
+
+\begin{DoxyParagraph}{Application note\+:}
+A\+V\+R1307\+: Using the X\+M\+E\+GA U\+S\+A\+RT
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Documentation}
+For comprehensive code documentation, supported compilers, compiler settings and supported devices see readme.\+html
+\end{DoxyParagraph}
+\begin{DoxyAuthor}{Author}
+Atmel Corporation\+: \href{http://www.atmel.com}{\tt http\+://www.\+atmel.\+com} ~\newline
+ Support email\+: \href{mailto:avr@atmel.com}{\tt avr@atmel.\+com}
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Revision}
+1694 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Date}
+2008-\/07-\/29 14\+:21\+:58 +0200 (ti, 29 jul 2008) 
+\end{DoxyParagraph}
+~\newline
+ Copyright (c) 2008, Atmel Corporation All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met\+:
+
+
+\begin{DoxyEnumerate}
+\item Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+\item Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+\item The name of A\+T\+M\+EL may not be used to endorse or promote products derived from this software without specific prior written permission.
+\end{DoxyEnumerate}
+
+T\+H\+IS S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED BY A\+T\+M\+EL \char`\"{}\+A\+S I\+S\char`\"{} A\+ND A\+NY E\+X\+P\+R\+E\+SS OR I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES, I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, T\+HE I\+M\+P\+L\+I\+ED W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY A\+ND F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+RE E\+X\+P\+R\+E\+S\+S\+LY A\+ND S\+P\+E\+C\+I\+F\+I\+C\+A\+L\+LY D\+I\+S\+C\+L\+A\+I\+M\+ED. IN NO E\+V\+E\+NT S\+H\+A\+LL A\+T\+M\+EL BE L\+I\+A\+B\+LE F\+OR A\+NY D\+I\+R\+E\+CT, I\+N\+D\+I\+R\+E\+CT, I\+N\+C\+I\+D\+E\+N\+T\+AL, S\+P\+E\+C\+I\+AL, E\+X\+E\+M\+P\+L\+A\+RY, OR C\+O\+N\+S\+E\+Q\+U\+E\+N\+T\+I\+AL D\+A\+M\+A\+G\+ES (I\+N\+C\+L\+U\+D\+I\+NG, B\+UT N\+OT L\+I\+M\+I\+T\+ED TO, P\+R\+O\+C\+U\+R\+E\+M\+E\+NT OF S\+U\+B\+S\+T\+I\+T\+U\+TE G\+O\+O\+DS OR S\+E\+R\+V\+I\+C\+ES; L\+O\+SS OF U\+SE, D\+A\+TA, OR P\+R\+O\+F\+I\+TS; OR B\+U\+S\+I\+N\+E\+SS I\+N\+T\+E\+R\+R\+U\+P\+T\+I\+ON) H\+O\+W\+E\+V\+ER C\+A\+U\+S\+ED A\+ND ON A\+NY T\+H\+E\+O\+RY OF L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN C\+O\+N\+T\+R\+A\+CT, S\+T\+R\+I\+CT L\+I\+A\+B\+I\+L\+I\+TY, OR T\+O\+RT (I\+N\+C\+L\+U\+D\+I\+NG N\+E\+G\+L\+I\+G\+E\+N\+CE OR O\+T\+H\+E\+R\+W\+I\+SE) A\+R\+I\+S\+I\+NG IN A\+NY W\+AY O\+UT OF T\+HE U\+SE OF T\+H\+IS S\+O\+F\+T\+W\+A\+RE, E\+V\+EN IF A\+D\+V\+I\+S\+ED OF T\+HE P\+O\+S\+S\+I\+B\+I\+L\+I\+TY OF S\+U\+CH D\+A\+M\+A\+GE. 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{usart__driver_8h_aa3579b0bb442accdc655f578ba2b98a6}{}\label{usart__driver_8h_aa3579b0bb442accdc655f578ba2b98a6} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Baudrate\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Baudrate\+\_\+\+Set}}
+\index{U\+S\+A\+R\+T\+\_\+\+Baudrate\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Baudrate\+\_\+\+Set}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Baudrate\+\_\+\+Set}{USART\_Baudrate\_Set}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Baudrate\+\_\+\+Set(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart,  }\item[{}]{\+\_\+bsel\+Value,  }\item[{}]{\+\_\+b\+Scale\+Factor }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+(\_usart)->BAUDCTRLA =(uint8\_t)\_bselValue;                                           \(\backslash\)
+    (\_usart)->BAUDCTRLB =(\_bScaleFactor << USART\_BSCALE0\_bp)|(\_bselValue >> 8)
+\end{DoxyCode}
+
+
+Set U\+S\+A\+RT baud rate. 
+
+Sets the U\+S\+A\+RT\textquotesingle{}s baud rate register.
+
+U\+B\+R\+R\+\_\+\+Value \+: Value written to U\+B\+RR Scale\+Factor \+: Time Base Generator Scale Factor
+
+Equation for calculation of B\+S\+EL value in asynchronous normal speed mode\+: If Scale\+Factor $>$= 0 B\+S\+EL = ((I/O clock frequency)/(2$^\wedge$(Scale\+Factor)$\ast$16$\ast$\+Baudrate))-\/1 If Scale\+Factor $<$ 0 B\+S\+EL = (1/(2$^\wedge$(Scale\+Factor)$\ast$16))$\ast$(((I/O clock frequency)/\+Baudrate)-\/1)
+
+\begin{DoxyNote}{Note}
+See X\+M\+E\+GA manual for equations for calculation of B\+S\+EL value in other modes.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & Pointer to the U\+S\+A\+RT module. \\
+\hline
+{\em \+\_\+bsel\+Value} & Value to write to B\+S\+EL part of Baud control register. Use uint16\+\_\+t type. \\
+\hline
+{\em \+\_\+b\+Scale\+Factor} & U\+S\+A\+RT baud rate scale factor. Use uint8\+\_\+t type \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 156 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by usart\+\_\+init\+\_\+pc(), and usart\+\_\+init\+\_\+tpuart().
+
+\hypertarget{usart__driver_8h_a9feab6c03a53a35274e3993b9db42453}{}\label{usart__driver_8h_a9feab6c03a53a35274e3993b9db42453} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set}}
+\index{U\+S\+A\+R\+T\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set}{USART\_DreInterruptLevel\_Set}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart,  }\item[{}]{\+\_\+dre\+Int\+Level }\end{DoxyParamCaption})~(\+\_\+usart)-\/$>$C\+T\+R\+LA = ((\+\_\+usart)-\/$>$C\+T\+R\+LA \& $\sim$U\+S\+A\+R\+T\+\_\+\+D\+R\+E\+I\+N\+T\+L\+V\+L\+\_\+gm) $\vert$ \+\_\+dre\+Int\+Level}
+
+
+
+Set U\+S\+A\+RT D\+RE interrupt level. 
+
+Sets the interrupt level on Data Register interrupt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & Pointer to the U\+S\+A\+RT module. \\
+\hline
+{\em \+\_\+dre\+Int\+Level} & Interrupt level of the D\+RE interrupt. Use U\+S\+A\+R\+T\+\_\+\+D\+R\+E\+I\+N\+T\+L\+V\+L\+\_\+t type. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 222 of file usart\+\_\+driver.\+h.
+
+\hypertarget{usart__driver_8h_acb44ea0800b644f2b62ffdc98bb2a20d}{}\label{usart__driver_8h_acb44ea0800b644f2b62ffdc98bb2a20d} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Format\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Format\+\_\+\+Set}}
+\index{U\+S\+A\+R\+T\+\_\+\+Format\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Format\+\_\+\+Set}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Format\+\_\+\+Set}{USART\_Format\_Set}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Format\+\_\+\+Set(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart,  }\item[{}]{\+\_\+char\+Size,  }\item[{}]{\+\_\+parity\+Mode,  }\item[{}]{\+\_\+two\+Stop\+Bits }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+(\_usart)->CTRLC = (uint8\_t) \_charSize | \_parityMode |                      \(\backslash\)
+                      (\_twoStopBits ? USART\_SBMODE\_bm : 0)
+\end{DoxyCode}
+
+
+Macro that sets the U\+S\+A\+RT frame format. 
+
+Sets the frame format, Frame Size, parity mode and number of stop bits.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & Pointer to the U\+S\+A\+RT module \\
+\hline
+{\em \+\_\+char\+Size} & The character size. Use U\+S\+A\+R\+T\+\_\+\+C\+H\+S\+I\+Z\+E\+\_\+t type. \\
+\hline
+{\em \+\_\+parity\+Mode} & The parity Mode. Use U\+S\+A\+R\+T\+\_\+\+P\+M\+O\+D\+E\+\_\+t type. \\
+\hline
+{\em \+\_\+two\+Stop\+Bits} & Enable two stop bit mode. Use bool type. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 129 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by usart\+\_\+init\+\_\+pc(), and usart\+\_\+init\+\_\+tpuart().
+
+\hypertarget{usart__driver_8h_a07265567505916d3b9578b476222e5ae}{}\label{usart__driver_8h_a07265567505916d3b9578b476222e5ae} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Get\+Char@{U\+S\+A\+R\+T\+\_\+\+Get\+Char}}
+\index{U\+S\+A\+R\+T\+\_\+\+Get\+Char@{U\+S\+A\+R\+T\+\_\+\+Get\+Char}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Get\+Char}{USART\_GetChar}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Get\+Char(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart }\end{DoxyParamCaption})~((\+\_\+usart)-\/$>$D\+A\+TA)}
+
+
+
+Get received data (5-\/8 bit character). 
+
+This macro reads out the RX register. Use the macro U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+Complete to check if anything is received.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & The U\+S\+A\+RT module.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Received} & data. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line 284 of file usart\+\_\+driver.\+h.
+
+\hypertarget{usart__driver_8h_a248d1e978ccc59ab18b22576cf105caf}{}\label{usart__driver_8h_a248d1e978ccc59ab18b22576cf105caf} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Is\+R\+X\+Complete@{U\+S\+A\+R\+T\+\_\+\+Is\+R\+X\+Complete}}
+\index{U\+S\+A\+R\+T\+\_\+\+Is\+R\+X\+Complete@{U\+S\+A\+R\+T\+\_\+\+Is\+R\+X\+Complete}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Is\+R\+X\+Complete}{USART\_IsRXComplete}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Is\+R\+X\+Complete(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart }\end{DoxyParamCaption})~(((\+\_\+usart)-\/$>$S\+T\+A\+T\+US \& U\+S\+A\+R\+T\+\_\+\+R\+X\+C\+I\+F\+\_\+bm) != 0)}
+
+
+
+Checks if the RX complete interrupt flag is set. 
+
+Checks if the RX complete interrupt flag is set.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & The U\+S\+A\+RT module. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 270 of file usart\+\_\+driver.\+h.
+
+\hypertarget{usart__driver_8h_a73f335fabf259c7dd976ba1821346a63}{}\label{usart__driver_8h_a73f335fabf259c7dd976ba1821346a63} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Is\+T\+X\+Data\+Register\+Empty@{U\+S\+A\+R\+T\+\_\+\+Is\+T\+X\+Data\+Register\+Empty}}
+\index{U\+S\+A\+R\+T\+\_\+\+Is\+T\+X\+Data\+Register\+Empty@{U\+S\+A\+R\+T\+\_\+\+Is\+T\+X\+Data\+Register\+Empty}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Is\+T\+X\+Data\+Register\+Empty}{USART\_IsTXDataRegisterEmpty}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Is\+T\+X\+Data\+Register\+Empty(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart }\end{DoxyParamCaption})~(((\+\_\+usart)-\/$>$S\+T\+A\+T\+US \& U\+S\+A\+R\+T\+\_\+\+D\+R\+E\+I\+F\+\_\+bm) != 0)}
+
+
+
+Check if data register empty flag is set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & The U\+S\+A\+RT module. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 248 of file usart\+\_\+driver.\+h.
+
+\hypertarget{usart__driver_8h_a09861522526fb7156f91d80366237557}{}\label{usart__driver_8h_a09861522526fb7156f91d80366237557} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Put\+Char@{U\+S\+A\+R\+T\+\_\+\+Put\+Char}}
+\index{U\+S\+A\+R\+T\+\_\+\+Put\+Char@{U\+S\+A\+R\+T\+\_\+\+Put\+Char}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Put\+Char}{USART\_PutChar}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Put\+Char(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart,  }\item[{}]{\+\_\+data }\end{DoxyParamCaption})~((\+\_\+usart)-\/$>$D\+A\+TA = \+\_\+data)}
+
+
+
+Put data (5-\/8 bit character). 
+
+Use the macro U\+S\+A\+R\+T\+\_\+\+Is\+T\+X\+Data\+Register\+Empty before using this function to put data to the TX register.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & The U\+S\+A\+RT module. \\
+\hline
+{\em \+\_\+data} & The data to send. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 260 of file usart\+\_\+driver.\+h.
+
+\hypertarget{usart__driver_8h_a910e51ba6d0a14c09b1e64f42a13d709}{}\label{usart__driver_8h_a910e51ba6d0a14c09b1e64f42a13d709} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK@{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK}}
+\index{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK@{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK}{USART\_RX\_BUFFER\_MASK}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK~( \hyperlink{usart__driver_8h_ac0999c0821d14cfab43e6f3c778c2b95}{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE} -\/ 1 )}
+
+
+
+Definition at line 71 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by I\+S\+R(), U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte(), and U\+S\+A\+R\+T\+\_\+\+R\+X\+Complete().
+
+\hypertarget{usart__driver_8h_ac0999c0821d14cfab43e6f3c778c2b95}{}\label{usart__driver_8h_ac0999c0821d14cfab43e6f3c778c2b95} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}{USART\_RX\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE~32}
+
+
+
+Definition at line 67 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by act\+\_\+busmon(), reset\+\_\+request(), and state\+\_\+request().
+
+\hypertarget{usart__driver_8h_af128d0543a7ef2942896c11cb7a355ef}{}\label{usart__driver_8h_af128d0543a7ef2942896c11cb7a355ef} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Disable@{U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Disable}}
+\index{U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Disable@{U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Disable}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Disable}{USART\_Rx\_Disable}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Disable(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart }\end{DoxyParamCaption})~((\+\_\+usart)-\/$>$C\+T\+R\+LB \&= $\sim$U\+S\+A\+R\+T\+\_\+\+R\+X\+E\+N\+\_\+bm)}
+
+
+
+Disable U\+S\+A\+RT receiver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & Pointer to the U\+S\+A\+RT module. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 172 of file usart\+\_\+driver.\+h.
+
+\hypertarget{usart__driver_8h_a00e17fdbc093dda5612b7f78f3cbd00a}{}\label{usart__driver_8h_a00e17fdbc093dda5612b7f78f3cbd00a} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Enable@{U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Enable}}
+\index{U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Enable@{U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Enable}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Enable}{USART\_Rx\_Enable}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Enable(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart }\end{DoxyParamCaption})~((\+\_\+usart)-\/$>$C\+T\+R\+LB $\vert$= U\+S\+A\+R\+T\+\_\+\+R\+X\+E\+N\+\_\+bm)}
+
+
+
+Enable U\+S\+A\+RT receiver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & Pointer to the U\+S\+A\+RT module \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 165 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by usart\+\_\+init\+\_\+pc(), and usart\+\_\+init\+\_\+tpuart().
+
+\hypertarget{usart__driver_8h_a7f0150e28b00e9b57b3725e03c8ae845}{}\label{usart__driver_8h_a7f0150e28b00e9b57b3725e03c8ae845} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Rxd\+Interrupt\+Level\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Rxd\+Interrupt\+Level\+\_\+\+Set}}
+\index{U\+S\+A\+R\+T\+\_\+\+Rxd\+Interrupt\+Level\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Rxd\+Interrupt\+Level\+\_\+\+Set}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Rxd\+Interrupt\+Level\+\_\+\+Set}{USART\_RxdInterruptLevel\_Set}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Rxd\+Interrupt\+Level\+\_\+\+Set(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart,  }\item[{}]{\+\_\+rxd\+Int\+Level }\end{DoxyParamCaption})~((\+\_\+usart)-\/$>$C\+T\+R\+LA = ((\+\_\+usart)-\/$>$C\+T\+R\+LA \& $\sim$U\+S\+A\+R\+T\+\_\+\+R\+X\+C\+I\+N\+T\+L\+V\+L\+\_\+gm) $\vert$ \+\_\+rxd\+Int\+Level)}
+
+
+
+Set U\+S\+A\+RT R\+XD interrupt level. 
+
+Sets the interrupt level on RX Complete interrupt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & Pointer to the U\+S\+A\+RT module. \\
+\hline
+{\em \+\_\+rxd\+Int\+Level} & Interrupt level of the R\+XD interrupt. Use U\+S\+A\+R\+T\+\_\+\+R\+X\+C\+I\+N\+T\+L\+V\+L\+\_\+t type. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 197 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by usart\+\_\+init\+\_\+pc(), and usart\+\_\+init\+\_\+tpuart().
+
+\hypertarget{usart__driver_8h_a0d2169dba1444c4abc4352868f9134e0}{}\label{usart__driver_8h_a0d2169dba1444c4abc4352868f9134e0} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Set\+Mode@{U\+S\+A\+R\+T\+\_\+\+Set\+Mode}}
+\index{U\+S\+A\+R\+T\+\_\+\+Set\+Mode@{U\+S\+A\+R\+T\+\_\+\+Set\+Mode}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Set\+Mode}{USART\_SetMode}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Set\+Mode(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart,  }\item[{}]{\+\_\+usart\+Mode }\end{DoxyParamCaption})~((\+\_\+usart)-\/$>$C\+T\+R\+LC = ((\+\_\+usart)-\/$>$C\+T\+R\+LC \& ($\sim$U\+S\+A\+R\+T\+\_\+\+C\+M\+O\+D\+E\+\_\+gm)) $\vert$ \+\_\+usart\+Mode)}
+
+
+
+Set the mode the U\+S\+A\+RT run in. 
+
+Set the mode the U\+S\+A\+RT run in. The default mode is asynchronous mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & Pointer to the U\+S\+A\+RT module register section. \\
+\hline
+{\em \+\_\+usart\+Mode} & Selects the U\+S\+A\+RT mode. Use U\+S\+A\+R\+T\+\_\+\+C\+M\+O\+D\+E\+\_\+t type.\\
+\hline
+\end{DoxyParams}
+U\+S\+A\+RT modes\+:
+\begin{DoxyItemize}
+\item 0x0 \+: Asynchronous mode.
+\item 0x1 \+: Synchronous mode.
+\item 0x2 \+: Ir\+DA mode.
+\item 0x3 \+: Master S\+PI mode. 
+\end{DoxyItemize}
+
+Definition at line 239 of file usart\+\_\+driver.\+h.
+
+\hypertarget{usart__driver_8h_a33e4c2dff471d7794193a77465f83a23}{}\label{usart__driver_8h_a33e4c2dff471d7794193a77465f83a23} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK@{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK}}
+\index{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK@{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK}{USART\_TX\_BUFFER\_MASK}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK~( \hyperlink{usart__driver_8h_a21d527450b438bba8dab02e03f021ee3}{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE} -\/ 1 )}
+
+
+
+Definition at line 73 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by U\+S\+A\+R\+T\+\_\+\+Data\+Reg\+Empty(), U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space(), and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+\hypertarget{usart__driver_8h_a21d527450b438bba8dab02e03f021ee3}{}\label{usart__driver_8h_a21d527450b438bba8dab02e03f021ee3} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}{USART\_TX\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE~16}
+
+
+
+Definition at line 69 of file usart\+\_\+driver.\+h.
+
+\hypertarget{usart__driver_8h_a8653dc89f054cffe36dab3717f05d793}{}\label{usart__driver_8h_a8653dc89f054cffe36dab3717f05d793} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Disable@{U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Disable}}
+\index{U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Disable@{U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Disable}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Disable}{USART\_Tx\_Disable}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Disable(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart }\end{DoxyParamCaption})~((\+\_\+usart)-\/$>$C\+T\+R\+LB \&= $\sim$U\+S\+A\+R\+T\+\_\+\+T\+X\+E\+N\+\_\+bm)}
+
+
+
+Disable U\+S\+A\+RT transmitter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & Pointer to the U\+S\+A\+RT module. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 186 of file usart\+\_\+driver.\+h.
+
+\hypertarget{usart__driver_8h_acc94677022e0a8113e12f494d6b47027}{}\label{usart__driver_8h_acc94677022e0a8113e12f494d6b47027} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Enable@{U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Enable}}
+\index{U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Enable@{U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Enable}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Enable}{USART\_Tx\_Enable}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Enable(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart }\end{DoxyParamCaption})~((\+\_\+usart)-\/$>$C\+T\+R\+LB $\vert$= U\+S\+A\+R\+T\+\_\+\+T\+X\+E\+N\+\_\+bm)}
+
+
+
+Enable U\+S\+A\+RT transmitter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & Pointer to the U\+S\+A\+RT module. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 179 of file usart\+\_\+driver.\+h.
+
+
+
+Referenced by usart\+\_\+init\+\_\+pc(), and usart\+\_\+init\+\_\+tpuart().
+
+\hypertarget{usart__driver_8h_aa3eac7b49352a7439830a3f3d58cf4f4}{}\label{usart__driver_8h_aa3eac7b49352a7439830a3f3d58cf4f4} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Txd\+Interrupt\+Level\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Txd\+Interrupt\+Level\+\_\+\+Set}}
+\index{U\+S\+A\+R\+T\+\_\+\+Txd\+Interrupt\+Level\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Txd\+Interrupt\+Level\+\_\+\+Set}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Txd\+Interrupt\+Level\+\_\+\+Set}{USART\_TxdInterruptLevel\_Set}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+Txd\+Interrupt\+Level\+\_\+\+Set(\begin{DoxyParamCaption}\item[{}]{\+\_\+usart,  }\item[{}]{\+\_\+txd\+Int\+Level }\end{DoxyParamCaption})~(\+\_\+usart)-\/$>$C\+T\+R\+LA = ((\+\_\+usart)-\/$>$C\+T\+R\+LA \& $\sim$U\+S\+A\+R\+T\+\_\+\+T\+X\+C\+I\+N\+T\+L\+V\+L\+\_\+gm) $\vert$ \+\_\+txd\+Int\+Level}
+
+
+
+Set U\+S\+A\+RT T\+XD interrupt level. 
+
+Sets the interrupt level on TX Complete interrupt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+usart} & Pointer to the U\+S\+A\+RT module. \\
+\hline
+{\em \+\_\+txd\+Int\+Level} & Interrupt level of the T\+XD interrupt. Use U\+S\+A\+R\+T\+\_\+\+T\+X\+C\+I\+N\+T\+L\+V\+L\+\_\+t type. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 209 of file usart\+\_\+driver.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{usart__driver_8h_af27d135e807dcd1846b6f175997c5f45}{}\label{usart__driver_8h_af27d135e807dcd1846b6f175997c5f45} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Buffer\+\_\+t@{U\+S\+A\+R\+T\+\_\+\+Buffer\+\_\+t}}
+\index{U\+S\+A\+R\+T\+\_\+\+Buffer\+\_\+t@{U\+S\+A\+R\+T\+\_\+\+Buffer\+\_\+t}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Buffer\+\_\+t}{USART\_Buffer\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{struct_u_s_a_r_t___buffer}{U\+S\+A\+R\+T\+\_\+\+Buffer}  \hyperlink{usart__driver_8h_af27d135e807dcd1846b6f175997c5f45}{U\+S\+A\+R\+T\+\_\+\+Buffer\+\_\+t}}
+
+\hypertarget{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{}\label{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+data\+\_\+t@{U\+S\+A\+R\+T\+\_\+data\+\_\+t}}
+\index{U\+S\+A\+R\+T\+\_\+data\+\_\+t@{U\+S\+A\+R\+T\+\_\+data\+\_\+t}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+data\+\_\+t}{USART\_data\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{struct_usart__and__buffer}{Usart\+\_\+and\+\_\+buffer}  \hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t}}
+
+
+
+Struct used when interrupt driven driver is used. 
+
+Struct containing pointer to a usart, a buffer and a location to store Data register interrupt level temporary. 
+
+\subsection{Function Documentation}
+\hypertarget{usart__driver_8h_a7fdb922f6b858bef8515e23229efd970}{}\label{usart__driver_8h_a7fdb922f6b858bef8515e23229efd970} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Data\+Reg\+Empty@{U\+S\+A\+R\+T\+\_\+\+Data\+Reg\+Empty}}
+\index{U\+S\+A\+R\+T\+\_\+\+Data\+Reg\+Empty@{U\+S\+A\+R\+T\+\_\+\+Data\+Reg\+Empty}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Data\+Reg\+Empty()}{USART\_DataRegEmpty()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T\+\_\+\+Data\+Reg\+Empty (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{usart\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Data Register Empty Interrupt Service Routine. 
+
+Data Register Empty Interrupt Service Routine. Transmits one byte from TX software buffer. Disables D\+RE interrupt if buffer is empty. Argument is pointer to U\+S\+A\+RT (U\+S\+A\+R\+T\+\_\+data\+\_\+t).
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 260 of file usart\+\_\+driver.\+c.
+
+
+
+References Usart\+\_\+and\+\_\+buffer\+::buffer, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+TX, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+T\+X\+\_\+\+Head, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+T\+X\+\_\+\+Tail, Usart\+\_\+and\+\_\+buffer\+::usart, and U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK.
+
+
+
+Referenced by I\+S\+R().
+
+Here is the caller graph for this function\+:
+% FIG 2
+\hypertarget{usart__driver_8h_a5df0d3f812fd03444a7f2748f761a401}{}\label{usart__driver_8h_a5df0d3f812fd03444a7f2748f761a401} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set}}
+\index{U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set@{U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set()}{USART\_InterruptDriver\_DreInterruptLevel\_Set()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Dre\+Interrupt\+Level\+\_\+\+Set (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{usart\+\_\+data,  }\item[{U\+S\+A\+R\+T\+\_\+\+D\+R\+E\+I\+N\+T\+L\+V\+L\+\_\+t}]{dre\+Int\+Level }\end{DoxyParamCaption})}
+
+
+
+Set U\+S\+A\+RT D\+RE interrupt level. 
+
+Set the interrupt level on Data Register interrupt.
+
+\begin{DoxyNote}{Note}
+Changing the D\+RE interrupt level in the interrupt driver while it is running will not change the D\+RE interrupt level in the U\+S\+A\+RT before the D\+RE interrupt have been disabled and enabled again.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em usart\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance \\
+\hline
+{\em dre\+Int\+Level} & Interrupt level of the D\+RE interrupt. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 106 of file usart\+\_\+driver.\+c.
+
+
+
+References Usart\+\_\+and\+\_\+buffer\+::dre\+Int\+Level.
+
+\hypertarget{usart__driver_8h_a73739bc5a8060fa175df2dd43bb6174a}{}\label{usart__driver_8h_a73739bc5a8060fa175df2dd43bb6174a} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize@{U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize}}
+\index{U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize@{U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize()}{USART\_InterruptDriver\_Initialize()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{usart\+\_\+data,  }\item[{U\+S\+A\+R\+T\+\_\+t $\ast$}]{usart,  }\item[{U\+S\+A\+R\+T\+\_\+\+D\+R\+E\+I\+N\+T\+L\+V\+L\+\_\+t}]{dre\+Int\+Level }\end{DoxyParamCaption})}
+
+
+
+Initializes buffer and selects what U\+S\+A\+RT module to use. 
+
+Initializes receive and transmit buffer and selects what U\+S\+A\+RT module to use, and stores the data register empty interrupt level.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance. \\
+\hline
+{\em usart} & The U\+S\+A\+RT module. \\
+\hline
+{\em dre\+Int\+Level} & Data register empty interrupt level. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 81 of file usart\+\_\+driver.\+c.
+
+
+
+References Usart\+\_\+and\+\_\+buffer\+::buffer, Usart\+\_\+and\+\_\+buffer\+::dre\+Int\+Level, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+R\+X\+\_\+\+Head, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+R\+X\+\_\+\+Tail, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+T\+X\+\_\+\+Head, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+T\+X\+\_\+\+Tail, and Usart\+\_\+and\+\_\+buffer\+::usart.
+
+
+
+Referenced by usart\+\_\+init\+\_\+pc(), and usart\+\_\+init\+\_\+tpuart().
+
+Here is the caller graph for this function\+:
+% FIG 3
+\hypertarget{usart__driver_8h_ad98fa51459c8fc8a1d554cd0a8d81cd4}{}\label{usart__driver_8h_ad98fa51459c8fc8a1d554cd0a8d81cd4} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Get\+Char@{U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Get\+Char}}
+\index{U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Get\+Char@{U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Get\+Char}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Get\+Char()}{USART\_NineBits\_GetChar()}}
+{\footnotesize\ttfamily uint16\+\_\+t U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Get\+Char (\begin{DoxyParamCaption}\item[{U\+S\+A\+R\+T\+\_\+t $\ast$}]{usart }\end{DoxyParamCaption})}
+
+
+
+Get received data (9 bit character). 
+
+This function reads out the received 9 bit character (uint16\+\_\+t). Use the function U\+S\+A\+R\+T\+\_\+\+Is\+R\+X\+Complete to check if anything is received.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & The U\+S\+A\+RT module.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Received} & data. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line 313 of file usart\+\_\+driver.\+c.
+
+\hypertarget{usart__driver_8h_abcbf436801dae8ea99e55d1dd58c311f}{}\label{usart__driver_8h_abcbf436801dae8ea99e55d1dd58c311f} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Put\+Char@{U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Put\+Char}}
+\index{U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Put\+Char@{U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Put\+Char}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Put\+Char()}{USART\_NineBits\_PutChar()}}
+{\footnotesize\ttfamily void U\+S\+A\+R\+T\+\_\+\+Nine\+Bits\+\_\+\+Put\+Char (\begin{DoxyParamCaption}\item[{U\+S\+A\+R\+T\+\_\+t $\ast$}]{usart,  }\item[{uint16\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Put data (9 bit character). 
+
+Use the function U\+S\+A\+R\+T\+\_\+\+Is\+T\+X\+Data\+Register\+Empty before using this function to put 9 bit character to the TX register.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart} & The U\+S\+A\+RT module. \\
+\hline
+{\em data} & The data to send. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 292 of file usart\+\_\+driver.\+c.
+
+\hypertarget{usart__driver_8h_a36cca099e37ec451e52efebe4c60180e}{}\label{usart__driver_8h_a36cca099e37ec451e52efebe4c60180e} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte@{U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte}}
+\index{U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte@{U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte()}{USART\_RXBuffer\_GetByte()}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{usart\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Get received data (5-\/8 bit character). 
+
+The function U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available should be used before this function is used to ensure that data is available.
+
+Returns data from RX software buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Received data. 
+\end{DoxyReturn}
+
+
+Definition at line 204 of file usart\+\_\+driver.\+c.
+
+
+
+References Usart\+\_\+and\+\_\+buffer\+::buffer, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+RX, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+R\+X\+\_\+\+Tail, and U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK.
+
+
+
+Referenced by flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer(), receive\+\_\+char\+\_\+from\+\_\+usart(), and receive\+\_\+string\+\_\+from\+\_\+usart().
+
+Here is the caller graph for this function\+:
+% FIG 4
+\hypertarget{usart__driver_8h_ac65d5461255def6cd49b05a88d5aa411}{}\label{usart__driver_8h_ac65d5461255def6cd49b05a88d5aa411} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available@{U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available}}
+\index{U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available@{U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available()}{USART\_RXBufferData\_Available()}}
+{\footnotesize\ttfamily bool U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{usart\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Test if there is data in the receive software buffer. 
+
+This function can be used to test if there is data in the receive software buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & There is data in the receive buffer. \\
+\hline
+{\em false} & The receive buffer is empty. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line 181 of file usart\+\_\+driver.\+c.
+
+
+
+References Usart\+\_\+and\+\_\+buffer\+::buffer, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+R\+X\+\_\+\+Head, and U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+R\+X\+\_\+\+Tail.
+
+
+
+Referenced by act\+\_\+busmon(), flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer(), receive\+\_\+char\+\_\+from\+\_\+usart(), and receive\+\_\+string\+\_\+from\+\_\+usart().
+
+Here is the caller graph for this function\+:
+% FIG 5
+\hypertarget{usart__driver_8h_a6c2c49f32a74cb6a84b16d8647d3e9b6}{}\label{usart__driver_8h_a6c2c49f32a74cb6a84b16d8647d3e9b6} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+R\+X\+Complete@{U\+S\+A\+R\+T\+\_\+\+R\+X\+Complete}}
+\index{U\+S\+A\+R\+T\+\_\+\+R\+X\+Complete@{U\+S\+A\+R\+T\+\_\+\+R\+X\+Complete}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+R\+X\+Complete()}{USART\_RXComplete()}}
+{\footnotesize\ttfamily bool U\+S\+A\+R\+T\+\_\+\+R\+X\+Complete (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{usart\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+RX Complete Interrupt Service Routine. 
+
+RX Complete Interrupt Service Routine. Stores received data in RX software buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 227 of file usart\+\_\+driver.\+c.
+
+
+
+References Usart\+\_\+and\+\_\+buffer\+::buffer, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+RX, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+R\+X\+\_\+\+Head, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+R\+X\+\_\+\+Tail, Usart\+\_\+and\+\_\+buffer\+::usart, and U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK.
+
+
+
+Referenced by I\+S\+R().
+
+Here is the caller graph for this function\+:
+% FIG 6
+\hypertarget{usart__driver_8h_aecbd49900666abf476cf5cce10fb372a}{}\label{usart__driver_8h_aecbd49900666abf476cf5cce10fb372a} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space@{U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space}}
+\index{U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space@{U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space()}{USART\_TXBuffer\_FreeSpace()}}
+{\footnotesize\ttfamily bool U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{usart\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Test if there is data in the transmitter software buffer. 
+
+This function can be used to test if there is free space in the transmitter software buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & There is data in the receive buffer. \\
+\hline
+{\em false} & The receive buffer is empty. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line 123 of file usart\+\_\+driver.\+c.
+
+
+
+References Usart\+\_\+and\+\_\+buffer\+::buffer, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+T\+X\+\_\+\+Head, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+T\+X\+\_\+\+Tail, and U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK.
+
+
+
+Referenced by U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+Here is the caller graph for this function\+:
+% FIG 7
+\hypertarget{usart__driver_8h_ac6a0c12350c501c1b8189aca778f5129}{}\label{usart__driver_8h_ac6a0c12350c501c1b8189aca778f5129} 
+\index{usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}!U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte@{U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte}}
+\index{U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte@{U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte}!usart\+\_\+driver.\+h@{usart\+\_\+driver.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte()}{USART\_TXBuffer\_PutByte()}}
+{\footnotesize\ttfamily bool U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{usart\+\_\+data,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Put data (5-\/8 bit character). 
+
+Stores data byte in TX software buffer and enables D\+RE interrupt if there is free space in the TX software buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em usart\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance. \\
+\hline
+{\em data} & The data to send. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 143 of file usart\+\_\+driver.\+c.
+
+
+
+References Usart\+\_\+and\+\_\+buffer\+::buffer, Usart\+\_\+and\+\_\+buffer\+::dre\+Int\+Level, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+TX, U\+S\+A\+R\+T\+\_\+\+Buffer\+::\+T\+X\+\_\+\+Head, Usart\+\_\+and\+\_\+buffer\+::usart, U\+S\+A\+R\+T\+\_\+\+T\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space().
+
+
+
+Referenced by act\+\_\+busmon(), reset\+\_\+request(), send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), and state\+\_\+request().
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9

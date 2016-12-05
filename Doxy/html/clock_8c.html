@@ -89,7 +89,18 @@ $(document).ready(function(){initNavTree('clock_8c.html','');});
 
 <p>This file contains the Function to init, calibrate and change the clock.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &quot;<a class="el" href="clock_8h_source.html">clock.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for clock.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="clock_8c__incl.jpg" border="0" usemap="#clock_8c" alt=""/></div>
+<map name="clock_8c" id="clock_8c">
+<area shape="rect" id="node2" href="clock_8h.html" title="This file is the Headerfile for the clock&#45;File. It contains the prototypes of the functions and the u..." alt="" coords="101,80,165,107"/>
+<area shape="rect" id="node3" href="clksys__driver_8h.html" title="XMEGA Clock System driver header file. " alt="" coords="79,155,187,181"/>
+<area shape="rect" id="node4" href="avr__compiler_8h.html" title="This file implements some macros that makes the IAR C&#45;compiler and avr&#45;gcc work with the same code ba..." alt="" coords="80,229,185,256"/>
+</map>
+</div>
+</div>
 <p><a href="clock_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -142,15 +153,13 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This function inits, calibrates and changes the clock. </p>
-<p>It enables the 32kHz ref Clock for the Autocalibration and also executes the calibration. Afterwards it enables and changes to the 32MHz internal Clock and also disables the 2MHz clock. Eventually it Locks the current Clock config.</p>
-<dl class="section note"><dt>Note</dt><dd>The 32kHz Clock remains active.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Since I am not sure if the 32kHz Clock is enabled by default i wont disable it afterwards - so look it up and maybe change it.</dd></dl>
+<p>It enables the 32kHz ref Clock for the Autocalibration and also executes the calibration. Afterwards it enables and changes to the 32MHz internal Clock and also disables the 2MHz &amp; 32kHz clocks. Eventually it Locks the current Clock config. </p>
 
-<p>Definition at line <a class="el" href="clock_8c_source.html#l00018">18</a> of file <a class="el" href="clock_8c_source.html">clock.c</a>.</p>
+<p>Definition at line <a class="el" href="clock_8c_source.html#l00016">16</a> of file <a class="el" href="clock_8c_source.html">clock.c</a>.</p>
 
 <p>References <a class="el" href="clksys__driver_8c_source.html#l00260">CLKSYS_AutoCalibration_Enable()</a>, <a class="el" href="clksys__driver_8c_source.html#l00292">CLKSYS_Configuration_Lock()</a>, <a class="el" href="clksys__driver_8c_source.html#l00187">CLKSYS_Disable()</a>, <a class="el" href="clksys__driver_8h_source.html#l00078">CLKSYS_Enable</a>, <a class="el" href="clksys__driver_8h_source.html#l00091">CLKSYS_IsReady</a>, and <a class="el" href="clksys__driver_8c_source.html#l00225">CLKSYS_Main_ClockSource_Select()</a>.</p>
 
-<p>Referenced by <a class="el" href="main_8c_source.html#l00015">main()</a>.</p>
+<p>Referenced by <a class="el" href="main_8c_source.html#l00029">main()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

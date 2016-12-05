@@ -1,0 +1,469 @@
+\hypertarget{_u_a_r_t_8h}{}\section{U\+A\+R\+T.\+h File Reference}
+\label{_u_a_r_t_8h}\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+
+
+This File contains the Macros and so to use the Interrupt driven U\+S\+A\+RT Driver provided by Atmel. Many things taken from the esart\+\_\+example\+\_\+interrupt.\+c-\/\+File provided by Atmel.  
+
+
+{\ttfamily \#include \char`\"{}usart\+\_\+driver.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}avr\+\_\+compiler.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for U\+A\+R\+T.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{_u_a_r_t_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{_u_a_r_t_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_u_a_r_t_8h_ac2e1d10f50a10f96c57b7267790ddc99}{U\+S\+A\+R\+T\+\_\+\+TP}~U\+S\+A\+R\+T\+C0
+\item 
+\#define \hyperlink{_u_a_r_t_8h_afa824feb2f96215f922676624f567617}{U\+S\+A\+R\+T\+\_\+\+PC}~U\+S\+A\+R\+T\+C1
+\item 
+\#define \hyperlink{_u_a_r_t_8h_a7e4c39f87161948fe2dfe6210b9c4dcc}{U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP}~\hyperlink{_u_a_r_t_8h_ac92aff8008f26fe3922736094e6c40d9}{U\+S\+A\+R\+T\+\_\+data\+\_\+c0}
+\item 
+\#define \hyperlink{_u_a_r_t_8h_ac60e6460ede4d26c7001fff111d0b7da}{U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC}~\hyperlink{_u_a_r_t_8h_a9f8d8c08d6171011a9fb16f269d94b05}{U\+S\+A\+R\+T\+\_\+data\+\_\+c1}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_u_a_r_t_8h_a09e438e4f709b00836cebb0d6a44f223}{usart\+\_\+init\+\_\+tpuart} (void)
+\begin{DoxyCompactList}\small\item\em This Method enables and initializes the U\+S\+A\+RT for the specific purpose to communicate with the T\+P\+U\+A\+R\+T1 Chip. \end{DoxyCompactList}\item 
+void \hyperlink{_u_a_r_t_8h_a267c0b0bf7f4f8b70049d91449590cf8}{usart\+\_\+init\+\_\+pc} (void)
+\begin{DoxyCompactList}\small\item\em This Method enables and initializes the U\+S\+A\+RT for the specific purpose to communicate with e.\+g. a PC. \end{DoxyCompactList}\item 
+void \hyperlink{_u_a_r_t_8h_ad7bb1da26c447116e627aef512f5fc84}{send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$U\+S\+A\+R\+T\+\_\+data, const char $\ast$addr)
+\begin{DoxyCompactList}\small\item\em This Method uses the Program Space for e.\+g. Debug Strings and sends them to the given U\+S\+A\+RT. \end{DoxyCompactList}\item 
+void \hyperlink{_u_a_r_t_8h_a190114969cf3d32ab5e83509d7ab1569}{send\+\_\+string\+\_\+to\+\_\+usart} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$U\+S\+A\+R\+T\+\_\+data, char $\ast$s)
+\begin{DoxyCompactList}\small\item\em This Method sends Strings to the given U\+S\+A\+RT. \end{DoxyCompactList}\item 
+char \hyperlink{_u_a_r_t_8h_a1937cef99bb4eb8ca37fd7b128750c1b}{receive\+\_\+char\+\_\+from\+\_\+usart} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$U\+S\+A\+R\+T\+\_\+data)
+\begin{DoxyCompactList}\small\item\em This Method waits till one char is in the given U\+S\+A\+R\+T-\/\+Buffer -\/ No Timeout, Blocks!!!!. \end{DoxyCompactList}\item 
+void \hyperlink{_u_a_r_t_8h_a6a0a1c62a63f3388c9d22c87a069ebe7}{receive\+\_\+string\+\_\+from\+\_\+usart} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$U\+S\+A\+R\+T\+\_\+data, char $\ast$string)
+\begin{DoxyCompactList}\small\item\em This Method reads out the data of the Ring\+Buffer and returns a string. \end{DoxyCompactList}\item 
+void \hyperlink{_u_a_r_t_8h_a6c34e7e2146aab25f22bf042eae221ac}{flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$U\+S\+A\+R\+T\+\_\+data)
+\begin{DoxyCompactList}\small\item\em This Method flushs the RX Buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} \hyperlink{_u_a_r_t_8h_ac92aff8008f26fe3922736094e6c40d9}{U\+S\+A\+R\+T\+\_\+data\+\_\+c0}
+\item 
+\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} \hyperlink{_u_a_r_t_8h_a9f8d8c08d6171011a9fb16f269d94b05}{U\+S\+A\+R\+T\+\_\+data\+\_\+c1}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This File contains the Macros and so to use the Interrupt driven U\+S\+A\+RT Driver provided by Atmel. Many things taken from the esart\+\_\+example\+\_\+interrupt.\+c-\/\+File provided by Atmel. 
+
+\begin{DoxyAuthor}{Author}
+Jan Baudis 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+13.\+09.\+2016 16\+:17\+:27 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_u_a_r_t_8h_ac60e6460ede4d26c7001fff111d0b7da}{}\label{_u_a_r_t_8h_ac60e6460ede4d26c7001fff111d0b7da} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC@{U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC}}
+\index{U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC@{U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC}{USART\_DATA\_PC}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC~\hyperlink{_u_a_r_t_8h_a9f8d8c08d6171011a9fb16f269d94b05}{U\+S\+A\+R\+T\+\_\+data\+\_\+c1}}
+
+
+
+Definition at line 29 of file U\+A\+R\+T.\+h.
+
+
+
+Referenced by act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer(), I\+S\+R(), main(), prod\+\_\+request(), receive\+\_\+char\+\_\+from\+\_\+usart(), receive\+\_\+string\+\_\+from\+\_\+usart(), reset\+\_\+request(), shell\+\_\+help(), state\+\_\+request(), and usart\+\_\+init\+\_\+pc().
+
+\hypertarget{_u_a_r_t_8h_a7e4c39f87161948fe2dfe6210b9c4dcc}{}\label{_u_a_r_t_8h_a7e4c39f87161948fe2dfe6210b9c4dcc} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP@{U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP}}
+\index{U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP@{U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP}{USART\_DATA\_TP}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP~\hyperlink{_u_a_r_t_8h_ac92aff8008f26fe3922736094e6c40d9}{U\+S\+A\+R\+T\+\_\+data\+\_\+c0}}
+
+Defines for easier handling of the U\+S\+A\+RT P\+O\+R\+Ts. 
+
+Definition at line 28 of file U\+A\+R\+T.\+h.
+
+
+
+Referenced by act\+\_\+busmon(), act\+\_\+busymode(), I\+S\+R(), prod\+\_\+request(), reset\+\_\+request(), state\+\_\+request(), and usart\+\_\+init\+\_\+tpuart().
+
+\hypertarget{_u_a_r_t_8h_afa824feb2f96215f922676624f567617}{}\label{_u_a_r_t_8h_afa824feb2f96215f922676624f567617} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!U\+S\+A\+R\+T\+\_\+\+PC@{U\+S\+A\+R\+T\+\_\+\+PC}}
+\index{U\+S\+A\+R\+T\+\_\+\+PC@{U\+S\+A\+R\+T\+\_\+\+PC}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+PC}{USART\_PC}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+PC~U\+S\+A\+R\+T\+C1}
+
+Use the U\+S\+A\+R\+T1 of Port C for the PC. 
+
+Definition at line 25 of file U\+A\+R\+T.\+h.
+
+
+
+Referenced by usart\+\_\+init\+\_\+pc().
+
+\hypertarget{_u_a_r_t_8h_ac2e1d10f50a10f96c57b7267790ddc99}{}\label{_u_a_r_t_8h_ac2e1d10f50a10f96c57b7267790ddc99} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!U\+S\+A\+R\+T\+\_\+\+TP@{U\+S\+A\+R\+T\+\_\+\+TP}}
+\index{U\+S\+A\+R\+T\+\_\+\+TP@{U\+S\+A\+R\+T\+\_\+\+TP}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+\+TP}{USART\_TP}}
+{\footnotesize\ttfamily \#define U\+S\+A\+R\+T\+\_\+\+TP~U\+S\+A\+R\+T\+C0}
+
+For easier handling you may define here telling Names for the Macros and Data-\/structs.
+
+Use the U\+S\+A\+R\+T0 of Port C for the T\+P\+U\+A\+RT. 
+
+Definition at line 22 of file U\+A\+R\+T.\+h.
+
+
+
+Referenced by usart\+\_\+init\+\_\+tpuart().
+
+
+
+\subsection{Function Documentation}
+\hypertarget{_u_a_r_t_8h_a6c34e7e2146aab25f22bf042eae221ac}{}\label{_u_a_r_t_8h_a6c34e7e2146aab25f22bf042eae221ac} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer@{flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer}}
+\index{flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer@{flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer()}{flush\_USART\_RXBuffer()}}
+{\footnotesize\ttfamily void flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{U\+S\+A\+R\+T\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+This Method flushs the RX Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em U\+S\+A\+R\+T\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 198 of file U\+A\+R\+T.\+c.
+
+
+
+References send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte(), and U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available().
+
+
+
+Referenced by act\+\_\+busmon().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_8h_a6c34e7e2146aab25f22bf042eae221ac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_8h_a6c34e7e2146aab25f22bf042eae221ac_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{_u_a_r_t_8h_a1937cef99bb4eb8ca37fd7b128750c1b}{}\label{_u_a_r_t_8h_a1937cef99bb4eb8ca37fd7b128750c1b} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!receive\+\_\+char\+\_\+from\+\_\+usart@{receive\+\_\+char\+\_\+from\+\_\+usart}}
+\index{receive\+\_\+char\+\_\+from\+\_\+usart@{receive\+\_\+char\+\_\+from\+\_\+usart}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{receive\+\_\+char\+\_\+from\+\_\+usart()}{receive\_char\_from\_usart()}}
+{\footnotesize\ttfamily char receive\+\_\+char\+\_\+from\+\_\+usart (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{U\+S\+A\+R\+T\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+This Method waits till one char is in the given U\+S\+A\+R\+T-\/\+Buffer -\/ No Timeout, Blocks!!!!. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em U\+S\+A\+R\+T\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 175 of file U\+A\+R\+T.\+c.
+
+
+
+References send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte(), and U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_8h_a1937cef99bb4eb8ca37fd7b128750c1b_cgraph}
+\end{center}
+\end{figure}
+\hypertarget{_u_a_r_t_8h_a6a0a1c62a63f3388c9d22c87a069ebe7}{}\label{_u_a_r_t_8h_a6a0a1c62a63f3388c9d22c87a069ebe7} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!receive\+\_\+string\+\_\+from\+\_\+usart@{receive\+\_\+string\+\_\+from\+\_\+usart}}
+\index{receive\+\_\+string\+\_\+from\+\_\+usart@{receive\+\_\+string\+\_\+from\+\_\+usart}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{receive\+\_\+string\+\_\+from\+\_\+usart()}{receive\_string\_from\_usart()}}
+{\footnotesize\ttfamily void receive\+\_\+string\+\_\+from\+\_\+usart (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{U\+S\+A\+R\+T\+\_\+data,  }\item[{char $\ast$}]{output }\end{DoxyParamCaption})}
+
+
+
+This Method reads out the data of the Ring\+Buffer and returns a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em U\+S\+A\+R\+T\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance. \\
+\hline
+{\em output} & The String-\/\+Pointer where the Output is stored \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 148 of file U\+A\+R\+T.\+c.
+
+
+
+References send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+\_\+\+Get\+Byte(), and U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available().
+
+
+
+Referenced by act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), main(), prod\+\_\+request(), reset\+\_\+request(), and state\+\_\+request().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_8h_a6a0a1c62a63f3388c9d22c87a069ebe7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_8h_a6a0a1c62a63f3388c9d22c87a069ebe7_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{_u_a_r_t_8h_ad7bb1da26c447116e627aef512f5fc84}{}\label{_u_a_r_t_8h_ad7bb1da26c447116e627aef512f5fc84} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart@{send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart}}
+\index{send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart@{send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart()}{send\_string\_pgm\_to\_usart()}}
+{\footnotesize\ttfamily void send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{U\+S\+A\+R\+T\+\_\+data,  }\item[{const char $\ast$}]{addr }\end{DoxyParamCaption})}
+
+
+
+This Method uses the Program Space for e.\+g. Debug Strings and sends them to the given U\+S\+A\+RT. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em U\+S\+A\+R\+T\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance. \\
+\hline
+{\em addr} & const char$\ast$ to the pgmspace. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 107 of file U\+A\+R\+T.\+c.
+
+
+
+References U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+
+
+Referenced by act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer(), main(), prod\+\_\+request(), receive\+\_\+char\+\_\+from\+\_\+usart(), receive\+\_\+string\+\_\+from\+\_\+usart(), reset\+\_\+request(), shell\+\_\+help(), and state\+\_\+request().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_8h_ad7bb1da26c447116e627aef512f5fc84_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_8h_ad7bb1da26c447116e627aef512f5fc84_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{_u_a_r_t_8h_a190114969cf3d32ab5e83509d7ab1569}{}\label{_u_a_r_t_8h_a190114969cf3d32ab5e83509d7ab1569} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!send\+\_\+string\+\_\+to\+\_\+usart@{send\+\_\+string\+\_\+to\+\_\+usart}}
+\index{send\+\_\+string\+\_\+to\+\_\+usart@{send\+\_\+string\+\_\+to\+\_\+usart}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{send\+\_\+string\+\_\+to\+\_\+usart()}{send\_string\_to\_usart()}}
+{\footnotesize\ttfamily void send\+\_\+string\+\_\+to\+\_\+usart (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{U\+S\+A\+R\+T\+\_\+data,  }\item[{char $\ast$}]{s }\end{DoxyParamCaption})}
+
+
+
+This Method sends Strings to the given U\+S\+A\+RT. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em U\+S\+A\+R\+T\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance. \\
+\hline
+{\em s} & char$\ast$ to transmit. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 129 of file U\+A\+R\+T.\+c.
+
+
+
+References U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+
+
+Referenced by act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), main(), prod\+\_\+request(), receive\+\_\+string\+\_\+from\+\_\+usart(), reset\+\_\+request(), shell\+\_\+help(), and state\+\_\+request().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_8h_a190114969cf3d32ab5e83509d7ab1569_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_8h_a190114969cf3d32ab5e83509d7ab1569_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{_u_a_r_t_8h_a267c0b0bf7f4f8b70049d91449590cf8}{}\label{_u_a_r_t_8h_a267c0b0bf7f4f8b70049d91449590cf8} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!usart\+\_\+init\+\_\+pc@{usart\+\_\+init\+\_\+pc}}
+\index{usart\+\_\+init\+\_\+pc@{usart\+\_\+init\+\_\+pc}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{usart\+\_\+init\+\_\+pc()}{usart\_init\_pc()}}
+{\footnotesize\ttfamily void usart\+\_\+init\+\_\+pc (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This Method enables and initializes the U\+S\+A\+RT for the specific purpose to communicate with e.\+g. a PC. 
+
+It Uses the U\+S\+A\+R\+T\+C1 and\+:
+\begin{DoxyItemize}
+\item 8 bit character size
+\item No parity
+\item 1 stop bit
+\item 57600 Baud
+\end{DoxyItemize}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000006}{Todo}]Maybe merge the init Functions. But think of a good way to configure the Params like Baudrate, Parity etc \end{DoxyRefDesc}
+\begin{DoxyNote}{Note}
+The Code is taken from the usart\+\_\+example\+\_\+interrupt.\+c-\/\+File and is edited to the needed values 
+\end{DoxyNote}
+
+
+Definition at line 69 of file U\+A\+R\+T.\+c.
+
+
+
+References U\+S\+A\+R\+T\+\_\+\+Baudrate\+\_\+\+Set, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+Format\+\_\+\+Set, U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize(), U\+S\+A\+R\+T\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Enable, U\+S\+A\+R\+T\+\_\+\+Rxd\+Interrupt\+Level\+\_\+\+Set, and U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Enable.
+
+
+
+Referenced by main().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{_u_a_r_t_8h_a267c0b0bf7f4f8b70049d91449590cf8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{_u_a_r_t_8h_a267c0b0bf7f4f8b70049d91449590cf8_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{_u_a_r_t_8h_a09e438e4f709b00836cebb0d6a44f223}{}\label{_u_a_r_t_8h_a09e438e4f709b00836cebb0d6a44f223} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!usart\+\_\+init\+\_\+tpuart@{usart\+\_\+init\+\_\+tpuart}}
+\index{usart\+\_\+init\+\_\+tpuart@{usart\+\_\+init\+\_\+tpuart}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{usart\+\_\+init\+\_\+tpuart()}{usart\_init\_tpuart()}}
+{\footnotesize\ttfamily void usart\+\_\+init\+\_\+tpuart (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This Method enables and initializes the U\+S\+A\+RT for the specific purpose to communicate with the T\+P\+U\+A\+R\+T1 Chip. 
+
+It Uses the U\+S\+A\+R\+T\+C0 and\+:
+\begin{DoxyItemize}
+\item 8 bit character size
+\item Even parity
+\item 1 stop bit
+\item 19200 Baud
+\end{DoxyItemize}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000005}{Todo}]Check if the T\+P\+U\+A\+R\+T2 Parity Specs from the DS also applies to the T\+P\+U\+A\+R\+T1 -\/ T\+P\+U\+A\+R\+T1 Datasheet(p.\+10) is missing the parity specs -\/ T\+P\+U\+A\+R\+T2 DS(p.\+21) says even, so lets try even; Maybe merge the Init functions \end{DoxyRefDesc}
+\begin{DoxyNote}{Note}
+The Code is taken from the usart\+\_\+example\+\_\+interrupt.\+c-\/\+File and is edited to the needed values 
+\end{DoxyNote}
+
+
+Definition at line 27 of file U\+A\+R\+T.\+c.
+
+
+
+References U\+S\+A\+R\+T\+\_\+\+Baudrate\+\_\+\+Set, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, U\+S\+A\+R\+T\+\_\+\+Format\+\_\+\+Set, U\+S\+A\+R\+T\+\_\+\+Interrupt\+Driver\+\_\+\+Initialize(), U\+S\+A\+R\+T\+\_\+\+Rx\+\_\+\+Enable, U\+S\+A\+R\+T\+\_\+\+Rxd\+Interrupt\+Level\+\_\+\+Set, U\+S\+A\+R\+T\+\_\+\+TP, and U\+S\+A\+R\+T\+\_\+\+Tx\+\_\+\+Enable.
+
+
+
+Referenced by main().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{_u_a_r_t_8h_a09e438e4f709b00836cebb0d6a44f223_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{_u_a_r_t_8h_a09e438e4f709b00836cebb0d6a44f223_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_u_a_r_t_8h_ac92aff8008f26fe3922736094e6c40d9}{}\label{_u_a_r_t_8h_ac92aff8008f26fe3922736094e6c40d9} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!U\+S\+A\+R\+T\+\_\+data\+\_\+c0@{U\+S\+A\+R\+T\+\_\+data\+\_\+c0}}
+\index{U\+S\+A\+R\+T\+\_\+data\+\_\+c0@{U\+S\+A\+R\+T\+\_\+data\+\_\+c0}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+data\+\_\+c0}{USART\_data\_c0}}
+{\footnotesize\ttfamily \hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} U\+S\+A\+R\+T\+\_\+data\+\_\+c0}
+
+U\+S\+A\+RT data struct used for U\+S\+A\+RT 0 of Port C. 
+
+Definition at line 34 of file U\+A\+R\+T.\+h.
+
+\hypertarget{_u_a_r_t_8h_a9f8d8c08d6171011a9fb16f269d94b05}{}\label{_u_a_r_t_8h_a9f8d8c08d6171011a9fb16f269d94b05} 
+\index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!U\+S\+A\+R\+T\+\_\+data\+\_\+c1@{U\+S\+A\+R\+T\+\_\+data\+\_\+c1}}
+\index{U\+S\+A\+R\+T\+\_\+data\+\_\+c1@{U\+S\+A\+R\+T\+\_\+data\+\_\+c1}!U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}}
+\subsubsection{\texorpdfstring{U\+S\+A\+R\+T\+\_\+data\+\_\+c1}{USART\_data\_c1}}
+{\footnotesize\ttfamily \hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} U\+S\+A\+R\+T\+\_\+data\+\_\+c1}
+
+U\+S\+A\+RT data struct used for U\+S\+A\+RT 1 of Port C. 
+
+Definition at line 37 of file U\+A\+R\+T.\+h.
+
+
+
+Referenced by I\+S\+R().
+

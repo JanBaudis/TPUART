@@ -5,11 +5,19 @@
 This file is the Headerfile for the clock-\/\+File. It contains the prototypes of the functions and the usual macros.  
 
 
+{\ttfamily \#include \char`\"{}clksys\+\_\+driver.\+h\char`\"{}}\newline
+Include dependency graph for clock.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{clock_8h__incl}
+\end{center}
+\end{figure}
 This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=128pt]{clock_8h__dep__incl}
+\includegraphics[width=192pt]{clock_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
@@ -41,16 +49,9 @@ Jan Baudis
 
 This function inits, calibrates and changes the clock. 
 
-It enables the 32k\+Hz ref Clock for the Autocalibration and also executes the calibration. Afterwards it enables and changes to the 32\+M\+Hz internal Clock and also disables the 2\+M\+Hz clock. Eventually it Locks the current Clock config.
+It enables the 32k\+Hz ref Clock for the Autocalibration and also executes the calibration. Afterwards it enables and changes to the 32\+M\+Hz internal Clock and also disables the 2\+M\+Hz \& 32k\+Hz clocks. Eventually it Locks the current Clock config. 
 
-\begin{DoxyNote}{Note}
-The 32k\+Hz Clock remains active.
-\end{DoxyNote}
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000001}{Todo}]Since I am not sure if the 32k\+Hz Clock is enabled by default i wont disable it afterwards -\/ so look it up and maybe change it.\end{DoxyRefDesc}
-
-
-Definition at line 18 of file clock.\+c.
+Definition at line 16 of file clock.\+c.
 
 
 

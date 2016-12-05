@@ -1,0 +1,334 @@
+\hypertarget{shell_8h}{}\section{shell.\+h File Reference}
+\label{shell_8h}\index{shell.\+h@{shell.\+h}}
+
+
+Corresponding header-\/\+File.  
+
+
+{\ttfamily \#include \char`\"{}usart\+\_\+driver.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}avr\+\_\+compiler.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}U\+A\+R\+T.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for shell.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{shell_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{shell_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{shell_8h_a3197713442e02b97406567e4a11e193f}{enter\+\_\+shell} (\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$U\+S\+A\+R\+T\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Enter the \char`\"{}\+Shell\char`\"{}. \end{DoxyCompactList}\item 
+void \hyperlink{shell_8h_acd8340ade32d7f467cf3b625bd06ba31}{shell\+\_\+help} (void)
+\item 
+void \hyperlink{shell_8h_ab8aa91cc93dc57699d69cf98e7244d64}{reset\+\_\+request} (void)
+\begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+reset.\+request-\/\+Service. \end{DoxyCompactList}\item 
+void \hyperlink{shell_8h_a7e7bbbb940671ab75e317fb9e82e956d}{state\+\_\+request} (void)
+\begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+state.\+request-\/\+Service. \end{DoxyCompactList}\item 
+void \hyperlink{shell_8h_ad95c9c45c97cc744ca49a98494bf9465}{act\+\_\+busmon} (void)
+\begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+\+Activate\+Busmon-\/\+Service. \end{DoxyCompactList}\item 
+void \hyperlink{shell_8h_aef27926c3ebc8dc98a95df932af53a06}{prod\+\_\+request} (void)
+\begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+\+Product\+I\+D.\+request-\/\+Service. \end{DoxyCompactList}\item 
+void \hyperlink{shell_8h_a5c364cd022ec191bccd57afa8aae1e89}{act\+\_\+busymode} (void)
+\begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+\+Activate\+Busy\+Mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Corresponding header-\/\+File. 
+
+\begin{DoxyAuthor}{Author}
+Jan Baudis 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03.\+12.\+2016 01\+:03\+:19 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{shell_8h_ad95c9c45c97cc744ca49a98494bf9465}{}\label{shell_8h_ad95c9c45c97cc744ca49a98494bf9465} 
+\index{shell.\+h@{shell.\+h}!act\+\_\+busmon@{act\+\_\+busmon}}
+\index{act\+\_\+busmon@{act\+\_\+busmon}!shell.\+h@{shell.\+h}}
+\subsubsection{\texorpdfstring{act\+\_\+busmon()}{act\_busmon()}}
+{\footnotesize\ttfamily void act\+\_\+busmon (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shell-\/\+Function for the U\+\_\+\+Activate\+Busmon-\/\+Service. 
+
+Sends the U\+\_\+\+Activate\+Busmon to the T\+P\+U\+A\+RT and prints the Output as bits to the PC. Listens till it receives any Key from the PC. Then it Resets the Chip since its the Only way to quit the Busmon-\/\+Mode of the T\+P\+U\+A\+RT.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]Implement an end of Packet detection to print out some useful Information for the Bits.\end{DoxyRefDesc}
+
+
+Definition at line 175 of file shell.\+c.
+
+
+
+References command, flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer(), receive\+\_\+string\+\_\+from\+\_\+usart(), reset\+\_\+request(), send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE, U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer\+Data\+\_\+\+Available(), and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+
+
+Referenced by enter\+\_\+shell().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8h_ad95c9c45c97cc744ca49a98494bf9465_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{shell_8h_ad95c9c45c97cc744ca49a98494bf9465_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{shell_8h_a5c364cd022ec191bccd57afa8aae1e89}{}\label{shell_8h_a5c364cd022ec191bccd57afa8aae1e89} 
+\index{shell.\+h@{shell.\+h}!act\+\_\+busymode@{act\+\_\+busymode}}
+\index{act\+\_\+busymode@{act\+\_\+busymode}!shell.\+h@{shell.\+h}}
+\subsubsection{\texorpdfstring{act\+\_\+busymode()}{act\_busymode()}}
+{\footnotesize\ttfamily void act\+\_\+busymode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shell-\/\+Function for the U\+\_\+\+Activate\+Busy\+Mode. 
+
+Sends the U\+\_\+\+Activate\+Busy\+Mode to the T\+P\+U\+A\+RT and prints the Output as bits to the PC. T\+P-\/\+U\+A\+RT responses on every Packet which is addressed to him with B\+U\+SY within 700ms (+-\/10ms). All Packets are send to the Host and if the Host confirms one with U\+\_\+\+Ackinfo it will leave Busy\+Mode as well when reseted.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]May add something; Dunno like a Listen Mode for 700ms; \end{DoxyRefDesc}
+
+
+Definition at line 268 of file shell.\+c.
+
+
+
+References command, prod\+\_\+request(), receive\+\_\+string\+\_\+from\+\_\+usart(), send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+
+
+Referenced by enter\+\_\+shell().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8h_a5c364cd022ec191bccd57afa8aae1e89_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{shell_8h_a5c364cd022ec191bccd57afa8aae1e89_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{shell_8h_a3197713442e02b97406567e4a11e193f}{}\label{shell_8h_a3197713442e02b97406567e4a11e193f} 
+\index{shell.\+h@{shell.\+h}!enter\+\_\+shell@{enter\+\_\+shell}}
+\index{enter\+\_\+shell@{enter\+\_\+shell}!shell.\+h@{shell.\+h}}
+\subsubsection{\texorpdfstring{enter\+\_\+shell()}{enter\_shell()}}
+{\footnotesize\ttfamily void enter\+\_\+shell (\begin{DoxyParamCaption}\item[{\hyperlink{usart__driver_8h_a884c38d38327b0d4263c03cf0d84031e}{U\+S\+A\+R\+T\+\_\+data\+\_\+t} $\ast$}]{U\+S\+A\+R\+T\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Enter the \char`\"{}\+Shell\char`\"{}. 
+
+In the \char`\"{}\+Shell\char`\"{} we can e.\+g. use the Services of the T\+P\+U\+A\+RT
+
+
+\begin{DoxyParams}{Parameters}
+{\em U\+S\+A\+R\+T\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file shell.\+c.
+
+
+
+References act\+\_\+busmon(), act\+\_\+busymode(), command, prod\+\_\+request(), receive\+\_\+string\+\_\+from\+\_\+usart(), reset\+\_\+request(), ret\+\_\+pressed, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), shell\+\_\+help(), state\+\_\+request(), and U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC.
+
+
+
+Referenced by main().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8h_a3197713442e02b97406567e4a11e193f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{shell_8h_a3197713442e02b97406567e4a11e193f_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{shell_8h_aef27926c3ebc8dc98a95df932af53a06}{}\label{shell_8h_aef27926c3ebc8dc98a95df932af53a06} 
+\index{shell.\+h@{shell.\+h}!prod\+\_\+request@{prod\+\_\+request}}
+\index{prod\+\_\+request@{prod\+\_\+request}!shell.\+h@{shell.\+h}}
+\subsubsection{\texorpdfstring{prod\+\_\+request()}{prod\_request()}}
+{\footnotesize\ttfamily void prod\+\_\+request (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shell-\/\+Function for the U\+\_\+\+Product\+I\+D.\+request-\/\+Service. 
+
+Sends the U\+\_\+\+Product\+I\+D.\+request to the T\+P\+U\+A\+RT and prints the Output as bits to the PC 
+
+Definition at line 224 of file shell.\+c.
+
+
+
+References command, receive\+\_\+string\+\_\+from\+\_\+usart(), send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+
+
+Referenced by act\+\_\+busymode(), and enter\+\_\+shell().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8h_aef27926c3ebc8dc98a95df932af53a06_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8h_aef27926c3ebc8dc98a95df932af53a06_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{shell_8h_ab8aa91cc93dc57699d69cf98e7244d64}{}\label{shell_8h_ab8aa91cc93dc57699d69cf98e7244d64} 
+\index{shell.\+h@{shell.\+h}!reset\+\_\+request@{reset\+\_\+request}}
+\index{reset\+\_\+request@{reset\+\_\+request}!shell.\+h@{shell.\+h}}
+\subsubsection{\texorpdfstring{reset\+\_\+request()}{reset\_request()}}
+{\footnotesize\ttfamily void reset\+\_\+request (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shell-\/\+Function for the U\+\_\+reset.\+request-\/\+Service. 
+
+Sends the U\+\_\+reset.\+request to the T\+P\+U\+A\+RT and prints the Output as bits to the PC 
+
+Definition at line 89 of file shell.\+c.
+
+
+
+References command, receive\+\_\+string\+\_\+from\+\_\+usart(), send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+
+
+Referenced by act\+\_\+busmon(), and enter\+\_\+shell().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8h_ab8aa91cc93dc57699d69cf98e7244d64_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8h_ab8aa91cc93dc57699d69cf98e7244d64_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{shell_8h_acd8340ade32d7f467cf3b625bd06ba31}{}\label{shell_8h_acd8340ade32d7f467cf3b625bd06ba31} 
+\index{shell.\+h@{shell.\+h}!shell\+\_\+help@{shell\+\_\+help}}
+\index{shell\+\_\+help@{shell\+\_\+help}!shell.\+h@{shell.\+h}}
+\subsubsection{\texorpdfstring{shell\+\_\+help()}{shell\_help()}}
+{\footnotesize\ttfamily void shell\+\_\+help (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 334 of file shell.\+c.
+
+
+
+References command, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), and U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC.
+
+
+
+Referenced by enter\+\_\+shell().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8h_acd8340ade32d7f467cf3b625bd06ba31_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{shell_8h_acd8340ade32d7f467cf3b625bd06ba31_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{shell_8h_a7e7bbbb940671ab75e317fb9e82e956d}{}\label{shell_8h_a7e7bbbb940671ab75e317fb9e82e956d} 
+\index{shell.\+h@{shell.\+h}!state\+\_\+request@{state\+\_\+request}}
+\index{state\+\_\+request@{state\+\_\+request}!shell.\+h@{shell.\+h}}
+\subsubsection{\texorpdfstring{state\+\_\+request()}{state\_request()}}
+{\footnotesize\ttfamily void state\+\_\+request (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shell-\/\+Function for the U\+\_\+state.\+request-\/\+Service. 
+
+Sends the U\+\_\+state.\+request to the T\+P\+U\+A\+RT and prints the Output as bits to the PC 
+
+Definition at line 131 of file shell.\+c.
+
+
+
+References command, receive\+\_\+string\+\_\+from\+\_\+usart(), send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+
+
+Referenced by enter\+\_\+shell().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8h_a7e7bbbb940671ab75e317fb9e82e956d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{shell_8h_a7e7bbbb940671ab75e317fb9e82e956d_icgraph}
+\end{center}
+\end{figure}

@@ -1,4 +1,5 @@
 <map id="clock.h" name="clock.h">
-<area shape="rect" id="node2" href="$main_8h.html" title="This file is the Headerfile for the main&#45;File. It contains general things like the F_CPU Macro etc..." alt="" coords="7,80,68,107"/>
-<area shape="rect" id="node3" href="$main_8c.html" title="This file is the main&#45;File. It calls all the fancy Functions and so on. " alt="" coords="7,155,68,181"/>
+<area shape="rect" id="node2" href="$clock_8c.html" title="This file contains the Function to init, calibrate and change the clock. " alt="" coords="5,80,69,107"/>
+<area shape="rect" id="node3" href="$main_8h.html" title="This file is the Headerfile for the main&#45;File. It contains general things like the F_CPU Macro etc..." alt="" coords="93,80,155,107"/>
+<area shape="rect" id="node4" href="$main_8c.html" title="This file is the main&#45;File. It calls all the fancy Functions and so on. " alt="" coords="93,155,155,181"/>
 </map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['set_5fclock_5f32mhz',['set_clock_32MHz',['../clock_8c.html#a23a363c676847b1b84e6149472897fa2',1,'set_clock_32MHz(void):&#160;clock.c'],['../clock_8h.html#a23a363c676847b1b84e6149472897fa2',1,'set_clock_32MHz(void):&#160;clock.c']]]
+  ['enter_5fshell',['enter_shell',['../shell_8c.html#a3197713442e02b97406567e4a11e193f',1,'enter_shell(USART_data_t *USART_data):&#160;shell.c'],['../shell_8h.html#a3197713442e02b97406567e4a11e193f',1,'enter_shell(USART_data_t *USART_data):&#160;shell.c']]]
 ];

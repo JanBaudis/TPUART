@@ -7,7 +7,7 @@
 #include "main.h"
 #include "UART.h"
 
-extern int blabla;
+extern int volatile ret_pressed;
 
 uint8_t USART_test(USART_data_t * usart_data)
 {
@@ -28,13 +28,6 @@ uint8_t USART_test(USART_data_t * usart_data)
  */
 int main(void)
 {
-	
-	char c[20] = "test";
-	char temp = 8;
-	char output[10];
-	uint8_t v=2;
-	uint8_t v2=1;
-	
 	set_clock_32MHz(); // Sets the Clock to 32MHz
 	
 	//Simple Delay cause the TPUART may need some time if both started simultaneously
@@ -51,7 +44,6 @@ int main(void)
 	
 	while (true)
 	{
-		v = 'v';
 		/*! Enter the "Shell"!*/
 		//enter_shell();
 		
@@ -60,27 +52,7 @@ int main(void)
 		
 		_delay_ms(200);
 		
-		/*temp = receive_char_from_usart(&USART_DATA_TP); // tries to get uart infos from the tpuart - should be the reset-indication
-		itoa(temp, output, 2);
-		send_string_to_usart("pc", "Reset-Indication: ");
-		send_string_to_usart("pc", output);
-		send_string_to_usart("pc", "\n\r");*/
 		
-		
-		/*USART_TXBuffer_PutByte(&USART_DATA_TP, 0x01); //Sends the U_Reset.request-Service to the TPUART
-		
-		temp = receive_char_from_usart(&USART_data_tp); // tries to get uart infos from the tpuart - should be the reset-indication
-		send_string_to_usart("pc", "Reset-Indication: ");
-		send_string_to_usart("pc", output);
-		send_string_to_usart("pc", "\n\r");*/
-		
-		
-		/*USART_TXBuffer_PutByte(&USART_DATA_TP, 0x02); //Sends the U_State.request-Service to the TPUART
-		
-		temp = receive_char_from_usart(&USART_data_tp); // tries to get uart infos from the tpuart - should be the communication State
-		send_string_to_usart("pc", "Communication State: ");
-		send_string_to_usart("pc", output);
-		send_string_to_usart("pc", "\n\r");*/
 		
 		
 		
@@ -113,13 +85,9 @@ int main(void)
 			send_string_to_usart(&USART_DATA_PC, "Received Char in dem Buffer:\n\r");
 			send_string_to_usart(&USART_DATA_PC, output);
 			send_string_to_usart(&USART_DATA_PC, "\n\r");*/
-			send_string_to_usart(&USART_DATA_PC, "value of re pre:");
-			itoa(blabla, output, 2);
-			send_string_to_usart(&USART_DATA_PC, output);
-			send_string_to_usart(&USART_DATA_PC, "\n\r");
-
+			enter_shell(&USART_DATA_PC);
 			
-			if(blabla) {
+			if(ret_pressed) {
 				char output2[20];
 				send_string_to_usart(&USART_DATA_PC, "Ret pre\n\rAnd rec:");
 				receive_string_from_usart(&USART_DATA_PC, output2);
@@ -128,7 +96,7 @@ int main(void)
 				output2[2] = '\0';*/
 				send_string_to_usart(&USART_DATA_PC, output2);
 				send_string_to_usart(&USART_DATA_PC, "\n\r");
-				blabla = 0;
+				ret_pressed = 0;
 			}
 			
 			

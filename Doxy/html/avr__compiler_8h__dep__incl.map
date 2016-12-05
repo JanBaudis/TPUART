@@ -1,6 +1,14 @@
 <map id="avr_compiler.h" name="avr_compiler.h">
-<area shape="rect" id="node2" href="$clksys__driver_8h.html" title="XMEGA Clock System driver header file. " alt="" coords="60,80,168,107"/>
-<area shape="rect" id="node3" href="$clksys__driver_8c.html" title="XMEGA Clock System driver source file. " alt="" coords="5,155,113,181"/>
-<area shape="rect" id="node4" href="$main_8h.html" title="This file is the Headerfile for the main&#45;File. It contains general things like the F_CPU Macro etc..." alt="" coords="138,155,199,181"/>
-<area shape="rect" id="node5" href="$main_8c.html" title="This file is the main&#45;File. It calls all the fancy Functions and so on. " alt="" coords="138,229,199,256"/>
+<area shape="rect" id="node2" href="$clksys__driver_8h.html" title="XMEGA Clock System driver header file. " alt="" coords="98,155,206,181"/>
+<area shape="rect" id="node8" href="$usart__driver_8h.html" title="XMEGA USART driver header file. " alt="" coords="411,80,509,107"/>
+<area shape="rect" id="node9" href="$_u_a_r_t_8h.html" title="This File contains the Macros and so to use the Interrupt driven USART Driver provided by Atmel..." alt="" coords="348,155,415,181"/>
+<area shape="rect" id="node10" href="$shell_8h.html" title="Corresponding header&#45;File. " alt="" coords="470,229,530,256"/>
+<area shape="rect" id="node3" href="$clksys__driver_8c.html" title="XMEGA Clock System driver source file. " alt="" coords="145,229,253,256"/>
+<area shape="rect" id="node4" href="$clock_8h.html" title="This file is the Headerfile for the clock&#45;File. It contains the prototypes of the functions and the u..." alt="" coords="5,229,69,256"/>
+<area shape="rect" id="node6" href="$main_8h.html" title="This file is the Headerfile for the main&#45;File. It contains general things like the F_CPU Macro etc..." alt="" coords="333,304,395,331"/>
+<area shape="rect" id="node5" href="$clock_8c.html" title="This file contains the Function to init, calibrate and change the clock. " alt="" coords="5,304,69,331"/>
+<area shape="rect" id="node7" href="$main_8c.html" title="This file is the main&#45;File. It calls all the fancy Functions and so on. " alt="" coords="367,379,428,405"/>
+<area shape="rect" id="node13" href="$usart__driver_8c.html" title="XMEGA USART driver source file. " alt="" coords="489,155,588,181"/>
+<area shape="rect" id="node12" href="$_u_a_r_t_8c.html" title="This file contains the Basic Functions to use the interrupt driven USART Driver provided by Atmel and..." alt="" coords="277,229,344,256"/>
+<area shape="rect" id="node11" href="$shell_8c.html" title="Implements a basic &quot;shell&quot; to communicate with the TPUART/KNX and Debug things. Data sheet KNX EIB TP..." alt="" coords="470,304,530,331"/>
 </map>

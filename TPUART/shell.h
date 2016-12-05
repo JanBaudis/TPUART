@@ -8,7 +8,21 @@
 #ifndef SHELL_H_
 #define SHELL_H_
 
-void enter_shell(void);
+#include "usart_driver.h"
+#include "avr_compiler.h"
+#include "UART.h"
+
+#include <string.h>
+
+
+void enter_shell(USART_data_t *USART_data);
+
+void shell_help(void);
+void reset_request(void);
+void state_request(void);
+void act_busmon(void);
+void prod_request(void);
+void act_busymode(void);
 
 
 

@@ -1,5 +1,7 @@
 <map id="clksys_driver.h" name="clksys_driver.h">
 <area shape="rect" id="node2" href="$clksys__driver_8c.html" title="XMEGA Clock System driver source file. " alt="" coords="5,80,113,107"/>
-<area shape="rect" id="node3" href="$main_8h.html" title="This file is the Headerfile for the main&#45;File. It contains general things like the F_CPU Macro etc..." alt="" coords="138,80,199,107"/>
-<area shape="rect" id="node4" href="$main_8c.html" title="This file is the main&#45;File. It calls all the fancy Functions and so on. " alt="" coords="138,155,199,181"/>
+<area shape="rect" id="node3" href="$clock_8h.html" title="This file is the Headerfile for the clock&#45;File. It contains the prototypes of the functions and the u..." alt="" coords="138,80,202,107"/>
+<area shape="rect" id="node5" href="$main_8h.html" title="This file is the Headerfile for the main&#45;File. It contains general things like the F_CPU Macro etc..." alt="" coords="209,155,270,181"/>
+<area shape="rect" id="node4" href="$clock_8c.html" title="This file contains the Function to init, calibrate and change the clock. " alt="" coords="121,155,185,181"/>
+<area shape="rect" id="node6" href="$main_8c.html" title="This file is the main&#45;File. It calls all the fancy Functions and so on. " alt="" coords="209,229,270,256"/>
 </map>

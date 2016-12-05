@@ -88,13 +88,24 @@ $(document).ready(function(){initNavTree('clock_8h.html','');});
 
 <p>This file is the Headerfile for the clock-File. It contains the prototypes of the functions and the usual macros.  
 <a href="#details">More...</a></p>
-<div class="textblock"><div class="dynheader">
+<div class="textblock"><code>#include &quot;<a class="el" href="clksys__driver_8h_source.html">clksys_driver.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for clock.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="clock_8h__incl.jpg" border="0" usemap="#clock_8h" alt=""/></div>
+<map name="clock_8h" id="clock_8h">
+<area shape="rect" id="node2" href="clksys__driver_8h.html" title="XMEGA Clock System driver header file. " alt="" coords="79,80,187,107"/>
+<area shape="rect" id="node3" href="avr__compiler_8h.html" title="This file implements some macros that makes the IAR C&#45;compiler and avr&#45;gcc work with the same code ba..." alt="" coords="80,155,185,181"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="clock_8h__dep__incl.jpg" border="0" usemap="#clock_8hdep" alt=""/></div>
 <map name="clock_8hdep" id="clock_8hdep">
-<area shape="rect" id="node2" href="main_8h.html" title="This file is the Headerfile for the main&#45;File. It contains general things like the F_CPU Macro etc..." alt="" coords="7,80,68,107"/>
-<area shape="rect" id="node3" href="main_8c.html" title="This file is the main&#45;File. It calls all the fancy Functions and so on. " alt="" coords="7,155,68,181"/>
+<area shape="rect" id="node2" href="clock_8c.html" title="This file contains the Function to init, calibrate and change the clock. " alt="" coords="5,80,69,107"/>
+<area shape="rect" id="node3" href="main_8h.html" title="This file is the Headerfile for the main&#45;File. It contains general things like the F_CPU Macro etc..." alt="" coords="93,80,155,107"/>
+<area shape="rect" id="node4" href="main_8c.html" title="This file is the main&#45;File. It calls all the fancy Functions and so on. " alt="" coords="93,155,155,181"/>
 </map>
 </div>
 </div>
@@ -130,15 +141,13 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This function inits, calibrates and changes the clock. </p>
-<p>It enables the 32kHz ref Clock for the Autocalibration and also executes the calibration. Afterwards it enables and changes to the 32MHz internal Clock and also disables the 2MHz clock. Eventually it Locks the current Clock config.</p>
-<dl class="section note"><dt>Note</dt><dd>The 32kHz Clock remains active.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Since I am not sure if the 32kHz Clock is enabled by default i wont disable it afterwards - so look it up and maybe change it.</dd></dl>
+<p>It enables the 32kHz ref Clock for the Autocalibration and also executes the calibration. Afterwards it enables and changes to the 32MHz internal Clock and also disables the 2MHz &amp; 32kHz clocks. Eventually it Locks the current Clock config. </p>
 
-<p>Definition at line <a class="el" href="clock_8c_source.html#l00018">18</a> of file <a class="el" href="clock_8c_source.html">clock.c</a>.</p>
+<p>Definition at line <a class="el" href="clock_8c_source.html#l00016">16</a> of file <a class="el" href="clock_8c_source.html">clock.c</a>.</p>
 
 <p>References <a class="el" href="clksys__driver_8c_source.html#l00260">CLKSYS_AutoCalibration_Enable()</a>, <a class="el" href="clksys__driver_8c_source.html#l00292">CLKSYS_Configuration_Lock()</a>, <a class="el" href="clksys__driver_8c_source.html#l00187">CLKSYS_Disable()</a>, <a class="el" href="clksys__driver_8h_source.html#l00078">CLKSYS_Enable</a>, <a class="el" href="clksys__driver_8h_source.html#l00091">CLKSYS_IsReady</a>, and <a class="el" href="clksys__driver_8c_source.html#l00225">CLKSYS_Main_ClockSource_Select()</a>.</p>
 
-<p>Referenced by <a class="el" href="main_8c_source.html#l00015">main()</a>.</p>
+<p>Referenced by <a class="el" href="main_8c_source.html#l00029">main()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

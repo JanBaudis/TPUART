@@ -1,0 +1,7 @@
+<map id="receive_char_from_usart" name="receive_char_from_usart">
+<area shape="rect" id="node2" href="$_u_a_r_t_8c.html#ad7bb1da26c447116e627aef512f5fc84" title="This Method uses the Program Space for e.g. Debug Strings and sends them to the given USART..." alt="" coords="235,5,373,47"/>
+<area shape="rect" id="node5" href="$usart__driver_8c.html#a36cca099e37ec451e52efebe4c60180e" title="Get received data (5&#45;8 bit character). " alt="" coords="216,71,392,98"/>
+<area shape="rect" id="node6" href="$usart__driver_8c.html#ac65d5461255def6cd49b05a88d5aa411" title="Test if there is data in the receive software buffer. " alt="" coords="230,123,378,164"/>
+<area shape="rect" id="node3" href="$usart__driver_8c.html#ac6a0c12350c501c1b8189aca778f5129" title="Put data (5&#45;8 bit character). " alt="" coords="440,13,613,39"/>
+<area shape="rect" id="node4" href="$usart__driver_8c.html#aecbd49900666abf476cf5cce10fb372a" title="Test if there is data in the transmitter software buffer. " alt="" coords="661,13,851,39"/>
+</map>

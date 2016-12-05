@@ -1,8 +1,26 @@
 <map id="main" name="main">
-<area shape="rect" id="node2" href="$clock_8c.html#a23a363c676847b1b84e6149472897fa2" title="This function inits, calibrates and changes the clock. " alt="" coords="104,97,231,123"/>
-<area shape="rect" id="node3" href="$clksys__driver_8c.html#a581c15c6c0b2eaa0c81f0b5cafc3b82d" title="This function enables automatic calibration of the selected internal oscillator. " alt="" coords="289,5,459,47"/>
-<area shape="rect" id="node4" href="$clksys__driver_8c.html#a6225fea8fc405c6d1dab88d0ad537173" title="This function lock the entire clock system configuration. " alt="" coords="279,71,469,98"/>
-<area shape="rect" id="node6" href="$clksys__driver_8c.html#a31b1ca1994b6a687974a119d1ad8008c" title="This function disables the selected oscillator. " alt="" coords="312,122,436,149"/>
-<area shape="rect" id="node7" href="$clksys__driver_8c.html#a1e46c4a8f01a83d4e4747d32d113e7e2" title="This function selects the main system clock source. " alt="" coords="279,173,469,215"/>
-<area shape="rect" id="node5" href="$clksys__driver_8c.html#aad4e162434c2cc7e0087bbc0ddfe266c" title="CCP write helper function written in assembly. " alt="" coords="517,126,597,153"/>
+<area shape="rect" id="node2" href="$shell_8c.html#a3197713442e02b97406567e4a11e193f" title="Enter the &quot;Shell&quot;. " alt="" coords="125,619,210,646"/>
+<area shape="rect" id="node3" href="$_u_a_r_t_8c.html#abae42fc5d4a757188ac79c5d6ecf34be" title="This Method reads out the data of the RingBuffer and returns a string. " alt="" coords="677,502,811,544"/>
+<area shape="rect" id="node4" href="$_u_a_r_t_8c.html#ad7bb1da26c447116e627aef512f5fc84" title="This Method uses the Program Space for e.g. Debug Strings and sends them to the given USART..." alt="" coords="888,241,1027,282"/>
+<area shape="rect" id="node9" href="$_u_a_r_t_8c.html#a190114969cf3d32ab5e83509d7ab1569" title="This Method sends Strings to the given USART. " alt="" coords="886,695,1029,722"/>
+<area shape="rect" id="node17" href="$clock_8c.html#a23a363c676847b1b84e6149472897fa2" title="This function inits, calibrates and changes the clock. " alt="" coords="104,1142,231,1168"/>
+<area shape="rect" id="node23" href="$_u_a_r_t_8c.html#a267c0b0bf7f4f8b70049d91449590cf8" title="This Method enables and initializes the USART for the specific purpose to communicate with e..." alt="" coords="119,1211,215,1238"/>
+<area shape="rect" id="node25" href="$_u_a_r_t_8c.html#a09e438e4f709b00836cebb0d6a44f223" title="This Method enables and initializes the USART for the specific purpose to communicate with the TPUART..." alt="" coords="110,1299,225,1326"/>
+<area shape="rect" id="node10" href="$shell_8c.html#ab8aa91cc93dc57699d69cf98e7244d64" title="Shell&#45;Function for the U_reset.request&#45;Service. " alt="" coords="517,96,619,123"/>
+<area shape="rect" id="node11" href="$shell_8c.html#a7e7bbbb940671ab75e317fb9e82e956d" title="Shell&#45;Function for the U_state.request&#45;Service. " alt="" coords="517,568,619,595"/>
+<area shape="rect" id="node12" href="$shell_8c.html#ad95c9c45c97cc744ca49a98494bf9465" title="Shell&#45;Function for the U_ActivateBusmon&#45;Service. " alt="" coords="327,290,421,316"/>
+<area shape="rect" id="node14" href="$shell_8c.html#aef27926c3ebc8dc98a95df932af53a06" title="Shell&#45;Function for the U_ProductID.request&#45;Service. " alt="" coords="519,771,617,798"/>
+<area shape="rect" id="node15" href="$shell_8c.html#a5c364cd022ec191bccd57afa8aae1e89" title="Shell&#45;Function for the U_ActivateBusyMode. " alt="" coords="321,720,427,747"/>
+<area shape="rect" id="node16" href="$shell_8c.html#acd8340ade32d7f467cf3b625bd06ba31" title="shell_help" alt="" coords="704,619,784,646"/>
+<area shape="rect" id="node7" href="$usart__driver_8c.html#ac65d5461255def6cd49b05a88d5aa411" title="Test if there is data in the receive software buffer. " alt="" coords="883,393,1031,434"/>
+<area shape="rect" id="node8" href="$usart__driver_8c.html#a36cca099e37ec451e52efebe4c60180e" title="Get received data (5&#45;8 bit character). " alt="" coords="869,484,1045,511"/>
+<area shape="rect" id="node5" href="$usart__driver_8c.html#ac6a0c12350c501c1b8189aca778f5129" title="Put data (5&#45;8 bit character). " alt="" coords="1093,568,1267,595"/>
+<area shape="rect" id="node6" href="$usart__driver_8c.html#aecbd49900666abf476cf5cce10fb372a" title="Test if there is data in the transmitter software buffer. " alt="" coords="1315,568,1504,595"/>
+<area shape="rect" id="node13" href="$_u_a_r_t_8c.html#a6c34e7e2146aab25f22bf042eae221ac" title="This Method flushs the RX Buffer. " alt="" coords="667,350,821,376"/>
+<area shape="rect" id="node18" href="$clksys__driver_8c.html#a581c15c6c0b2eaa0c81f0b5cafc3b82d" title="This function enables automatic calibration of the selected internal oscillator. " alt="" coords="289,1193,459,1234"/>
+<area shape="rect" id="node19" href="$clksys__driver_8c.html#a6225fea8fc405c6d1dab88d0ad537173" title="This function lock the entire clock system configuration. " alt="" coords="279,1259,469,1286"/>
+<area shape="rect" id="node21" href="$clksys__driver_8c.html#a31b1ca1994b6a687974a119d1ad8008c" title="This function disables the selected oscillator. " alt="" coords="312,1142,436,1168"/>
+<area shape="rect" id="node22" href="$clksys__driver_8c.html#a1e46c4a8f01a83d4e4747d32d113e7e2" title="This function selects the main system clock source. " alt="" coords="279,1076,469,1117"/>
+<area shape="rect" id="node20" href="$clksys__driver_8c.html#aad4e162434c2cc7e0087bbc0ddfe266c" title="CCP write helper function written in assembly. " alt="" coords="528,1171,608,1198"/>
+<area shape="rect" id="node24" href="$usart__driver_8c.html#a73739bc5a8060fa175df2dd43bb6174a" title="Initializes buffer and selects what USART module to use. " alt="" coords="299,1310,449,1352"/>
 </map>

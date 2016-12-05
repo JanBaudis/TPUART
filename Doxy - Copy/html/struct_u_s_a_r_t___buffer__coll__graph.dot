@@ -1,0 +1,6 @@
+digraph "USART_Buffer"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{USART_Buffer\n|+ RX\l+ TX\l+ RX_Head\l+ RX_Tail\l+ TX_Head\l+ TX_Tail\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+}

@@ -1,0 +1,37 @@
+digraph "main.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node0 [label="main.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 [label="avr/io.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="avr/pgmspace.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="clksys_driver.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$clksys__driver_8h.html",tooltip="XMEGA Clock System driver header file. "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="avr_compiler.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$avr__compiler_8h.html",tooltip="This file implements some macros that makes the IAR C-compiler and avr-gcc work with the same code ba..."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="stdint.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="stdbool.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="stdlib.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="clock.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$clock_8h.html",tooltip="This file is the Headerfile for the clock-File. It contains the prototypes of the functions and the u..."];
+  Node8 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node0 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="UART.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_u_a_r_t_8h.html",tooltip="This File contains the Macros and so to use the Interrupt driven USART Driver provided by Atmel..."];
+  Node9 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="usart_driver.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$usart__driver_8h.html",tooltip="XMEGA USART driver header file. "];
+  Node10 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="string.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="shell.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$shell_8h.html",tooltip="Corresponding header-File. "];
+  Node12 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+}

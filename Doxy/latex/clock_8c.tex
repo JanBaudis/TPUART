@@ -5,6 +5,14 @@
 This file contains the Function to init, calibrate and change the clock.  
 
 
+{\ttfamily \#include \char`\"{}clock.\+h\char`\"{}}\newline
+Include dependency graph for clock.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{clock_8c__incl}
+\end{center}
+\end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -48,16 +56,9 @@ Jan Baudis
 
 This function inits, calibrates and changes the clock. 
 
-It enables the 32k\+Hz ref Clock for the Autocalibration and also executes the calibration. Afterwards it enables and changes to the 32\+M\+Hz internal Clock and also disables the 2\+M\+Hz clock. Eventually it Locks the current Clock config.
+It enables the 32k\+Hz ref Clock for the Autocalibration and also executes the calibration. Afterwards it enables and changes to the 32\+M\+Hz internal Clock and also disables the 2\+M\+Hz \& 32k\+Hz clocks. Eventually it Locks the current Clock config. 
 
-\begin{DoxyNote}{Note}
-The 32k\+Hz Clock remains active.
-\end{DoxyNote}
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000001}{Todo}]Since I am not sure if the 32k\+Hz Clock is enabled by default i wont disable it afterwards -\/ so look it up and maybe change it.\end{DoxyRefDesc}
-
-
-Definition at line 18 of file clock.\+c.
+Definition at line 16 of file clock.\+c.
 
 
 
