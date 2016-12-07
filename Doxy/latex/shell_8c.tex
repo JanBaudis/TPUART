@@ -28,6 +28,12 @@ void \hyperlink{shell_8c_aef27926c3ebc8dc98a95df932af53a06}{prod\+\_\+request} (
 \begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+\+Product\+I\+D.\+request-\/\+Service. \end{DoxyCompactList}\item 
 void \hyperlink{shell_8c_a5c364cd022ec191bccd57afa8aae1e89}{act\+\_\+busymode} (void)
 \begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+\+Activate\+Busy\+Mode. \end{DoxyCompactList}\item 
+void \hyperlink{shell_8c_ac8c0b097293b84111d06c0ceabb8dd71}{res\+\_\+busymode} (void)
+\begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+\+Reset\+Busy\+Mode. \end{DoxyCompactList}\item 
+void \hyperlink{shell_8c_a3b8d781bfecf89fac5ce63dabd3be2ae}{setaddress} (void)
+\begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+\+Set\+Address. \end{DoxyCompactList}\item 
+void \hyperlink{shell_8c_a7b264b3bfe53d649c5b7653cfd97033d}{ack\+Info} (void)
+\begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+\+Ack\+Information-\/\+Service. \end{DoxyCompactList}\item 
 void \hyperlink{shell_8c_acd8340ade32d7f467cf3b625bd06ba31}{shell\+\_\+help} (void)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
@@ -56,6 +62,48 @@ Buffer Size in the \hyperlink{usart__driver_8h}{usart\+\_\+driver.\+h} has to be
 
 
 \subsection{Function Documentation}
+\hypertarget{shell_8c_a7b264b3bfe53d649c5b7653cfd97033d}{}\label{shell_8c_a7b264b3bfe53d649c5b7653cfd97033d} 
+\index{shell.\+c@{shell.\+c}!ack\+Info@{ack\+Info}}
+\index{ack\+Info@{ack\+Info}!shell.\+c@{shell.\+c}}
+\subsubsection{\texorpdfstring{ack\+Info()}{ackInfo()}}
+{\footnotesize\ttfamily void ack\+Info (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shell-\/\+Function for the U\+\_\+\+Ack\+Information-\/\+Service. 
+
+Sends the U\+\_\+\+Ack\+Information to the T\+P\+U\+A\+RT. This must be sent latest 2,8ms after receiving the address type octet of an addressed frame. Its used to evaluate the Address on the Host side. More on p. 25 ff off the T\+P\+U\+A\+RT 2+ Data sheet.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]Implement this as a feature for receiving Frames in general. Since it only makes sense if its send after 2,8ms of an addressed frame. Look up if it can set more than one Flag! -\/ Maybe its also important to implement for the Bus-\/\+Sniffer\end{DoxyRefDesc}
+
+
+Definition at line 454 of file shell.\+c.
+
+
+
+References command, receive\+\_\+string\+\_\+from\+\_\+usart(), ret\+\_\+pressed, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+
+
+Referenced by enter\+\_\+shell().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a7b264b3bfe53d649c5b7653cfd97033d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{shell_8c_a7b264b3bfe53d649c5b7653cfd97033d_icgraph}
+\end{center}
+\end{figure}
 \hypertarget{shell_8c_ad95c9c45c97cc744ca49a98494bf9465}{}\label{shell_8c_ad95c9c45c97cc744ca49a98494bf9465} 
 \index{shell.\+c@{shell.\+c}!act\+\_\+busmon@{act\+\_\+busmon}}
 \index{act\+\_\+busmon@{act\+\_\+busmon}!shell.\+c@{shell.\+c}}
@@ -108,7 +156,7 @@ Here is the caller graph for this function\+:
 
 Shell-\/\+Function for the U\+\_\+\+Activate\+Busy\+Mode. 
 
-Sends the U\+\_\+\+Activate\+Busy\+Mode to the T\+P\+U\+A\+RT and prints the Output as bits to the PC. T\+P-\/\+U\+A\+RT responses on every Packet which is addressed to him with B\+U\+SY within 700ms (+-\/10ms). All Packets are send to the Host and if the Host confirms one with U\+\_\+\+Ackinfo it will leave Busy\+Mode as well when reseted.
+Sends the U\+\_\+\+Activate\+Busy\+Mode to the T\+P\+U\+A\+RT. T\+P-\/\+U\+A\+RT responses on every Packet which is addressed to him with B\+U\+SY within 700ms (+-\/10ms). All Packets are send to the Host and if the Host confirms one with U\+\_\+\+Ackinfo it will leave Busy\+Mode as well when reseted.
 
 \begin{DoxyRefDesc}{Todo}
 \item[\hyperlink{todo__todo000003}{Todo}]May add something; Dunno like a Listen Mode for 700ms; \end{DoxyRefDesc}
@@ -118,7 +166,7 @@ Definition at line 268 of file shell.\+c.
 
 
 
-References command, prod\+\_\+request(), receive\+\_\+string\+\_\+from\+\_\+usart(), send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+References command, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
 
 
 
@@ -163,7 +211,7 @@ Definition at line 22 of file shell.\+c.
 
 
 
-References act\+\_\+busmon(), act\+\_\+busymode(), command, prod\+\_\+request(), receive\+\_\+string\+\_\+from\+\_\+usart(), reset\+\_\+request(), ret\+\_\+pressed, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), shell\+\_\+help(), state\+\_\+request(), and U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC.
+References ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), command, prod\+\_\+request(), receive\+\_\+string\+\_\+from\+\_\+usart(), res\+\_\+busymode(), reset\+\_\+request(), ret\+\_\+pressed, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), setaddress(), shell\+\_\+help(), state\+\_\+request(), and U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC.
 
 
 
@@ -205,7 +253,7 @@ References command, receive\+\_\+string\+\_\+from\+\_\+usart(), send\+\_\+string
 
 
 
-Referenced by act\+\_\+busymode(), and enter\+\_\+shell().
+Referenced by enter\+\_\+shell().
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -220,7 +268,45 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{shell_8c_aef27926c3ebc8dc98a95df932af53a06_icgraph}
+\includegraphics[width=327pt]{shell_8c_aef27926c3ebc8dc98a95df932af53a06_icgraph}
+\end{center}
+\end{figure}
+\hypertarget{shell_8c_ac8c0b097293b84111d06c0ceabb8dd71}{}\label{shell_8c_ac8c0b097293b84111d06c0ceabb8dd71} 
+\index{shell.\+c@{shell.\+c}!res\+\_\+busymode@{res\+\_\+busymode}}
+\index{res\+\_\+busymode@{res\+\_\+busymode}!shell.\+c@{shell.\+c}}
+\subsubsection{\texorpdfstring{res\+\_\+busymode()}{res\_busymode()}}
+{\footnotesize\ttfamily void res\+\_\+busymode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shell-\/\+Function for the U\+\_\+\+Reset\+Busy\+Mode. 
+
+Sends the U\+\_\+\+Reset\+Busy\+Mode to the T\+P\+U\+A\+RT. So the T\+P\+U\+A\+RT immediately leaves the B\+U\+SY Mode. 
+
+Definition at line 292 of file shell.\+c.
+
+
+
+References command, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+
+
+Referenced by enter\+\_\+shell().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_ac8c0b097293b84111d06c0ceabb8dd71_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{shell_8c_ac8c0b097293b84111d06c0ceabb8dd71_icgraph}
 \end{center}
 \end{figure}
 \hypertarget{shell_8c_ab8aa91cc93dc57699d69cf98e7244d64}{}\label{shell_8c_ab8aa91cc93dc57699d69cf98e7244d64} 
@@ -261,6 +347,52 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{shell_8c_ab8aa91cc93dc57699d69cf98e7244d64_icgraph}
 \end{center}
 \end{figure}
+\hypertarget{shell_8c_a3b8d781bfecf89fac5ce63dabd3be2ae}{}\label{shell_8c_a3b8d781bfecf89fac5ce63dabd3be2ae} 
+\index{shell.\+c@{shell.\+c}!setaddress@{setaddress}}
+\index{setaddress@{setaddress}!shell.\+c@{shell.\+c}}
+\subsubsection{\texorpdfstring{setaddress()}{setaddress()}}
+{\footnotesize\ttfamily void setaddress (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shell-\/\+Function for the U\+\_\+\+Set\+Address. 
+
+Sends the U\+\_\+\+Set\+Address to the T\+P\+U\+A\+RT and prompts for the Address to set. 
+
+ $\vert$ physical address high $\vert$ $\vert$ physical address low $\vert$ 
+
+ $\vert$ 7 $\vert$ 6 $\vert$ 5 $\vert$ 4 $\vert$ 3 $\vert$ 2 $\vert$ 1 $\vert$ 0 $\vert$ $\vert$ 7 $\vert$ 6 $\vert$ 5 $\vert$ 4 $\vert$ 3 $\vert$ 2 $\vert$ 1 $\vert$ 0 $\vert$ 
+
+ $\vert$ a $\vert$ a $\vert$ a $\vert$ a $\vert$ l $\vert$ l $\vert$ l $\vert$ l $\vert$ $\vert$ d $\vert$ d $\vert$ d $\vert$ d $\vert$ d $\vert$ d $\vert$ d $\vert$ d $\vert$ 
+
+ 
+
+Definition at line 322 of file shell.\+c.
+
+
+
+References command, receive\+\_\+string\+\_\+from\+\_\+usart(), ret\+\_\+pressed, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+
+
+Referenced by enter\+\_\+shell().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a3b8d781bfecf89fac5ce63dabd3be2ae_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{shell_8c_a3b8d781bfecf89fac5ce63dabd3be2ae_icgraph}
+\end{center}
+\end{figure}
 \hypertarget{shell_8c_acd8340ade32d7f467cf3b625bd06ba31}{}\label{shell_8c_acd8340ade32d7f467cf3b625bd06ba31} 
 \index{shell.\+c@{shell.\+c}!shell\+\_\+help@{shell\+\_\+help}}
 \index{shell\+\_\+help@{shell\+\_\+help}!shell.\+c@{shell.\+c}}
@@ -269,7 +401,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 334 of file shell.\+c.
+Definition at line 507 of file shell.\+c.
 
 
 
@@ -348,7 +480,7 @@ Definition at line 13 of file shell.\+c.
 
 
 
-Referenced by act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), prod\+\_\+request(), reset\+\_\+request(), shell\+\_\+help(), and state\+\_\+request().
+Referenced by ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), prod\+\_\+request(), res\+\_\+busymode(), reset\+\_\+request(), setaddress(), shell\+\_\+help(), and state\+\_\+request().
 
 \hypertarget{shell_8c_a37fd7702e47867237a1617ae4b4fab85}{}\label{shell_8c_a37fd7702e47867237a1617ae4b4fab85} 
 \index{shell.\+c@{shell.\+c}!ret\+\_\+pressed@{ret\+\_\+pressed}}
@@ -362,5 +494,5 @@ Definition at line 11 of file U\+A\+R\+T.\+c.
 
 
 
-Referenced by enter\+\_\+shell(), and I\+S\+R().
+Referenced by ack\+Info(), enter\+\_\+shell(), I\+S\+R(), and setaddress().
 

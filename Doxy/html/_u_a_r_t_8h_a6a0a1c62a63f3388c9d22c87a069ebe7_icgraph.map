@@ -1,9 +1,10 @@
 <map id="receive_string_from_usart" name="receive_string_from_usart">
-<area shape="rect" id="node2" href="$shell_8h.html#ad95c9c45c97cc744ca49a98494bf9465" title="Shell&#45;Function for the U_ActivateBusmon&#45;Service. " alt="" coords="343,111,436,137"/>
-<area shape="rect" id="node3" href="$shell_8h.html#a3197713442e02b97406567e4a11e193f" title="Enter the &quot;Shell&quot;. " alt="" coords="491,111,576,137"/>
-<area shape="rect" id="node4" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="This is the main&#45;Function. " alt="" coords="624,35,675,61"/>
-<area shape="rect" id="node5" href="$shell_8h.html#a5c364cd022ec191bccd57afa8aae1e89" title="Shell&#45;Function for the U_ActivateBusyMode. " alt="" coords="336,212,443,239"/>
-<area shape="rect" id="node6" href="$shell_8h.html#aef27926c3ebc8dc98a95df932af53a06" title="Shell&#45;Function for the U_ProductID.request&#45;Service. " alt="" coords="189,263,286,289"/>
-<area shape="rect" id="node7" href="$shell_8h.html#ab8aa91cc93dc57699d69cf98e7244d64" title="Shell&#45;Function for the U_reset.request&#45;Service. " alt="" coords="187,161,288,188"/>
-<area shape="rect" id="node8" href="$shell_8h.html#a7e7bbbb940671ab75e317fb9e82e956d" title="Shell&#45;Function for the U_state.request&#45;Service. " alt="" coords="339,60,440,87"/>
+<area shape="rect" id="node2" href="$shell_8h.html#a7b264b3bfe53d649c5b7653cfd97033d" title="Shell&#45;Function for the U_AckInformation&#45;Service. " alt="" coords="353,29,416,56"/>
+<area shape="rect" id="node3" href="$shell_8h.html#a3197713442e02b97406567e4a11e193f" title="Enter the &quot;Shell&quot;. " alt="" coords="481,156,567,182"/>
+<area shape="rect" id="node4" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="This is the main&#45;Function. " alt="" coords="615,54,665,81"/>
+<area shape="rect" id="node5" href="$shell_8h.html#ad95c9c45c97cc744ca49a98494bf9465" title="Shell&#45;Function for the U_ActivateBusmon&#45;Service. " alt="" coords="338,181,431,208"/>
+<area shape="rect" id="node6" href="$shell_8h.html#aef27926c3ebc8dc98a95df932af53a06" title="Shell&#45;Function for the U_ProductID.request&#45;Service. " alt="" coords="336,282,433,309"/>
+<area shape="rect" id="node7" href="$shell_8h.html#ab8aa91cc93dc57699d69cf98e7244d64" title="Shell&#45;Function for the U_reset.request&#45;Service. " alt="" coords="187,232,288,258"/>
+<area shape="rect" id="node8" href="$shell_8h.html#a3b8d781bfecf89fac5ce63dabd3be2ae" title="Shell&#45;Function for the U_SetAddress. " alt="" coords="194,333,281,360"/>
+<area shape="rect" id="node9" href="$shell_8h.html#a7e7bbbb940671ab75e317fb9e82e956d" title="Shell&#45;Function for the U_state.request&#45;Service. " alt="" coords="187,130,288,157"/>
 </map>

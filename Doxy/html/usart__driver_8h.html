@@ -554,7 +554,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="usart__driver_8h_source.html#l00067">67</a> of file <a class="el" href="usart__driver_8h_source.html">usart_driver.h</a>.</p>
 
-<p>Referenced by <a class="el" href="shell_8c_source.html#l00175">act_busmon()</a>, <a class="el" href="shell_8c_source.html#l00268">act_busymode()</a>, <a class="el" href="shell_8c_source.html#l00224">prod_request()</a>, <a class="el" href="shell_8c_source.html#l00089">reset_request()</a>, and <a class="el" href="shell_8c_source.html#l00131">state_request()</a>.</p>
+<p>Referenced by <a class="el" href="shell_8c_source.html#l00454">ackInfo()</a>, <a class="el" href="shell_8c_source.html#l00175">act_busmon()</a>, <a class="el" href="shell_8c_source.html#l00224">prod_request()</a>, <a class="el" href="shell_8c_source.html#l00089">reset_request()</a>, and <a class="el" href="shell_8c_source.html#l00131">state_request()</a>.</p>
 
 </div>
 </div>
@@ -1126,16 +1126,17 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="usart__driver_8h_a36cca099e37ec451e52efebe4c60180e_icgraph.jpg" border="0" usemap="#usart__driver_8h_a36cca099e37ec451e52efebe4c60180e_icgraph" alt=""/></div>
 <map name="usart__driver_8h_a36cca099e37ec451e52efebe4c60180e_icgraph" id="usart__driver_8h_a36cca099e37ec451e52efebe4c60180e_icgraph">
-<area shape="rect" id="node2" href="_u_a_r_t_8h.html#a6c34e7e2146aab25f22bf042eae221ac" title="This Method flushs the RX Buffer. " alt="" coords="233,23,388,50"/>
-<area shape="rect" id="node6" href="_u_a_r_t_8h.html#a1937cef99bb4eb8ca37fd7b128750c1b" title="This Method waits till one char is in the given USART&#45;Buffer &#45; No Timeout, Blocks!!!!. " alt="" coords="229,199,392,226"/>
-<area shape="rect" id="node7" href="_u_a_r_t_8h.html#a6a0a1c62a63f3388c9d22c87a069ebe7" title="This Method reads out the data of the RingBuffer and returns a string. " alt="" coords="244,133,377,175"/>
-<area shape="rect" id="node3" href="shell_8h.html#ad95c9c45c97cc744ca49a98494bf9465" title="Shell&#45;Function for the U_ActivateBusmon&#45;Service. " alt="" coords="596,14,689,41"/>
-<area shape="rect" id="node4" href="shell_8h.html#a3197713442e02b97406567e4a11e193f" title="Enter the &quot;Shell&quot;. " alt="" coords="744,166,829,193"/>
-<area shape="rect" id="node5" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="This is the main&#45;Function. " alt="" coords="877,242,928,269"/>
-<area shape="rect" id="node8" href="shell_8h.html#a5c364cd022ec191bccd57afa8aae1e89" title="Shell&#45;Function for the U_ActivateBusyMode. " alt="" coords="589,166,696,193"/>
-<area shape="rect" id="node9" href="shell_8h.html#aef27926c3ebc8dc98a95df932af53a06" title="Shell&#45;Function for the U_ProductID.request&#45;Service. " alt="" coords="442,217,539,243"/>
-<area shape="rect" id="node10" href="shell_8h.html#ab8aa91cc93dc57699d69cf98e7244d64" title="Shell&#45;Function for the U_reset.request&#45;Service. " alt="" coords="440,65,541,91"/>
-<area shape="rect" id="node11" href="shell_8h.html#a7e7bbbb940671ab75e317fb9e82e956d" title="Shell&#45;Function for the U_state.request&#45;Service. " alt="" coords="592,267,693,294"/>
+<area shape="rect" id="node2" href="_u_a_r_t_8h.html#a6c34e7e2146aab25f22bf042eae221ac" title="This Method flushs the RX Buffer. " alt="" coords="233,36,388,63"/>
+<area shape="rect" id="node6" href="_u_a_r_t_8h.html#a1937cef99bb4eb8ca37fd7b128750c1b" title="This Method waits till one char is in the given USART&#45;Buffer &#45; No Timeout, Blocks!!!!. " alt="" coords="229,226,392,252"/>
+<area shape="rect" id="node7" href="_u_a_r_t_8h.html#a6a0a1c62a63f3388c9d22c87a069ebe7" title="This Method reads out the data of the RingBuffer and returns a string. " alt="" coords="244,160,377,201"/>
+<area shape="rect" id="node3" href="shell_8h.html#ad95c9c45c97cc744ca49a98494bf9465" title="Shell&#45;Function for the U_ActivateBusmon&#45;Service. " alt="" coords="591,15,685,42"/>
+<area shape="rect" id="node4" href="shell_8h.html#a3197713442e02b97406567e4a11e193f" title="Enter the &quot;Shell&quot;. " alt="" coords="735,192,820,219"/>
+<area shape="rect" id="node5" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="This is the main&#45;Function. " alt="" coords="868,282,919,308"/>
+<area shape="rect" id="node8" href="shell_8h.html#a7b264b3bfe53d649c5b7653cfd97033d" title="Shell&#45;Function for the U_AckInformation&#45;Service. " alt="" coords="607,167,669,194"/>
+<area shape="rect" id="node9" href="shell_8h.html#aef27926c3ebc8dc98a95df932af53a06" title="Shell&#45;Function for the U_ProductID.request&#45;Service. " alt="" coords="589,218,687,244"/>
+<area shape="rect" id="node10" href="shell_8h.html#ab8aa91cc93dc57699d69cf98e7244d64" title="Shell&#45;Function for the U_reset.request&#45;Service. " alt="" coords="440,66,541,92"/>
+<area shape="rect" id="node11" href="shell_8h.html#a3b8d781bfecf89fac5ce63dabd3be2ae" title="Shell&#45;Function for the U_SetAddress. " alt="" coords="447,268,534,295"/>
+<area shape="rect" id="node12" href="shell_8h.html#a7e7bbbb940671ab75e317fb9e82e956d" title="Shell&#45;Function for the U_state.request&#45;Service. " alt="" coords="440,319,541,346"/>
 </map>
 </div>
 
@@ -1183,16 +1184,17 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="usart__driver_8h_ac65d5461255def6cd49b05a88d5aa411_icgraph.jpg" border="0" usemap="#usart__driver_8h_ac65d5461255def6cd49b05a88d5aa411_icgraph" alt=""/></div>
 <map name="usart__driver_8h_ac65d5461255def6cd49b05a88d5aa411_icgraph" id="usart__driver_8h_ac65d5461255def6cd49b05a88d5aa411_icgraph">
-<area shape="rect" id="node2" href="shell_8h.html#ad95c9c45c97cc744ca49a98494bf9465" title="Shell&#45;Function for the U_ActivateBusmon&#45;Service. " alt="" coords="621,90,715,116"/>
-<area shape="rect" id="node5" href="_u_a_r_t_8h.html#a6c34e7e2146aab25f22bf042eae221ac" title="This Method flushs the RX Buffer. " alt="" coords="412,39,567,66"/>
-<area shape="rect" id="node6" href="_u_a_r_t_8h.html#a1937cef99bb4eb8ca37fd7b128750c1b" title="This Method waits till one char is in the given USART&#45;Buffer &#45; No Timeout, Blocks!!!!. " alt="" coords="201,90,364,116"/>
-<area shape="rect" id="node7" href="_u_a_r_t_8h.html#a6a0a1c62a63f3388c9d22c87a069ebe7" title="This Method reads out the data of the RingBuffer and returns a string. " alt="" coords="216,209,349,250"/>
-<area shape="rect" id="node3" href="shell_8h.html#a3197713442e02b97406567e4a11e193f" title="Enter the &quot;Shell&quot;. " alt="" coords="769,242,855,268"/>
-<area shape="rect" id="node4" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="This is the main&#45;Function. " alt="" coords="903,318,953,344"/>
-<area shape="rect" id="node8" href="shell_8h.html#a5c364cd022ec191bccd57afa8aae1e89" title="Shell&#45;Function for the U_ActivateBusyMode. " alt="" coords="615,292,721,319"/>
-<area shape="rect" id="node9" href="shell_8h.html#aef27926c3ebc8dc98a95df932af53a06" title="Shell&#45;Function for the U_ProductID.request&#45;Service. " alt="" coords="441,242,538,268"/>
-<area shape="rect" id="node10" href="shell_8h.html#ab8aa91cc93dc57699d69cf98e7244d64" title="Shell&#45;Function for the U_reset.request&#45;Service. " alt="" coords="439,140,540,167"/>
-<area shape="rect" id="node11" href="shell_8h.html#a7e7bbbb940671ab75e317fb9e82e956d" title="Shell&#45;Function for the U_state.request&#45;Service. " alt="" coords="617,191,719,218"/>
+<area shape="rect" id="node2" href="shell_8h.html#ad95c9c45c97cc744ca49a98494bf9465" title="Shell&#45;Function for the U_ActivateBusmon&#45;Service. " alt="" coords="563,83,657,110"/>
+<area shape="rect" id="node5" href="_u_a_r_t_8h.html#a6c34e7e2146aab25f22bf042eae221ac" title="This Method flushs the RX Buffer. " alt="" coords="205,32,360,59"/>
+<area shape="rect" id="node6" href="_u_a_r_t_8h.html#a1937cef99bb4eb8ca37fd7b128750c1b" title="This Method waits till one char is in the given USART&#45;Buffer &#45; No Timeout, Blocks!!!!. " alt="" coords="201,83,364,110"/>
+<area shape="rect" id="node7" href="_u_a_r_t_8h.html#a6a0a1c62a63f3388c9d22c87a069ebe7" title="This Method reads out the data of the RingBuffer and returns a string. " alt="" coords="216,228,349,269"/>
+<area shape="rect" id="node3" href="shell_8h.html#a3197713442e02b97406567e4a11e193f" title="Enter the &quot;Shell&quot;. " alt="" coords="707,260,792,287"/>
+<area shape="rect" id="node4" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="This is the main&#45;Function. " alt="" coords="840,350,891,376"/>
+<area shape="rect" id="node8" href="shell_8h.html#a7b264b3bfe53d649c5b7653cfd97033d" title="Shell&#45;Function for the U_AckInformation&#45;Service. " alt="" coords="579,336,641,363"/>
+<area shape="rect" id="node9" href="shell_8h.html#aef27926c3ebc8dc98a95df932af53a06" title="Shell&#45;Function for the U_ProductID.request&#45;Service. " alt="" coords="561,387,659,414"/>
+<area shape="rect" id="node10" href="shell_8h.html#ab8aa91cc93dc57699d69cf98e7244d64" title="Shell&#45;Function for the U_reset.request&#45;Service. " alt="" coords="412,134,513,160"/>
+<area shape="rect" id="node11" href="shell_8h.html#a3b8d781bfecf89fac5ce63dabd3be2ae" title="Shell&#45;Function for the U_SetAddress. " alt="" coords="419,184,506,211"/>
+<area shape="rect" id="node12" href="shell_8h.html#a7e7bbbb940671ab75e317fb9e82e956d" title="Shell&#45;Function for the U_state.request&#45;Service. " alt="" coords="412,235,513,262"/>
 </map>
 </div>
 
@@ -1281,20 +1283,23 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="usart__driver_8h_aecbd49900666abf476cf5cce10fb372a_icgraph.jpg" border="0" usemap="#usart__driver_8h_aecbd49900666abf476cf5cce10fb372a_icgraph" alt=""/></div>
 <map name="usart__driver_8h_aecbd49900666abf476cf5cce10fb372a_icgraph" id="usart__driver_8h_aecbd49900666abf476cf5cce10fb372a_icgraph">
-<area shape="rect" id="node2" href="usart__driver_8h.html#ac6a0c12350c501c1b8189aca778f5129" title="Put data (5&#45;8 bit character). " alt="" coords="243,616,416,643"/>
-<area shape="rect" id="node3" href="shell_8h.html#ab8aa91cc93dc57699d69cf98e7244d64" title="Shell&#45;Function for the U_reset.request&#45;Service. " alt="" coords="892,347,993,374"/>
-<area shape="rect" id="node4" href="shell_8h.html#ad95c9c45c97cc744ca49a98494bf9465" title="Shell&#45;Function for the U_ActivateBusmon&#45;Service. " alt="" coords="1075,296,1168,323"/>
-<area shape="rect" id="node7" href="shell_8h.html#a7e7bbbb940671ab75e317fb9e82e956d" title="Shell&#45;Function for the U_state.request&#45;Service. " alt="" coords="892,558,993,584"/>
-<area shape="rect" id="node8" href="shell_8h.html#aef27926c3ebc8dc98a95df932af53a06" title="Shell&#45;Function for the U_ProductID.request&#45;Service. " alt="" coords="894,612,991,639"/>
-<area shape="rect" id="node9" href="shell_8h.html#a5c364cd022ec191bccd57afa8aae1e89" title="Shell&#45;Function for the U_ActivateBusyMode. " alt="" coords="1068,650,1175,676"/>
-<area shape="rect" id="node10" href="_u_a_r_t_8h.html#ad7bb1da26c447116e627aef512f5fc84" title="This Method uses the Program Space for e.g. Debug Strings and sends them to the given USART..." alt="" coords="466,394,605,436"/>
-<area shape="rect" id="node15" href="_u_a_r_t_8h.html#a190114969cf3d32ab5e83509d7ab1569" title="This Method sends Strings to the given USART. " alt="" coords="464,743,607,770"/>
-<area shape="rect" id="node5" href="shell_8h.html#a3197713442e02b97406567e4a11e193f" title="Enter the &quot;Shell&quot;. " alt="" coords="1223,495,1308,522"/>
-<area shape="rect" id="node6" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="This is the main&#45;Function. " alt="" coords="1356,352,1407,379"/>
-<area shape="rect" id="node11" href="_u_a_r_t_8h.html#a6c34e7e2146aab25f22bf042eae221ac" title="This Method flushs the RX Buffer. " alt="" coords="865,144,1020,171"/>
-<area shape="rect" id="node12" href="_u_a_r_t_8h.html#a1937cef99bb4eb8ca37fd7b128750c1b" title="This Method waits till one char is in the given USART&#45;Buffer &#45; No Timeout, Blocks!!!!. " alt="" coords="655,246,817,272"/>
-<area shape="rect" id="node13" href="_u_a_r_t_8h.html#a6a0a1c62a63f3388c9d22c87a069ebe7" title="This Method reads out the data of the RingBuffer and returns a string. " alt="" coords="669,449,803,490"/>
-<area shape="rect" id="node14" href="shell_8h.html#acd8340ade32d7f467cf3b625bd06ba31" title="shell_help" alt="" coords="696,819,776,846"/>
+<area shape="rect" id="node2" href="usart__driver_8h.html#ac6a0c12350c501c1b8189aca778f5129" title="Put data (5&#45;8 bit character). " alt="" coords="243,515,416,542"/>
+<area shape="rect" id="node3" href="shell_8h.html#ab8aa91cc93dc57699d69cf98e7244d64" title="Shell&#45;Function for the U_reset.request&#45;Service. " alt="" coords="892,650,993,676"/>
+<area shape="rect" id="node4" href="shell_8h.html#ad95c9c45c97cc744ca49a98494bf9465" title="Shell&#45;Function for the U_ActivateBusmon&#45;Service. " alt="" coords="1068,548,1161,575"/>
+<area shape="rect" id="node7" href="shell_8h.html#a7e7bbbb940671ab75e317fb9e82e956d" title="Shell&#45;Function for the U_state.request&#45;Service. " alt="" coords="892,962,993,988"/>
+<area shape="rect" id="node8" href="shell_8h.html#aef27926c3ebc8dc98a95df932af53a06" title="Shell&#45;Function for the U_ProductID.request&#45;Service. " alt="" coords="894,1063,991,1090"/>
+<area shape="rect" id="node9" href="shell_8h.html#a5c364cd022ec191bccd57afa8aae1e89" title="Shell&#45;Function for the U_ActivateBusyMode. " alt="" coords="683,84,789,111"/>
+<area shape="rect" id="node10" href="shell_8h.html#ac8c0b097293b84111d06c0ceabb8dd71" title="Shell&#45;Function for the U_ResetBusyMode. " alt="" coords="683,135,789,162"/>
+<area shape="rect" id="node11" href="shell_8h.html#a3b8d781bfecf89fac5ce63dabd3be2ae" title="Shell&#45;Function for the U_SetAddress. " alt="" coords="899,911,986,938"/>
+<area shape="rect" id="node12" href="shell_8h.html#a7b264b3bfe53d649c5b7653cfd97033d" title="Shell&#45;Function for the U_AckInformation&#45;Service. " alt="" coords="911,287,974,314"/>
+<area shape="rect" id="node13" href="_u_a_r_t_8h.html#ad7bb1da26c447116e627aef512f5fc84" title="This Method uses the Program Space for e.g. Debug Strings and sends them to the given USART..." alt="" coords="466,381,605,422"/>
+<area shape="rect" id="node18" href="_u_a_r_t_8h.html#a190114969cf3d32ab5e83509d7ab1569" title="This Method sends Strings to the given USART. " alt="" coords="464,692,607,719"/>
+<area shape="rect" id="node5" href="shell_8h.html#a3197713442e02b97406567e4a11e193f" title="Enter the &quot;Shell&quot;. " alt="" coords="1209,650,1295,676"/>
+<area shape="rect" id="node6" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="This is the main&#45;Function. " alt="" coords="1343,802,1393,828"/>
+<area shape="rect" id="node14" href="_u_a_r_t_8h.html#a6c34e7e2146aab25f22bf042eae221ac" title="This Method flushs the RX Buffer. " alt="" coords="865,443,1020,470"/>
+<area shape="rect" id="node15" href="_u_a_r_t_8h.html#a1937cef99bb4eb8ca37fd7b128750c1b" title="This Method waits till one char is in the given USART&#45;Buffer &#45; No Timeout, Blocks!!!!. " alt="" coords="655,287,817,314"/>
+<area shape="rect" id="node16" href="_u_a_r_t_8h.html#a6a0a1c62a63f3388c9d22c87a069ebe7" title="This Method reads out the data of the RingBuffer and returns a string. " alt="" coords="669,794,803,836"/>
+<area shape="rect" id="node17" href="shell_8h.html#acd8340ade32d7f467cf3b625bd06ba31" title="shell_help" alt="" coords="696,540,776,567"/>
 </map>
 </div>
 
@@ -1340,7 +1345,7 @@ Here is the caller graph for this function:</div>
 
 <p>References <a class="el" href="usart__driver_8h_source.html#l00114">Usart_and_buffer::buffer</a>, <a class="el" href="usart__driver_8h_source.html#l00112">Usart_and_buffer::dreIntLevel</a>, <a class="el" href="usart__driver_8h_source.html#l00090">USART_Buffer::TX</a>, <a class="el" href="usart__driver_8h_source.html#l00096">USART_Buffer::TX_Head</a>, <a class="el" href="usart__driver_8h_source.html#l00110">Usart_and_buffer::usart</a>, <a class="el" href="usart__driver_8h_source.html#l00073">USART_TX_BUFFER_MASK</a>, and <a class="el" href="usart__driver_8c_source.html#l00123">USART_TXBuffer_FreeSpace()</a>.</p>
 
-<p>Referenced by <a class="el" href="shell_8c_source.html#l00175">act_busmon()</a>, <a class="el" href="shell_8c_source.html#l00268">act_busymode()</a>, <a class="el" href="shell_8c_source.html#l00224">prod_request()</a>, <a class="el" href="shell_8c_source.html#l00089">reset_request()</a>, <a class="el" href="_u_a_r_t_8c_source.html#l00107">send_string_pgm_to_usart()</a>, <a class="el" href="_u_a_r_t_8c_source.html#l00129">send_string_to_usart()</a>, and <a class="el" href="shell_8c_source.html#l00131">state_request()</a>.</p>
+<p>Referenced by <a class="el" href="shell_8c_source.html#l00454">ackInfo()</a>, <a class="el" href="shell_8c_source.html#l00175">act_busmon()</a>, <a class="el" href="shell_8c_source.html#l00268">act_busymode()</a>, <a class="el" href="shell_8c_source.html#l00224">prod_request()</a>, <a class="el" href="shell_8c_source.html#l00292">res_busymode()</a>, <a class="el" href="shell_8c_source.html#l00089">reset_request()</a>, <a class="el" href="_u_a_r_t_8c_source.html#l00107">send_string_pgm_to_usart()</a>, <a class="el" href="_u_a_r_t_8c_source.html#l00129">send_string_to_usart()</a>, <a class="el" href="shell_8c_source.html#l00322">setaddress()</a>, and <a class="el" href="shell_8c_source.html#l00131">state_request()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1354,19 +1359,22 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="usart__driver_8h_ac6a0c12350c501c1b8189aca778f5129_icgraph.jpg" border="0" usemap="#usart__driver_8h_ac6a0c12350c501c1b8189aca778f5129_icgraph" alt=""/></div>
 <map name="usart__driver_8h_ac6a0c12350c501c1b8189aca778f5129_icgraph" id="usart__driver_8h_ac6a0c12350c501c1b8189aca778f5129_icgraph">
-<area shape="rect" id="node2" href="shell_8h.html#ad95c9c45c97cc744ca49a98494bf9465" title="Shell&#45;Function for the U_ActivateBusmon&#45;Service. " alt="" coords="837,499,931,525"/>
-<area shape="rect" id="node5" href="shell_8h.html#a5c364cd022ec191bccd57afa8aae1e89" title="Shell&#45;Function for the U_ActivateBusyMode. " alt="" coords="831,776,937,803"/>
-<area shape="rect" id="node6" href="shell_8h.html#aef27926c3ebc8dc98a95df932af53a06" title="Shell&#45;Function for the U_ProductID.request&#45;Service. " alt="" coords="657,869,754,896"/>
-<area shape="rect" id="node7" href="shell_8h.html#ab8aa91cc93dc57699d69cf98e7244d64" title="Shell&#45;Function for the U_reset.request&#45;Service. " alt="" coords="655,560,756,587"/>
-<area shape="rect" id="node8" href="_u_a_r_t_8h.html#ad7bb1da26c447116e627aef512f5fc84" title="This Method uses the Program Space for e.g. Debug Strings and sends them to the given USART..." alt="" coords="229,314,367,355"/>
-<area shape="rect" id="node12" href="shell_8h.html#a7e7bbbb940671ab75e317fb9e82e956d" title="Shell&#45;Function for the U_state.request&#45;Service. " alt="" coords="655,195,756,221"/>
-<area shape="rect" id="node14" href="_u_a_r_t_8h.html#a190114969cf3d32ab5e83509d7ab1569" title="This Method sends Strings to the given USART. " alt="" coords="227,680,369,707"/>
-<area shape="rect" id="node3" href="shell_8h.html#a3197713442e02b97406567e4a11e193f" title="Enter the &quot;Shell&quot;. " alt="" coords="985,611,1071,637"/>
-<area shape="rect" id="node4" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="This is the main&#45;Function. " alt="" coords="1119,661,1169,688"/>
-<area shape="rect" id="node9" href="_u_a_r_t_8h.html#a6c34e7e2146aab25f22bf042eae221ac" title="This Method flushs the RX Buffer. " alt="" coords="628,296,783,323"/>
-<area shape="rect" id="node10" href="_u_a_r_t_8h.html#a1937cef99bb4eb8ca37fd7b128750c1b" title="This Method waits till one char is in the given USART&#45;Buffer &#45; No Timeout, Blocks!!!!. " alt="" coords="417,195,580,221"/>
-<area shape="rect" id="node11" href="_u_a_r_t_8h.html#a6a0a1c62a63f3388c9d22c87a069ebe7" title="This Method reads out the data of the RingBuffer and returns a string. " alt="" coords="432,702,565,743"/>
-<area shape="rect" id="node13" href="shell_8h.html#acd8340ade32d7f467cf3b625bd06ba31" title="shell_help" alt="" coords="459,448,539,475"/>
+<area shape="rect" id="node2" href="shell_8h.html#a7b264b3bfe53d649c5b7653cfd97033d" title="Shell&#45;Function for the U_AckInformation&#45;Service. " alt="" coords="674,972,737,998"/>
+<area shape="rect" id="node5" href="shell_8h.html#ad95c9c45c97cc744ca49a98494bf9465" title="Shell&#45;Function for the U_ActivateBusmon&#45;Service. " alt="" coords="831,576,924,602"/>
+<area shape="rect" id="node6" href="shell_8h.html#a5c364cd022ec191bccd57afa8aae1e89" title="Shell&#45;Function for the U_ActivateBusyMode. " alt="" coords="445,196,552,222"/>
+<area shape="rect" id="node7" href="shell_8h.html#aef27926c3ebc8dc98a95df932af53a06" title="Shell&#45;Function for the U_ProductID.request&#45;Service. " alt="" coords="657,1124,754,1150"/>
+<area shape="rect" id="node8" href="shell_8h.html#ac8c0b097293b84111d06c0ceabb8dd71" title="Shell&#45;Function for the U_ResetBusyMode. " alt="" coords="445,94,552,121"/>
+<area shape="rect" id="node9" href="shell_8h.html#ab8aa91cc93dc57699d69cf98e7244d64" title="Shell&#45;Function for the U_reset.request&#45;Service. " alt="" coords="655,449,756,476"/>
+<area shape="rect" id="node10" href="_u_a_r_t_8h.html#ad7bb1da26c447116e627aef512f5fc84" title="This Method uses the Program Space for e.g. Debug Strings and sends them to the given USART..." alt="" coords="229,442,367,483"/>
+<area shape="rect" id="node14" href="shell_8h.html#a3b8d781bfecf89fac5ce63dabd3be2ae" title="Shell&#45;Function for the U_SetAddress. " alt="" coords="662,816,749,842"/>
+<area shape="rect" id="node15" href="shell_8h.html#a7e7bbbb940671ab75e317fb9e82e956d" title="Shell&#45;Function for the U_state.request&#45;Service. " alt="" coords="655,348,756,374"/>
+<area shape="rect" id="node17" href="_u_a_r_t_8h.html#a190114969cf3d32ab5e83509d7ab1569" title="This Method sends Strings to the given USART. " alt="" coords="227,702,369,729"/>
+<area shape="rect" id="node3" href="shell_8h.html#a3197713442e02b97406567e4a11e193f" title="Enter the &quot;Shell&quot;. " alt="" coords="972,576,1057,602"/>
+<area shape="rect" id="node4" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="This is the main&#45;Function. " alt="" coords="1105,746,1156,773"/>
+<area shape="rect" id="node11" href="_u_a_r_t_8h.html#a6c34e7e2146aab25f22bf042eae221ac" title="This Method flushs the RX Buffer. " alt="" coords="628,500,783,526"/>
+<area shape="rect" id="node12" href="_u_a_r_t_8h.html#a1937cef99bb4eb8ca37fd7b128750c1b" title="This Method waits till one char is in the given USART&#45;Buffer &#45; No Timeout, Blocks!!!!. " alt="" coords="417,297,580,324"/>
+<area shape="rect" id="node13" href="_u_a_r_t_8h.html#a6a0a1c62a63f3388c9d22c87a069ebe7" title="This Method reads out the data of the RingBuffer and returns a string. " alt="" coords="432,804,565,846"/>
+<area shape="rect" id="node16" href="shell_8h.html#acd8340ade32d7f467cf3b625bd06ba31" title="shell_help" alt="" coords="459,500,539,526"/>
 </map>
 </div>
 

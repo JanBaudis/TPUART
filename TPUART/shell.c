@@ -59,17 +59,17 @@ void enter_shell(USART_data_t *USART_data) {
 			{
 				act_busymode();
 			}
-			else if (strcmp(command, "xxx") == 0)
+			else if (strncmp(command, "res_busymode",12) == 0)
 			{
-				// do something else
+				res_busymode();
 			}
-			else if (strcmp(command, "xxx") == 0)
+			else if (strncmp(command, "setaddr",7) == 0)
 			{
-				// do something else
+				setaddress();
 			}
-			else if (strcmp(command, "xxx") == 0)
+			else if (strncmp(command, "ackinfo",7) == 0)
 			{
-				// do something else
+				ackInfo();
 			}
 			else /* default: */
 			{
@@ -260,16 +260,12 @@ void prod_request(void) {
 
 /*! \brief Shell-Function for the U_ActivateBusyMode
  *
- *  Sends the U_ActivateBusyMode to the TPUART and prints the Output as bits to the PC.
+ *  Sends the U_ActivateBusyMode to the TPUART.
  *	TP-UART responses on every Packet which is addressed to him with BUSY within 700ms (+-10ms). All Packets are send to the Host and if the Host confirms one with U_Ackinfo it will leave BusyMode as well when reseted.
  *
  *	\todo May add something; Dunno like a Listen Mode for 700ms;
  */
 void act_busymode(void) {
-	
-	char response[USART_RX_BUFFER_SIZE+1];
-	char output[9];
-	int i=0;
 	
 	#ifdef DEBUG
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
@@ -283,50 +279,227 @@ void act_busymode(void) {
 	
 	USART_TXBuffer_PutByte(&USART_DATA_TP, 0x21); //Sends the U_ActivateBusyMode to the TPUART
 
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_ActivateBusyMode finished!\n\r Be aware that the TPUART is in BusyMode for the next 700ms!\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_ActivateBusyMode finished!\n\rBe aware that the TPUART is in BusyMode for the next 700ms!\n\r"));
 	
 }
 
 
-/*! \brief Shell-Function for the U_ProductID.request-Service
+/*! \brief Shell-Function for the U_ResetBusyMode
  *
- *  Sends the U_ProductID.request to the TPUART and prints the Output as bits to the PC
+ *  Sends the U_ResetBusyMode to the TPUART. So the TPUART immediately leaves the BUSY Mode.
  *
  */
-void prod_request(void) {
-	
-	char response[USART_RX_BUFFER_SIZE+1];
-	char output[9];
-	int i=0;
+void res_busymode(void) {
 	
 	#ifdef DEBUG
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
 	send_string_to_usart(&USART_DATA_PC, command);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering prod_request()\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering res_busymode()\n\r")); // Sends Debug Info to PC
 	#endif
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_ProductID.request...\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_ResetBusyMode...\n\r"));
 	
-	USART_TXBuffer_PutByte(&USART_DATA_TP, 0x20); //Sends the U_ProductID.request to the TPUART
+	USART_TXBuffer_PutByte(&USART_DATA_TP, 0x22); //Sends the U_ResetBusyMode to the TPUART
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Waiting(50ms) for the U_ProductID.response...\n\rResponse:\n\r"));
-	_delay_ms(50);
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_ResetBusyMode finished!\n\rTPUART is no longer in BUSY Mode!\n\r"));
 	
-	// Collects the received Data
-	receive_string_from_usart(&USART_DATA_TP, response);
+}
 
-	// Loops till response hits the \0 which the Function receive_string_from_usart Function appends
-	while (response[i])
-	{
-		itoa(response[i],output,2);
-		strcat(output,"\n\r");
-		send_string_to_usart(&USART_DATA_PC, output);
-		i++;
-	}
+/*! \brief Shell-Function for the U_SetAddress
+ *
+ *  Sends the U_SetAddress to the TPUART and prompts for the Address to set.
+ *	---------------------------------	---------------------------------
+ *	| physical address high			|	| physical address low			|
+ *	---------------------------------	---------------------------------
+ *	| 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |	| 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+ *	---------------------------------	---------------------------------
+ *	| a | a | a | a | l | l | l | l |	| d | d | d | d | d | d | d | d |
+ *	---------------------------------	---------------------------------
+ *
+ */
+void setaddress(void) {
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_ProductID.request finished!\n\r"));
+	#ifdef DEBUG
+	char debug_str[9];
+	#endif
+	
+	char in_address[6];
+	char **strtol_ep = NULL;
+	uint8_t address[2] = {0,0};
+	uint8_t temp = 0;
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+	send_string_to_usart(&USART_DATA_PC, command);
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+	
+	// We need Feedback so set ret_pressed here to 0
+	ret_pressed=0;
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering setaddress()\n\r")); // Sends Debug Info to PC
+	#endif
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter Address:\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("---------------------------------	---------------------------------\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("| physical address high			|	| physical address low			|\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("---------------------------------	---------------------------------\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("| 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |	| 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("---------------------------------	---------------------------------\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("| a | a | a | a | l | l | l | l |	| d | d | d | d | d | d | d | d |\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("---------------------------------	---------------------------------\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Use only Decimal Numbers and hit Return after it. It will be converted into Binary and shifted to right place.\n\r"));
+	
+	// a cant be higher than 16
+	do 
+	{
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter a(0-16):\n\r"));
+		
+		while (ret_pressed != 1);
+		receive_string_from_usart(&USART_DATA_PC, in_address);
+		temp=(uint8_t)strtol(in_address,strtol_ep,10);
+		
+		#ifdef DEBUG
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("a:")); // Sends Debug Info to PC
+		utoa(temp, debug_str, 2);
+		send_string_to_usart(&USART_DATA_PC, debug_str);
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+		#endif
+	} while (temp > 16);
+	
+	address[0] = (temp << 4);
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("physical address high:")); // Sends Debug Info to PC
+	utoa(address[0], debug_str, 2);
+	send_string_to_usart(&USART_DATA_PC, debug_str);
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+	#endif
+	
+	// We need the next Feedback so set ret_pressed here to 0
+	ret_pressed=0;
+	
+	// l cant be higher than 16
+	do
+	{
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter l(0-16):\n\r"));
+		
+		while (ret_pressed != 1);
+		receive_string_from_usart(&USART_DATA_PC, in_address);
+		temp=(uint8_t)strtol(in_address,strtol_ep,10);
+		
+		#ifdef DEBUG
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("l:")); // Sends Debug Info to PC
+		utoa(temp, debug_str, 2);
+		send_string_to_usart(&USART_DATA_PC, debug_str);
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+		#endif
+	} while (temp > 16);
+	
+	address[0] = (temp ^ address[0]);
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("physical address high:")); // Sends Debug Info to PC
+	utoa(address[0], debug_str, 2);
+	send_string_to_usart(&USART_DATA_PC, debug_str);
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+	#endif
+	
+	// We need the next Feedback so set ret_pressed here to 0
+	ret_pressed=0;
+	
+	// l cant be higher than 255
+	do
+	{
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter d(0-255):\n\r"));
+		
+		while (ret_pressed != 1);
+		receive_string_from_usart(&USART_DATA_PC, in_address);
+		address[1]=(uint8_t)strtol(in_address,strtol_ep,10);
+		
+		#ifdef DEBUG
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("d:")); // Sends Debug Info to PC
+		utoa(address[1], debug_str, 2);
+		send_string_to_usart(&USART_DATA_PC, debug_str);
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+		#endif
+	} while (temp > 255);
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("physical address low:")); // Sends Debug Info to PC
+	utoa(address[1], debug_str, 2);
+	send_string_to_usart(&USART_DATA_PC, debug_str);
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+	#endif
+	
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_SetAddress...\n\r"));
+	
+	USART_TXBuffer_PutByte(&USART_DATA_TP, 0x28); //Sends the U_SetAddress to the TPUART
+	USART_TXBuffer_PutByte(&USART_DATA_TP, address[0]); //Sends the physical address high to the TPUART
+	USART_TXBuffer_PutByte(&USART_DATA_TP, address[1]); //Sends the physical address low to the TPUART
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_SetAddress finished!\n\r"));
+	
+}
+
+/*! \brief Shell-Function for the U_AckInformation-Service
+ *
+ *  Sends the U_AckInformation to the TPUART. This must be sent latest 2,8ms after receiving the address type octet of an addressed frame. Its used to evaluate the Address on the Host side. More on p. 25 ff off the TPUART 2+ Data sheet.
+ *
+ *	\todo Implement this as a feature for receiving Frames in general. Since it only makes sense if its send after 2,8ms of an addressed frame. Look up if it can set more than one Flag! - Maybe its also important to implement for the Bus-Sniffer
+ *
+ */
+void ackInfo(void) {
+	
+	#ifdef DEBUG
+	char debug_str[9];
+	#endif
+	
+	char response[USART_RX_BUFFER_SIZE+1];
+	char flag;
+	char **strtol_ep = NULL;
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+	send_string_to_usart(&USART_DATA_PC, command);
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering ackInfo()\n\r")); // Sends Debug Info to PC
+	#endif
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter Flags:\n\r"));
+	
+	
+	// We need the next Feedback so set ret_pressed here to 0
+	ret_pressed=0;
+	
+	// input cant be higher than 16
+	do
+	{
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("1 = Addr; 2 = Busy; 3 = NACK;\n\r"));
+		
+		while (ret_pressed != 1);
+		receive_string_from_usart(&USART_DATA_PC, flag);
+		flag=(uint8_t)strtol(flag,strtol_ep,10);
+		
+		#ifdef DEBUG
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("flag:")); // Sends Debug Info to PC
+		utoa(flag, debug_str, 2);
+		send_string_to_usart(&USART_DATA_PC, debug_str);
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+		#endif
+	} while (flag > 3);
+	
+	address[0] = (flag ^ address[0]);
+	
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_AckInformation-Service...\n\r"));
+	
+	USART_TXBuffer_PutByte(&USART_DATA_TP, (flag ^ 0x10)); //Sends the U_AckInformation-Service to the TPUART
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_AckInformation-Service finished!\n\r"));
 	
 }
 
@@ -347,6 +520,9 @@ void shell_help(void) {
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_ActivateBusmon = act_busmon\n\r"));
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_ProductID.request = prod_r\n\r"));
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_ActivateBusyMode = act_busymode\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_ResetBusyMode = res_busymode\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_SetAddress = setaddr\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_AckInformation = ackinfo\n\r"));
 	
 	
 	#ifdef DEBUG

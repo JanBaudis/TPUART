@@ -23,6 +23,9 @@ void state_request(void);
 void act_busmon(void);
 void prod_request(void);
 void act_busymode(void);
+void res_busymode(void);
+void setaddress(void);
+void ackInfo(void);
 
 
 
