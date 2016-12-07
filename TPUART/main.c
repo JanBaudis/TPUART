@@ -39,7 +39,7 @@ int main(void)
 	sei();
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Inits complete!\n\r")); // Sends Debug Info to PC: Init is finished - but not sure if init was successful
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Inits complete!\n\r")); // Sends Debug Info to PC: Init is finished - but not sure if init was successful
 	#endif
 	
 	while (true)

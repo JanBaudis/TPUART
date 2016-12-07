@@ -144,13 +144,15 @@ void send_string_to_usart(USART_data_t *USART_data, char *s){
  *		\param USART_data	The USART_data_t struct instance.
  *		\param output		The String-Pointer where the Output is stored
  *
+ *		\todo	May add the ret val boolean to indicate if data was received at all
+ *
 */
 void receive_string_from_usart(USART_data_t *USART_data, char *output){
 	
 	int i = 0;
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("receive_string_from_usart entered!\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - receive_string_from_usart entered!\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	while (USART_RXBufferData_Available(&(*USART_data))) {
@@ -161,8 +163,9 @@ void receive_string_from_usart(USART_data_t *USART_data, char *output){
 	output[i]='\0';
 	
 	#ifdef DEBUG
+	send_string_to_usart(&USART_DATA_PC, "DEBUG - Output(May contain nonsense since its binary and interpreted as ascii):\n\r");
 	send_string_to_usart(&USART_DATA_PC, output);
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("receive_string_from_usart about to quit!\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - receive_string_from_usart about to quit!\n\r")); // Sends Debug Info to PC
 	#endif
 }
 
@@ -175,7 +178,7 @@ void receive_string_from_usart(USART_data_t *USART_data, char *output){
 char receive_char_from_usart(USART_data_t *USART_data){
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("receive_char_from_usart entered!\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - receive_char_from_usart entered!\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	char c;
@@ -184,7 +187,7 @@ char receive_char_from_usart(USART_data_t *USART_data){
 	c = USART_RXBuffer_GetByte(&(*USART_data));
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("receive_char_from_usart about to quit!\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - receive_char_from_usart about to quit!\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	return c;
@@ -198,16 +201,17 @@ char receive_char_from_usart(USART_data_t *USART_data){
 void flush_USART_RXBuffer(USART_data_t *USART_data){
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("flush_USART_RXBuffer entered!\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - flush_USART_RXBuffer entered!\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	while (USART_RXBufferData_Available(&(*USART_data))) {
-		uint8_t dump = 1;
-		dump = USART_RXBuffer_GetByte(&(*USART_data));
+		/*uint8_t dump = 1;
+		dump =*/ 
+		USART_RXBuffer_GetByte(&(*USART_data));
 	}
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("flush_USART_RXBuffer about to quit!\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - flush_USART_RXBuffer about to quit!\n\r")); // Sends Debug Info to PC
 	#endif
 }
 

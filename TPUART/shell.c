@@ -3,7 +3,7 @@
  *  \author		Jan Baudis
  *	\date		03.12.2016 01:01:54
  *	\note		Buffer Size in the usart_driver.h has to be changed if the commands are too big - it only evaluates the received string when enter is pressed.
- *	\todo		Maybe disable RX for the PC while working on a command!
+ *	\todo		Maybe disable RX for the PC while working on a command! I should switch from USART_TXBuffer_PutByte to send_string or evaluate the retval of USART_TXBuffer_PutByte.
 *****************************************************************************/
 
 #include "shell.h"
@@ -25,7 +25,7 @@ void enter_shell(USART_data_t *USART_data) {
 			receive_string_from_usart(&USART_DATA_PC, command);
 			
 			#ifdef DEBUG
-			send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+			send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
 			send_string_to_usart(&USART_DATA_PC, command);
 			send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 			
@@ -33,7 +33,7 @@ void enter_shell(USART_data_t *USART_data) {
 			char output[10];
 			int i = strncmp(command, test,10);
 			itoa(i,output,10);
-			send_string_pgm_to_usart(&USART_DATA_PC, PSTR("strncmp with act_busmon:")); // Sends Debug Info to PC
+			send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - strncmp with act_busmon:")); // Sends Debug Info to PC
 			send_string_to_usart(&USART_DATA_PC, output);
 			send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 			
@@ -71,6 +71,26 @@ void enter_shell(USART_data_t *USART_data) {
 			{
 				ackInfo();
 			}
+			else if (strncmp(command, "senddata",8) == 0)
+			{
+				send_data();
+			}
+			else if (strncmp(command, "ackinfo",7) == 0)
+			{
+				ackInfo();
+			}
+			else if (strncmp(command, "ackinfo",7) == 0)
+			{
+				ackInfo();
+			}
+			else if (strncmp(command, "ackinfo",7) == 0)
+			{
+				ackInfo();
+			}
+			else if (strncmp(command, "ackinfo",7) == 0)
+			{
+				ackInfo();
+			}
 			else /* default: */
 			{
 				shell_help();
@@ -93,11 +113,11 @@ void reset_request(void) {
 	int i=0;
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
 	send_string_to_usart(&USART_DATA_PC, command);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering reset_request()\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Entering reset_request()\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_Reset.request...\n\r"));
@@ -135,11 +155,11 @@ void state_request(void) {
 	int i=0;
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
 	send_string_to_usart(&USART_DATA_PC, command);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering state_request()\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Entering state_request()\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_State.request...\n\r"));
@@ -170,6 +190,7 @@ void state_request(void) {
  *  Sends the U_ActivateBusmon to the TPUART and prints the Output as bits to the PC. Listens till it receives any Key from the PC. Then it Resets the Chip since its the Only way to quit the Busmon-Mode of the TPUART.
  *
  *		\todo Implement an end of Packet detection to print out some useful Information for the Bits.
+ *		\note ATM there is a (good) chance that the RX Buffer Overflows.
  *
  */
 void act_busmon(void) {
@@ -179,11 +200,11 @@ void act_busmon(void) {
 	int i=0;
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
 	send_string_to_usart(&USART_DATA_PC, command);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering act_busmon()\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Entering act_busmon()\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_ActivateBusmon...\n\r"));
@@ -228,11 +249,11 @@ void prod_request(void) {
 	int i=0;
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
 	send_string_to_usart(&USART_DATA_PC, command);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering prod_request()\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Entering prod_request()\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_ProductID.request...\n\r"));
@@ -268,11 +289,11 @@ void prod_request(void) {
 void act_busymode(void) {
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
 	send_string_to_usart(&USART_DATA_PC, command);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering act_busymode()\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Entering act_busymode()\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_ActivateBusyMode...\n\r"));
@@ -292,11 +313,11 @@ void act_busymode(void) {
 void res_busymode(void) {
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
 	send_string_to_usart(&USART_DATA_PC, command);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering res_busymode()\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Entering res_busymode()\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_ResetBusyMode...\n\r"));
@@ -331,15 +352,15 @@ void setaddress(void) {
 	uint8_t temp = 0;
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
 	send_string_to_usart(&USART_DATA_PC, command);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Entering setaddress()\n\r")); // Sends Debug Info to PC
+	#endif
+	
 	// We need Feedback so set ret_pressed here to 0
 	ret_pressed=0;
-	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering setaddress()\n\r")); // Sends Debug Info to PC
-	#endif
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter Address:\n\r"));
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("---------------------------------	---------------------------------\n\r"));
@@ -361,7 +382,7 @@ void setaddress(void) {
 		temp=(uint8_t)strtol(in_address,strtol_ep,10);
 		
 		#ifdef DEBUG
-		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("a:")); // Sends Debug Info to PC
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - a:")); // Sends Debug Info to PC
 		utoa(temp, debug_str, 2);
 		send_string_to_usart(&USART_DATA_PC, debug_str);
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
@@ -371,7 +392,7 @@ void setaddress(void) {
 	address[0] = (temp << 4);
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("physical address high:")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - physical address high:")); // Sends Debug Info to PC
 	utoa(address[0], debug_str, 2);
 	send_string_to_usart(&USART_DATA_PC, debug_str);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
@@ -390,7 +411,7 @@ void setaddress(void) {
 		temp=(uint8_t)strtol(in_address,strtol_ep,10);
 		
 		#ifdef DEBUG
-		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("l:")); // Sends Debug Info to PC
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - l:")); // Sends Debug Info to PC
 		utoa(temp, debug_str, 2);
 		send_string_to_usart(&USART_DATA_PC, debug_str);
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
@@ -400,7 +421,7 @@ void setaddress(void) {
 	address[0] = (temp ^ address[0]);
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("physical address high:")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - physical address high:")); // Sends Debug Info to PC
 	utoa(address[0], debug_str, 2);
 	send_string_to_usart(&USART_DATA_PC, debug_str);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
@@ -419,7 +440,7 @@ void setaddress(void) {
 		address[1]=(uint8_t)strtol(in_address,strtol_ep,10);
 		
 		#ifdef DEBUG
-		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("d:")); // Sends Debug Info to PC
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - d:")); // Sends Debug Info to PC
 		utoa(address[1], debug_str, 2);
 		send_string_to_usart(&USART_DATA_PC, debug_str);
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
@@ -427,7 +448,7 @@ void setaddress(void) {
 	} while (temp > 255);
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("physical address low:")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - physical address low:")); // Sends Debug Info to PC
 	utoa(address[1], debug_str, 2);
 	send_string_to_usart(&USART_DATA_PC, debug_str);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
@@ -457,16 +478,16 @@ void ackInfo(void) {
 	char debug_str[9];
 	#endif
 	
-	char response[USART_RX_BUFFER_SIZE+1];
-	char flag;
+	char input_flag[4];
+	uint8_t flag;
 	char **strtol_ep = NULL;
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
 	send_string_to_usart(&USART_DATA_PC, command);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering ackInfo()\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Entering ackInfo()\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter Flags:\n\r"));
@@ -481,18 +502,16 @@ void ackInfo(void) {
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("1 = Addr; 2 = Busy; 3 = NACK;\n\r"));
 		
 		while (ret_pressed != 1);
-		receive_string_from_usart(&USART_DATA_PC, flag);
-		flag=(uint8_t)strtol(flag,strtol_ep,10);
+		receive_string_from_usart(&USART_DATA_PC, input_flag);
+		flag=(uint8_t)strtol(input_flag,strtol_ep,10);
 		
 		#ifdef DEBUG
-		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("flag:")); // Sends Debug Info to PC
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - flag:")); // Sends Debug Info to PC
 		utoa(flag, debug_str, 2);
 		send_string_to_usart(&USART_DATA_PC, debug_str);
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 		#endif
 	} while (flag > 3);
-	
-	address[0] = (flag ^ address[0]);
 	
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_AckInformation-Service...\n\r"));
@@ -504,14 +523,196 @@ void ackInfo(void) {
 }
 
 
-void shell_help(void) {
+
+/*! \brief Shell-Function for the U_L_DataStart-Service, U_L_DataContinue-Service and U_L_DataEnd-Service to send a KNX-Frame
+ *
+ *  Sends the U_L_DataStart-Service, U_L_DataContinue-Service and U_L_DataEnd-Service to the TPUART. The Additional Information of the U_L_DataStart-Service contains the EIB-Controlfield Information. And in the the Case of U_L_DataContinue-Service it contains the Payload.
+ *	The U_L_DataEnd-Service`s Additional Information contains the Checksum and the command also contains the length.
+ *
+ *	\note	Be aware the RingBuffer-Size is a limiting factor since the TPUART`s response will is the whole Packet.
+ *	\todo	Rework Calc parity. Chance that the RX Buffer overflows!
+ *
+ */
+void send_data(void) {
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Command:")); // Sends Debug Info to PC
+	char debug_str[9];
+	#endif
+	
+	char response[USART_RX_BUFFER_SIZE+1];
+	char output[9];
+	char input[9];
+	char **strtol_ep = NULL;
+
+	char buffer[3];
+	
+	uint8_t addinfo[63];
+	uint8_t dataindex = 0;
+	uint8_t parity = 0xFF;
+	
+	int r = 0;
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
 	send_string_to_usart(&USART_DATA_PC, command);
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
 	
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Entering shell_help()\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Entering send_data()\n\r")); // Sends Debug Info to PC
+	#endif
+	
+	
+	do
+	{
+		// We need the next Feedback so set ret_pressed here to 0
+		ret_pressed=0;
+		
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_L_DataStart-Service!\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("---------------------------------\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("| EIB-Control Field				\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("---------------------------------\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("| 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("---------------------------------\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("| F | F | R | 1 | c | c | 0 | 0 |\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("---------------------------------\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("FF = Frame Format; 10 Stad Length; 00 ext; 11 L_POLLDATA\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("R = Repeatflag; 1 = not repeated, 0 = repeated\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("cc = 00 system; 10 alarm; 01 high; 11 normal\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter EIB-Control field!(As Hex with leading 0x otherwise as decimal or if it begins with 0 than its octal!)\n\r"));
+		
+		
+		while (ret_pressed != 1);
+		receive_string_from_usart(&USART_DATA_PC, input);
+		addinfo[0]=(uint8_t)strtol(input,strtol_ep,0);
+		
+		#ifdef DEBUG
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - EIB-Control Field:")); // Sends Debug Info to PC
+		utoa(addinfo[0], debug_str, 2);
+		send_string_to_usart(&USART_DATA_PC, debug_str);
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+		#endif
+	} while ( (addinfo[0] & 0x13) != 0x10 ); // Check if the Bits which are predefined are correctly set
+	
+	
+	// How many Data bytes ?
+	do
+	{
+		
+		// We need the next Feedback so set ret_pressed here to 0
+		ret_pressed=0;
+		
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_L_DataContinue-Service!\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter Number of Bytes as decimal(Max 62)!\n\r"));
+		
+		while (ret_pressed != 1);
+		receive_string_from_usart(&USART_DATA_PC, input);
+		dataindex=(uint8_t)strtol(input,strtol_ep,10);
+		
+		#ifdef DEBUG
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Number of Bytes:")); // Sends Debug Info to PC
+		utoa(dataindex, debug_str, 2);
+		send_string_to_usart(&USART_DATA_PC, debug_str);
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+		#endif
+	} while ( dataindex > 62); // Maximal 62
+	
+	
+	for (int i = 1; i<=dataindex; i++) {
+		
+		// We need the next Feedback so set ret_pressed here to 0
+		ret_pressed=0;
+		
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_L_DataContinue-Service!\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter Data byte "));
+		send_string_to_usart(&USART_DATA_PC, itoa(i, buffer, 10));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR(":(As Hex with leading 0x otherwise as decimal or if it begins with 0 than its octal!)\n\r"));
+		
+		
+		while (ret_pressed != 1);
+		receive_string_from_usart(&USART_DATA_PC, input);
+		addinfo[i]=(uint8_t)strtol(input,strtol_ep,0);
+		
+		#ifdef DEBUG
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Data byte ")); // Sends Debug Info to PC
+		send_string_to_usart(&USART_DATA_PC, itoa(i, buffer, 10));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR(": ")); // Sends Debug Info to PC
+		utoa(addinfo[i], debug_str, 2);
+		send_string_to_usart(&USART_DATA_PC, debug_str);
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+		#endif
+	}
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_L_DataEnd-Service!\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Calculating Checksum!\n\r"));
+	
+	//Calculate Parity - Odd Parity Horizontal - May rework since this has a lot of memory access and is kind of long code; i think its better to just set parity to FF and ^ with the addinfo[i]
+	
+	for (int i = 1; i <= dataindex; i++) {
+		parity = parity ^ addinfo[i];
+	}
+	
+	/*for (int i = 7; i < 0; i--) {
+		uint8_t temp = 0;
+		for (int j = 1; j <= dataindex; j++) {
+			if ( (addinfo[j] & (0x01 << i)) == (0x01 << i) ) {
+				temp++;
+			}
+		}
+		if ( (temp & 0x01) == 0x00 ) {
+			parity = parity | ( 0x01 << i );
+		}
+	}*/
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Calculated Parity: "));
+	utoa(parity, debug_str, 2);
+	send_string_to_usart(&USART_DATA_PC, debug_str);
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+	#endif
+	
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_L_DataStart/Continue/End-Services...\n\r"));
+	
+	for (int i = 0; i <= dataindex; i++ ) {
+		while(!USART_TXBuffer_FreeSpace(&USART_DATA_TP));
+		USART_TXBuffer_PutByte(&USART_DATA_TP, (0x80 | i ) ); //Sends the U_L_DataStart/Continue-Service to the TPUART
+		while(!USART_TXBuffer_FreeSpace(&USART_DATA_TP));
+		USART_TXBuffer_PutByte(&USART_DATA_TP, addinfo[i]); //Sends the U_L_DataStart/Continue-Service to the TPUART
+	}
+	
+	// U_L_DataEnd
+	while(!USART_TXBuffer_FreeSpace(&USART_DATA_TP));
+	USART_TXBuffer_PutByte(&USART_DATA_TP, (0x40 | dataindex ) ); //Sends the U_L_DataEnd-Service to the TPUART
+	while(!USART_TXBuffer_FreeSpace(&USART_DATA_TP));
+	USART_TXBuffer_PutByte(&USART_DATA_TP, parity ); //Sends the U_L_DataEnd-Service to the TPUART
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Waiting 200ms and printing everything received from the TPUART - State.indication and/or Packet itself. Response:\n\r")); // Is the first packet received the Sate.indication or only when an error occurs? TODO
+	_delay_ms(200);
+	
+	// Collects the received Data
+	receive_string_from_usart(&USART_DATA_TP, response);
+
+	// Loops till response hits the \0 which the Function receive_string_from_usart Function appends
+	while (response[r])	{
+		itoa(response[r],output,2);
+		strcat(output,"\n\r");
+		send_string_to_usart(&USART_DATA_PC, output);
+		r++;
+	}
+	
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_L_DataStart-Service finished!\n\r"));
+	
+}
+
+
+void shell_help(void) {
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
+	send_string_to_usart(&USART_DATA_PC, command);
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Entering shell_help()\n\r")); // Sends Debug Info to PC
 	#endif
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Implemented TPUART Functions are:\n\r"));
@@ -523,9 +724,10 @@ void shell_help(void) {
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_ResetBusyMode = res_busymode\n\r"));
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_SetAddress = setaddr\n\r"));
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_AckInformation = ackinfo\n\r"));
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_L_Data-Services = senddata\n\r"));
 	
 	
 	#ifdef DEBUG
-	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Leaving shell_help()\n\r")); // Sends Debug Info to PC
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Leaving shell_help()\n\r")); // Sends Debug Info to PC
 	#endif
 }
