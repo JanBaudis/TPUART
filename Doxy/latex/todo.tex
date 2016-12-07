@@ -5,32 +5,41 @@
 Global \hyperlink{shell_8h_a7b264b3bfe53d649c5b7653cfd97033d}{ack\+Info} (void)]Implement this as a feature for receiving Frames in general. Since it only makes sense if its send after 2,8ms of an addressed frame. Look up if it can set more than one Flag! -\/ Maybe its also important to implement for the Bus-\/\+Sniffer 
 \item[\label{todo__todo000002}%
 \hypertarget{todo__todo000002}{}%
-Global \hyperlink{shell_8h_ad95c9c45c97cc744ca49a98494bf9465}{act\+\_\+busmon} (void)]Implement an end of Packet detection to print out some useful Information for the Bits. 
+Global \hyperlink{shell_8h_ad95c9c45c97cc744ca49a98494bf9465}{act\+\_\+busmon} (void)]Implement an end of Packet detection to print out some useful Information for the Bits.  
 \item[\label{todo__todo000003}%
 \hypertarget{todo__todo000003}{}%
 Global \hyperlink{shell_8h_a5c364cd022ec191bccd57afa8aae1e89}{act\+\_\+busymode} (void)]May add something; Dunno like a Listen Mode for 700ms;  
-\item[\label{todo__todo000009}%
-\hypertarget{todo__todo000009}{}%
-Global \hyperlink{_u_a_r_t_8c_abbfd0611f43db59ea4fdb1ea434cf017}{I\+SR} (U\+S\+A\+R\+T\+C0\+\_\+\+D\+R\+E\+\_\+vect)]Think about if volatile for the U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP is needed! 
-\item[\label{todo__todo000011}%
-\hypertarget{todo__todo000011}{}%
-Global \hyperlink{_u_a_r_t_8c_acdf978f69a52b8a2225b0536b5fbff0e}{I\+SR} (U\+S\+A\+R\+T\+C1\+\_\+\+D\+R\+E\+\_\+vect)]Think about if volatile for the U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC is needed! 
-\item[\label{todo__todo000008}%
-\hypertarget{todo__todo000008}{}%
-Global \hyperlink{_u_a_r_t_8c_aace195abde7bc36b7b50772ff2277dd4}{I\+SR} (U\+S\+A\+R\+T\+C0\+\_\+\+R\+X\+C\+\_\+vect)]Think about if volatile for the U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP is needed! 
 \item[\label{todo__todo000010}%
 \hypertarget{todo__todo000010}{}%
+Global \hyperlink{_u_a_r_t_8c_aace195abde7bc36b7b50772ff2277dd4}{I\+SR} (U\+S\+A\+R\+T\+C0\+\_\+\+R\+X\+C\+\_\+vect)]Think about if volatile for the U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP is needed! 
+\item[\label{todo__todo000011}%
+\hypertarget{todo__todo000011}{}%
+Global \hyperlink{_u_a_r_t_8c_abbfd0611f43db59ea4fdb1ea434cf017}{I\+SR} (U\+S\+A\+R\+T\+C0\+\_\+\+D\+R\+E\+\_\+vect)]Think about if volatile for the U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP is needed! 
+\item[\label{todo__todo000013}%
+\hypertarget{todo__todo000013}{}%
+Global \hyperlink{_u_a_r_t_8c_acdf978f69a52b8a2225b0536b5fbff0e}{I\+SR} (U\+S\+A\+R\+T\+C1\+\_\+\+D\+R\+E\+\_\+vect)]Think about if volatile for the U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC is needed! 
+\item[\label{todo__todo000012}%
+\hypertarget{todo__todo000012}{}%
 Global \hyperlink{_u_a_r_t_8c_a6c9949e5146d1feb028b0c2db8754523}{I\+SR} (U\+S\+A\+R\+T\+C1\+\_\+\+R\+X\+C\+\_\+vect)]Think about if volatile for the U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC is needed!  
-\item[\label{todo__todo000001}%
-\hypertarget{todo__todo000001}{}%
-File \hyperlink{shell_8c}{shell.c} ]Maybe disable RX for the PC while working on a command!  
+\item[\label{todo__todo000009}%
+\hypertarget{todo__todo000009}{}%
+Global \hyperlink{_u_a_r_t_8h_a6a0a1c62a63f3388c9d22c87a069ebe7}{receive\+\_\+string\+\_\+from\+\_\+usart} (U\+S\+A\+R\+T\+\_\+data\+\_\+t $\ast$\+U\+S\+A\+R\+T\+\_\+data, char $\ast$string)]May add the ret val boolean to indicate if data was received at all 
+\item[\label{todo__todo000009}%
+\hypertarget{todo__todo000009}{}%
+Global \hyperlink{_u_a_r_t_8h_a6a0a1c62a63f3388c9d22c87a069ebe7}{receive\+\_\+string\+\_\+from\+\_\+usart} (U\+S\+A\+R\+T\+\_\+data\+\_\+t $\ast$\+U\+S\+A\+R\+T\+\_\+data, char $\ast$string)]May add the ret val boolean to indicate if data was received at all 
 \item[\label{todo__todo000005}%
 \hypertarget{todo__todo000005}{}%
-File \hyperlink{_u_a_r_t_8c}{U\+A\+RT.c} ]Change the U\+A\+R\+T-\/\+Functions -\/ add an extra value for the Port used and not an simple string to select it in the Function for both Init Functions  
-\item[\label{todo__todo000007}%
-\hypertarget{todo__todo000007}{}%
-Global \hyperlink{_u_a_r_t_8h_a267c0b0bf7f4f8b70049d91449590cf8}{usart\+\_\+init\+\_\+pc} (void)]Maybe merge the init Functions. But think of a good way to configure the Params like Baudrate, Parity etc  
+Global \hyperlink{shell_8h_aa8061654c0af0c3c3fac9e63ed7eaed6}{send\+\_\+data} (void)]Rework Calc parity. Chance that the RX Buffer overflows! 
+\item[\label{todo__todo000001}%
+\hypertarget{todo__todo000001}{}%
+File \hyperlink{shell_8c}{shell.c} ]Maybe disable RX for the PC while working on a command! I should switch from U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte to send\+\_\+string or evaluate the retval of U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte.  
 \item[\label{todo__todo000006}%
 \hypertarget{todo__todo000006}{}%
+File \hyperlink{_u_a_r_t_8c}{U\+A\+RT.c} ]Change the U\+A\+R\+T-\/\+Functions -\/ add an extra value for the Port used and not an simple string to select it in the Function for both Init Functions  
+\item[\label{todo__todo000008}%
+\hypertarget{todo__todo000008}{}%
+Global \hyperlink{_u_a_r_t_8h_a267c0b0bf7f4f8b70049d91449590cf8}{usart\+\_\+init\+\_\+pc} (void)]Maybe merge the init Functions. But think of a good way to configure the Params like Baudrate, Parity etc  
+\item[\label{todo__todo000007}%
+\hypertarget{todo__todo000007}{}%
 Global \hyperlink{_u_a_r_t_8h_a09e438e4f709b00836cebb0d6a44f223}{usart\+\_\+init\+\_\+tpuart} (void)]Check if the T\+P\+U\+A\+R\+T2 Parity Specs from the DS also applies to the T\+P\+U\+A\+R\+T1 -\/ T\+P\+U\+A\+R\+T1 Datasheet(p.\+10) is missing the parity specs -\/ T\+P\+U\+A\+R\+T2 DS(p.\+21) says even, so lets try even; Maybe merge the Init functions 
 \end{DoxyRefList}

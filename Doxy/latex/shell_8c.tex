@@ -34,6 +34,8 @@ void \hyperlink{shell_8c_a3b8d781bfecf89fac5ce63dabd3be2ae}{setaddress} (void)
 \begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+\+Set\+Address. \end{DoxyCompactList}\item 
 void \hyperlink{shell_8c_a7b264b3bfe53d649c5b7653cfd97033d}{ack\+Info} (void)
 \begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+\+Ack\+Information-\/\+Service. \end{DoxyCompactList}\item 
+void \hyperlink{shell_8c_aa8061654c0af0c3c3fac9e63ed7eaed6}{send\+\_\+data} (void)
+\begin{DoxyCompactList}\small\item\em Shell-\/\+Function for the U\+\_\+\+L\+\_\+\+Data\+Start-\/\+Service, U\+\_\+\+L\+\_\+\+Data\+Continue-\/\+Service and U\+\_\+\+L\+\_\+\+Data\+End-\/\+Service to send a K\+N\+X-\/\+Frame. \end{DoxyCompactList}\item 
 void \hyperlink{shell_8c_acd8340ade32d7f467cf3b625bd06ba31}{shell\+\_\+help} (void)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
@@ -58,7 +60,7 @@ Jan Baudis
 Buffer Size in the \hyperlink{usart__driver_8h}{usart\+\_\+driver.\+h} has to be changed if the commands are too big -\/ it only evaluates the received string when enter is pressed. 
 \end{DoxyNote}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000001}{Todo}]Maybe disable RX for the PC while working on a command! \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000001}{Todo}]Maybe disable RX for the PC while working on a command! I should switch from U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte to send\+\_\+string or evaluate the retval of U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte. \end{DoxyRefDesc}
 
 
 \subsection{Function Documentation}
@@ -78,26 +80,24 @@ Sends the U\+\_\+\+Ack\+Information to the T\+P\+U\+A\+RT. This must be sent lat
 \item[\hyperlink{todo__todo000004}{Todo}]Implement this as a feature for receiving Frames in general. Since it only makes sense if its send after 2,8ms of an addressed frame. Look up if it can set more than one Flag! -\/ Maybe its also important to implement for the Bus-\/\+Sniffer\end{DoxyRefDesc}
 
 
-Definition at line 454 of file shell.\+c.
+Definition at line 475 of file shell.\+c.
 
 
 
-References command, receive\+\_\+string\+\_\+from\+\_\+usart(), ret\+\_\+pressed, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+References command, receive\+\_\+string\+\_\+from\+\_\+usart(), ret\+\_\+pressed, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
 
 
 
 Referenced by enter\+\_\+shell().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{shell_8c_a7b264b3bfe53d649c5b7653cfd97033d_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -117,10 +117,13 @@ Shell-\/\+Function for the U\+\_\+\+Activate\+Busmon-\/\+Service.
 Sends the U\+\_\+\+Activate\+Busmon to the T\+P\+U\+A\+RT and prints the Output as bits to the PC. Listens till it receives any Key from the PC. Then it Resets the Chip since its the Only way to quit the Busmon-\/\+Mode of the T\+P\+U\+A\+RT.
 
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000002}{Todo}]Implement an end of Packet detection to print out some useful Information for the Bits.\end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000002}{Todo}]Implement an end of Packet detection to print out some useful Information for the Bits. \end{DoxyRefDesc}
+\begin{DoxyNote}{Note}
+A\+TM there is a (good) chance that the RX Buffer Overflows. 
+\end{DoxyNote}
 
 
-Definition at line 175 of file shell.\+c.
+Definition at line 196 of file shell.\+c.
 
 
 
@@ -130,16 +133,14 @@ References command, flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer(), receive\+\
 
 Referenced by enter\+\_\+shell().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{shell_8c_ad95c9c45c97cc744ca49a98494bf9465_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -162,7 +163,7 @@ Sends the U\+\_\+\+Activate\+Busy\+Mode to the T\+P\+U\+A\+RT. T\+P-\/\+U\+A\+RT
 \item[\hyperlink{todo__todo000003}{Todo}]May add something; Dunno like a Listen Mode for 700ms; \end{DoxyRefDesc}
 
 
-Definition at line 268 of file shell.\+c.
+Definition at line 289 of file shell.\+c.
 
 
 
@@ -172,16 +173,14 @@ References command, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+st
 
 Referenced by enter\+\_\+shell().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{shell_8c_a5c364cd022ec191bccd57afa8aae1e89_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -211,7 +210,7 @@ Definition at line 22 of file shell.\+c.
 
 
 
-References ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), command, prod\+\_\+request(), receive\+\_\+string\+\_\+from\+\_\+usart(), res\+\_\+busymode(), reset\+\_\+request(), ret\+\_\+pressed, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), setaddress(), shell\+\_\+help(), state\+\_\+request(), and U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC.
+References ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), command, prod\+\_\+request(), receive\+\_\+string\+\_\+from\+\_\+usart(), res\+\_\+busymode(), reset\+\_\+request(), ret\+\_\+pressed, send\+\_\+data(), send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), setaddress(), shell\+\_\+help(), state\+\_\+request(), and U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC.
 
 
 
@@ -245,7 +244,7 @@ Shell-\/\+Function for the U\+\_\+\+Product\+I\+D.\+request-\/\+Service.
 
 Sends the U\+\_\+\+Product\+I\+D.\+request to the T\+P\+U\+A\+RT and prints the Output as bits to the PC 
 
-Definition at line 224 of file shell.\+c.
+Definition at line 245 of file shell.\+c.
 
 
 
@@ -283,7 +282,7 @@ Shell-\/\+Function for the U\+\_\+\+Reset\+Busy\+Mode.
 
 Sends the U\+\_\+\+Reset\+Busy\+Mode to the T\+P\+U\+A\+RT. So the T\+P\+U\+A\+RT immediately leaves the B\+U\+SY Mode. 
 
-Definition at line 292 of file shell.\+c.
+Definition at line 313 of file shell.\+c.
 
 
 
@@ -321,7 +320,7 @@ Shell-\/\+Function for the U\+\_\+reset.\+request-\/\+Service.
 
 Sends the U\+\_\+reset.\+request to the T\+P\+U\+A\+RT and prints the Output as bits to the PC 
 
-Definition at line 89 of file shell.\+c.
+Definition at line 109 of file shell.\+c.
 
 
 
@@ -347,6 +346,51 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{shell_8c_ab8aa91cc93dc57699d69cf98e7244d64_icgraph}
 \end{center}
 \end{figure}
+\hypertarget{shell_8c_aa8061654c0af0c3c3fac9e63ed7eaed6}{}\label{shell_8c_aa8061654c0af0c3c3fac9e63ed7eaed6} 
+\index{shell.\+c@{shell.\+c}!send\+\_\+data@{send\+\_\+data}}
+\index{send\+\_\+data@{send\+\_\+data}!shell.\+c@{shell.\+c}}
+\subsubsection{\texorpdfstring{send\+\_\+data()}{send\_data()}}
+{\footnotesize\ttfamily void send\+\_\+data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Shell-\/\+Function for the U\+\_\+\+L\+\_\+\+Data\+Start-\/\+Service, U\+\_\+\+L\+\_\+\+Data\+Continue-\/\+Service and U\+\_\+\+L\+\_\+\+Data\+End-\/\+Service to send a K\+N\+X-\/\+Frame. 
+
+Sends the U\+\_\+\+L\+\_\+\+Data\+Start-\/\+Service, U\+\_\+\+L\+\_\+\+Data\+Continue-\/\+Service and U\+\_\+\+L\+\_\+\+Data\+End-\/\+Service to the T\+P\+U\+A\+RT. The Additional Information of the U\+\_\+\+L\+\_\+\+Data\+Start-\/\+Service contains the E\+I\+B-\/\+Controlfield Information. And in the the Case of U\+\_\+\+L\+\_\+\+Data\+Continue-\/\+Service it contains the Payload. The U\+\_\+\+L\+\_\+\+Data\+End-\/\+Service`s Additional Information contains the Checksum and the command also contains the length.
+
+\begin{DoxyNote}{Note}
+Be aware the Ring\+Buffer-\/\+Size is a limiting factor since the T\+P\+U\+A\+R\+T`s response will is the whole Packet. 
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000005}{Todo}]Rework Calc parity. Chance that the RX Buffer overflows!\end{DoxyRefDesc}
+
+
+Definition at line 536 of file shell.\+c.
+
+
+
+References command, receive\+\_\+string\+\_\+from\+\_\+usart(), ret\+\_\+pressed, send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\+to\+\_\+usart(), U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+PC, U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP, U\+S\+A\+R\+T\+\_\+\+R\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE, U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Free\+Space(), and U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
+
+
+
+Referenced by enter\+\_\+shell().
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_aa8061654c0af0c3c3fac9e63ed7eaed6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{shell_8c_aa8061654c0af0c3c3fac9e63ed7eaed6_icgraph}
+\end{center}
+\end{figure}
 \hypertarget{shell_8c_a3b8d781bfecf89fac5ce63dabd3be2ae}{}\label{shell_8c_a3b8d781bfecf89fac5ce63dabd3be2ae} 
 \index{shell.\+c@{shell.\+c}!setaddress@{setaddress}}
 \index{setaddress@{setaddress}!shell.\+c@{shell.\+c}}
@@ -367,7 +411,7 @@ Sends the U\+\_\+\+Set\+Address to the T\+P\+U\+A\+RT and prompts for the Addres
 
  
 
-Definition at line 322 of file shell.\+c.
+Definition at line 343 of file shell.\+c.
 
 
 
@@ -401,7 +445,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 507 of file shell.\+c.
+Definition at line 708 of file shell.\+c.
 
 
 
@@ -439,7 +483,7 @@ Shell-\/\+Function for the U\+\_\+state.\+request-\/\+Service.
 
 Sends the U\+\_\+state.\+request to the T\+P\+U\+A\+RT and prints the Output as bits to the PC 
 
-Definition at line 131 of file shell.\+c.
+Definition at line 151 of file shell.\+c.
 
 
 
@@ -480,7 +524,7 @@ Definition at line 13 of file shell.\+c.
 
 
 
-Referenced by ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), prod\+\_\+request(), res\+\_\+busymode(), reset\+\_\+request(), setaddress(), shell\+\_\+help(), and state\+\_\+request().
+Referenced by ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), prod\+\_\+request(), res\+\_\+busymode(), reset\+\_\+request(), send\+\_\+data(), setaddress(), shell\+\_\+help(), and state\+\_\+request().
 
 \hypertarget{shell_8c_a37fd7702e47867237a1617ae4b4fab85}{}\label{shell_8c_a37fd7702e47867237a1617ae4b4fab85} 
 \index{shell.\+c@{shell.\+c}!ret\+\_\+pressed@{ret\+\_\+pressed}}
@@ -494,5 +538,5 @@ Definition at line 11 of file U\+A\+R\+T.\+c.
 
 
 
-Referenced by ack\+Info(), enter\+\_\+shell(), I\+S\+R(), and setaddress().
+Referenced by ack\+Info(), enter\+\_\+shell(), I\+S\+R(), send\+\_\+data(), and setaddress().
 

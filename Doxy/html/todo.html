@@ -87,24 +87,30 @@ $(document).ready(function(){initNavTree('todo.html','');});
 <dt><a class="anchor" id="_todo000004"></a>Global <a class="el" href="shell_8h.html#a7b264b3bfe53d649c5b7653cfd97033d">ackInfo</a>  (void)</dt>
 <dd>Implement this as a feature for receiving Frames in general. Since it only makes sense if its send after 2,8ms of an addressed frame. Look up if it can set more than one Flag! - Maybe its also important to implement for the Bus-Sniffer </dd>
 <dt><a class="anchor" id="_todo000002"></a>Global <a class="el" href="shell_8h.html#ad95c9c45c97cc744ca49a98494bf9465">act_busmon</a>  (void)</dt>
-<dd>Implement an end of Packet detection to print out some useful Information for the Bits. </dd>
+<dd>Implement an end of Packet detection to print out some useful Information for the Bits.  </dd>
 <dt><a class="anchor" id="_todo000003"></a>Global <a class="el" href="shell_8h.html#a5c364cd022ec191bccd57afa8aae1e89">act_busymode</a>  (void)</dt>
 <dd>May add something; Dunno like a Listen Mode for 700ms;  </dd>
-<dt><a class="anchor" id="_todo000009"></a>Global <a class="el" href="_u_a_r_t_8c.html#abbfd0611f43db59ea4fdb1ea434cf017">ISR</a>  (USARTC0_DRE_vect)</dt>
+<dt><a class="anchor" id="_todo000010"></a>Global <a class="el" href="_u_a_r_t_8c.html#aace195abde7bc36b7b50772ff2277dd4">ISR</a>  (USARTC0_RXC_vect)</dt>
 <dd>Think about if volatile for the USART_DATA_TP is needed! </dd>
-<dt><a class="anchor" id="_todo000011"></a>Global <a class="el" href="_u_a_r_t_8c.html#acdf978f69a52b8a2225b0536b5fbff0e">ISR</a>  (USARTC1_DRE_vect)</dt>
+<dt><a class="anchor" id="_todo000011"></a>Global <a class="el" href="_u_a_r_t_8c.html#abbfd0611f43db59ea4fdb1ea434cf017">ISR</a>  (USARTC0_DRE_vect)</dt>
+<dd>Think about if volatile for the USART_DATA_TP is needed! </dd>
+<dt><a class="anchor" id="_todo000013"></a>Global <a class="el" href="_u_a_r_t_8c.html#acdf978f69a52b8a2225b0536b5fbff0e">ISR</a>  (USARTC1_DRE_vect)</dt>
 <dd>Think about if volatile for the USART_DATA_PC is needed! </dd>
-<dt><a class="anchor" id="_todo000008"></a>Global <a class="el" href="_u_a_r_t_8c.html#aace195abde7bc36b7b50772ff2277dd4">ISR</a>  (USARTC0_RXC_vect)</dt>
-<dd>Think about if volatile for the USART_DATA_TP is needed! </dd>
-<dt><a class="anchor" id="_todo000010"></a>Global <a class="el" href="_u_a_r_t_8c.html#a6c9949e5146d1feb028b0c2db8754523">ISR</a>  (USARTC1_RXC_vect)</dt>
+<dt><a class="anchor" id="_todo000012"></a>Global <a class="el" href="_u_a_r_t_8c.html#a6c9949e5146d1feb028b0c2db8754523">ISR</a>  (USARTC1_RXC_vect)</dt>
 <dd>Think about if volatile for the USART_DATA_PC is needed!  </dd>
+<dt><a class="anchor" id="_todo000009"></a>Global <a class="el" href="_u_a_r_t_8h.html#a6a0a1c62a63f3388c9d22c87a069ebe7">receive_string_from_usart</a>  (USART_data_t *USART_data, char *string)</dt>
+<dd>May add the ret val boolean to indicate if data was received at all </dd>
+<dt><a class="anchor" id="_todo000009"></a>Global <a class="el" href="_u_a_r_t_8h.html#a6a0a1c62a63f3388c9d22c87a069ebe7">receive_string_from_usart</a>  (USART_data_t *USART_data, char *string)</dt>
+<dd>May add the ret val boolean to indicate if data was received at all </dd>
+<dt><a class="anchor" id="_todo000005"></a>Global <a class="el" href="shell_8h.html#aa8061654c0af0c3c3fac9e63ed7eaed6">send_data</a>  (void)</dt>
+<dd>Rework Calc parity. Chance that the RX Buffer overflows! </dd>
 <dt><a class="anchor" id="_todo000001"></a>File <a class="el" href="shell_8c.html">shell.c</a>  </dt>
-<dd>Maybe disable RX for the PC while working on a command!  </dd>
-<dt><a class="anchor" id="_todo000005"></a>File <a class="el" href="_u_a_r_t_8c.html">UART.c</a>  </dt>
+<dd>Maybe disable RX for the PC while working on a command! I should switch from USART_TXBuffer_PutByte to send_string or evaluate the retval of USART_TXBuffer_PutByte.  </dd>
+<dt><a class="anchor" id="_todo000006"></a>File <a class="el" href="_u_a_r_t_8c.html">UART.c</a>  </dt>
 <dd>Change the UART-Functions - add an extra value for the Port used and not an simple string to select it in the Function for both Init Functions  </dd>
-<dt><a class="anchor" id="_todo000007"></a>Global <a class="el" href="_u_a_r_t_8h.html#a267c0b0bf7f4f8b70049d91449590cf8">usart_init_pc</a>  (void)</dt>
+<dt><a class="anchor" id="_todo000008"></a>Global <a class="el" href="_u_a_r_t_8h.html#a267c0b0bf7f4f8b70049d91449590cf8">usart_init_pc</a>  (void)</dt>
 <dd>Maybe merge the init Functions. But think of a good way to configure the Params like Baudrate, Parity etc  </dd>
-<dt><a class="anchor" id="_todo000006"></a>Global <a class="el" href="_u_a_r_t_8h.html#a09e438e4f709b00836cebb0d6a44f223">usart_init_tpuart</a>  (void)</dt>
+<dt><a class="anchor" id="_todo000007"></a>Global <a class="el" href="_u_a_r_t_8h.html#a09e438e4f709b00836cebb0d6a44f223">usart_init_tpuart</a>  (void)</dt>
 <dd>Check if the TPUART2 Parity Specs from the DS also applies to the TPUART1 - TPUART1 Datasheet(p.10) is missing the parity specs - TPUART2 DS(p.21) says even, so lets try even; Maybe merge the Init functions </dd>
 </dl>
 </div></div><!-- contents -->

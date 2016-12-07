@@ -83,7 +83,7 @@ Definition at line 29 of file U\+A\+R\+T.\+h.
 
 
 
-Referenced by ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer(), I\+S\+R(), main(), prod\+\_\+request(), receive\+\_\+char\+\_\+from\+\_\+usart(), receive\+\_\+string\+\_\+from\+\_\+usart(), res\+\_\+busymode(), reset\+\_\+request(), setaddress(), shell\+\_\+help(), state\+\_\+request(), and usart\+\_\+init\+\_\+pc().
+Referenced by ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer(), I\+S\+R(), main(), prod\+\_\+request(), receive\+\_\+char\+\_\+from\+\_\+usart(), receive\+\_\+string\+\_\+from\+\_\+usart(), res\+\_\+busymode(), reset\+\_\+request(), send\+\_\+data(), setaddress(), shell\+\_\+help(), state\+\_\+request(), and usart\+\_\+init\+\_\+pc().
 
 \hypertarget{_u_a_r_t_8h_a7e4c39f87161948fe2dfe6210b9c4dcc}{}\label{_u_a_r_t_8h_a7e4c39f87161948fe2dfe6210b9c4dcc} 
 \index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP@{U\+S\+A\+R\+T\+\_\+\+D\+A\+T\+A\+\_\+\+TP}}
@@ -97,7 +97,7 @@ Definition at line 28 of file U\+A\+R\+T.\+h.
 
 
 
-Referenced by ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), I\+S\+R(), prod\+\_\+request(), res\+\_\+busymode(), reset\+\_\+request(), setaddress(), state\+\_\+request(), and usart\+\_\+init\+\_\+tpuart().
+Referenced by ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), I\+S\+R(), prod\+\_\+request(), res\+\_\+busymode(), reset\+\_\+request(), send\+\_\+data(), setaddress(), state\+\_\+request(), and usart\+\_\+init\+\_\+tpuart().
 
 \hypertarget{_u_a_r_t_8h_afa824feb2f96215f922676624f567617}{}\label{_u_a_r_t_8h_afa824feb2f96215f922676624f567617} 
 \index{U\+A\+R\+T.\+h@{U\+A\+R\+T.\+h}!U\+S\+A\+R\+T\+\_\+\+PC@{U\+S\+A\+R\+T\+\_\+\+PC}}
@@ -149,7 +149,7 @@ This Method flushs the RX Buffer.
 \end{DoxyParams}
 
 
-Definition at line 198 of file U\+A\+R\+T.\+c.
+Definition at line 201 of file U\+A\+R\+T.\+c.
 
 
 
@@ -190,7 +190,7 @@ This Method waits till one char is in the given U\+S\+A\+R\+T-\/\+Buffer -\/ No 
 \end{DoxyParams}
 
 
-Definition at line 175 of file U\+A\+R\+T.\+c.
+Definition at line 178 of file U\+A\+R\+T.\+c.
 
 
 
@@ -217,12 +217,14 @@ This Method reads out the data of the Ring\+Buffer and returns a string.
 \begin{DoxyParams}{Parameters}
 {\em U\+S\+A\+R\+T\+\_\+data} & The U\+S\+A\+R\+T\+\_\+data\+\_\+t struct instance. \\
 \hline
-{\em output} & The String-\/\+Pointer where the Output is stored \\
+{\em output} & The String-\/\+Pointer where the Output is stored\\
 \hline
 \end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000009}{Todo}]May add the ret val boolean to indicate if data was received at all\end{DoxyRefDesc}
 
 
-Definition at line 148 of file U\+A\+R\+T.\+c.
+Definition at line 150 of file U\+A\+R\+T.\+c.
 
 
 
@@ -230,7 +232,7 @@ References send\+\_\+string\+\_\+pgm\+\_\+to\+\_\+usart(), send\+\_\+string\+\_\
 
 
 
-Referenced by ack\+Info(), act\+\_\+busmon(), enter\+\_\+shell(), main(), prod\+\_\+request(), reset\+\_\+request(), setaddress(), and state\+\_\+request().
+Referenced by ack\+Info(), act\+\_\+busmon(), enter\+\_\+shell(), main(), prod\+\_\+request(), reset\+\_\+request(), send\+\_\+data(), setaddress(), and state\+\_\+request().
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -274,7 +276,7 @@ References U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
 
 
 
-Referenced by ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer(), main(), prod\+\_\+request(), receive\+\_\+char\+\_\+from\+\_\+usart(), receive\+\_\+string\+\_\+from\+\_\+usart(), res\+\_\+busymode(), reset\+\_\+request(), setaddress(), shell\+\_\+help(), and state\+\_\+request().
+Referenced by ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), flush\+\_\+\+U\+S\+A\+R\+T\+\_\+\+R\+X\+Buffer(), main(), prod\+\_\+request(), receive\+\_\+char\+\_\+from\+\_\+usart(), receive\+\_\+string\+\_\+from\+\_\+usart(), res\+\_\+busymode(), reset\+\_\+request(), send\+\_\+data(), setaddress(), shell\+\_\+help(), and state\+\_\+request().
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -319,7 +321,7 @@ References U\+S\+A\+R\+T\+\_\+\+T\+X\+Buffer\+\_\+\+Put\+Byte().
 
 
 
-Referenced by ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), main(), prod\+\_\+request(), receive\+\_\+string\+\_\+from\+\_\+usart(), res\+\_\+busymode(), reset\+\_\+request(), setaddress(), shell\+\_\+help(), and state\+\_\+request().
+Referenced by ack\+Info(), act\+\_\+busmon(), act\+\_\+busymode(), enter\+\_\+shell(), main(), prod\+\_\+request(), receive\+\_\+string\+\_\+from\+\_\+usart(), res\+\_\+busymode(), reset\+\_\+request(), send\+\_\+data(), setaddress(), shell\+\_\+help(), and state\+\_\+request().
 
 Here is the call graph for this function\+:
 \nopagebreak
@@ -356,7 +358,7 @@ It Uses the U\+S\+A\+R\+T\+C1 and\+:
 \end{DoxyItemize}
 
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000007}{Todo}]Maybe merge the init Functions. But think of a good way to configure the Params like Baudrate, Parity etc \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000008}{Todo}]Maybe merge the init Functions. But think of a good way to configure the Params like Baudrate, Parity etc \end{DoxyRefDesc}
 \begin{DoxyNote}{Note}
 The Code is taken from the usart\+\_\+example\+\_\+interrupt.\+c-\/\+File and is edited to the needed values 
 \end{DoxyNote}
@@ -407,7 +409,7 @@ It Uses the U\+S\+A\+R\+T\+C0 and\+:
 \end{DoxyItemize}
 
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000006}{Todo}]Check if the T\+P\+U\+A\+R\+T2 Parity Specs from the DS also applies to the T\+P\+U\+A\+R\+T1 -\/ T\+P\+U\+A\+R\+T1 Datasheet(p.\+10) is missing the parity specs -\/ T\+P\+U\+A\+R\+T2 DS(p.\+21) says even, so lets try even; Maybe merge the Init functions \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000007}{Todo}]Check if the T\+P\+U\+A\+R\+T2 Parity Specs from the DS also applies to the T\+P\+U\+A\+R\+T1 -\/ T\+P\+U\+A\+R\+T1 Datasheet(p.\+10) is missing the parity specs -\/ T\+P\+U\+A\+R\+T2 DS(p.\+21) says even, so lets try even; Maybe merge the Init functions \end{DoxyRefDesc}
 \begin{DoxyNote}{Note}
 The Code is taken from the usart\+\_\+example\+\_\+interrupt.\+c-\/\+File and is edited to the needed values 
 \end{DoxyNote}

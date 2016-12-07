@@ -574,7 +574,7 @@ void send_data(void) {
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("---------------------------------\n\r"));
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("| F | F | R | 1 | c | c | 0 | 0 |\n\r"));
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("---------------------------------\n\r"));
-		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("FF = Frame Format; 10 Stad Length; 00 ext; 11 L_POLLDATA\n\r"));
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("FF = Frame Format; 10 Standard Length; 00 ext; 11 L_POLLDATA\n\r"));
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("R = Repeatflag; 1 = not repeated, 0 = repeated\n\r"));
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("cc = 00 system; 10 alarm; 01 high; 11 normal\n\r"));
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter EIB-Control field!(As Hex with leading 0x otherwise as decimal or if it begins with 0 than its octal!)\n\r"));
