@@ -1,7 +1,0 @@
-<map id="set_clock_32MHz" name="set_clock_32MHz">
-<area shape="rect" id="node2" href="$clksys__driver_8c.html#a581c15c6c0b2eaa0c81f0b5cafc3b82d" title="This function enables automatic calibration of the selected internal oscillator. " alt="" coords="191,5,360,47"/>
-<area shape="rect" id="node3" href="$clksys__driver_8c.html#a6225fea8fc405c6d1dab88d0ad537173" title="This function lock the entire clock system configuration. " alt="" coords="180,71,371,98"/>
-<area shape="rect" id="node5" href="$clksys__driver_8c.html#a31b1ca1994b6a687974a119d1ad8008c" title="This function disables the selected oscillator. " alt="" coords="213,122,337,149"/>
-<area shape="rect" id="node6" href="$clksys__driver_8c.html#a1e46c4a8f01a83d4e4747d32d113e7e2" title="This function selects the main system clock source. " alt="" coords="180,173,371,215"/>
-<area shape="rect" id="node4" href="$clksys__driver_8c.html#aad4e162434c2cc7e0087bbc0ddfe266c" title="CCP write helper function written in assembly. " alt="" coords="419,126,499,153"/>
-</map>

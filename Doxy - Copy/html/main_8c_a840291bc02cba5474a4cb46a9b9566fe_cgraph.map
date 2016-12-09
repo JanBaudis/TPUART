@@ -1,8 +1,0 @@
-<map id="main" name="main">
-<area shape="rect" id="node2" href="$clock_8c.html#a23a363c676847b1b84e6149472897fa2" title="This function inits, calibrates and changes the clock. " alt="" coords="104,97,231,123"/>
-<area shape="rect" id="node3" href="$clksys__driver_8c.html#a581c15c6c0b2eaa0c81f0b5cafc3b82d" title="This function enables automatic calibration of the selected internal oscillator. " alt="" coords="289,5,459,47"/>
-<area shape="rect" id="node4" href="$clksys__driver_8c.html#a6225fea8fc405c6d1dab88d0ad537173" title="This function lock the entire clock system configuration. " alt="" coords="279,71,469,98"/>
-<area shape="rect" id="node6" href="$clksys__driver_8c.html#a31b1ca1994b6a687974a119d1ad8008c" title="This function disables the selected oscillator. " alt="" coords="312,122,436,149"/>
-<area shape="rect" id="node7" href="$clksys__driver_8c.html#a1e46c4a8f01a83d4e4747d32d113e7e2" title="This function selects the main system clock source. " alt="" coords="279,173,469,215"/>
-<area shape="rect" id="node5" href="$clksys__driver_8c.html#aad4e162434c2cc7e0087bbc0ddfe266c" title="CCP write helper function written in assembly. " alt="" coords="517,126,597,153"/>
-</map>

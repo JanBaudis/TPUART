@@ -105,6 +105,8 @@ void enter_shell(USART_data_t *USART_data) {
  *
  *  Sends the U_reset.request to the TPUART and prints the Output as bits to the PC
  *
+ *	\todo Look up why there is no Reset.Indication
+ *
  */
 void reset_request(void) {
 	
@@ -215,7 +217,21 @@ void act_busmon(void) {
 	
 	while (!USART_RXBufferData_Available(&USART_DATA_PC))
 	{
-		// Collects the received Data every 50ms
+		
+		while (!USART_RXBufferData_Available(&USART_DATA_TP));
+		response[0] = USART_RXBuffer_GetByte(&USART_DATA_TP);
+		
+		itoa(response[0],output,2);
+		strcat(output,"\n\r");
+		send_string_to_usart(&USART_DATA_PC, output);
+		
+		i++;
+		if (i == 4) {
+			_delay_us(300);
+			USART_TXBuffer_PutByte(&USART_DATA_TP, 0x11); //Sends the U_AckInformation-Service to the TPUART
+		}
+		
+		/*// Collects the received Data every 50ms
 		_delay_ms(50);
 		receive_string_from_usart(&USART_DATA_TP, response);
 
@@ -227,6 +243,7 @@ void act_busmon(void) {
 			send_string_to_usart(&USART_DATA_PC, output);
 			i++;
 		}
+		i = 0;*/
 	}
 	
 	// Flush the Buffer to remove the any key
@@ -646,7 +663,7 @@ void send_data(void) {
 	
 	//Calculate Parity - Odd Parity Horizontal - May rework since this has a lot of memory access and is kind of long code; i think its better to just set parity to FF and ^ with the addinfo[i]
 	
-	for (int i = 1; i <= dataindex; i++) {
+	for (int i = 0; i <= dataindex; i++) {
 		parity = parity ^ addinfo[i];
 	}
 	
