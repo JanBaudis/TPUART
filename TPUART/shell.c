@@ -1,9 +1,9 @@
 /*! \file *********************************************************************
- *  \brief		Implements a basic "shell" to communicate with the TPUART/KNX and Debug things. Data sheet KNX EIB TP-UART 2+ page 22 and following
- *  \author		Jan Baudis
- *	\date		03.12.2016 01:01:54
- *	\note		Buffer Size in the usart_driver.h has to be changed if the commands are too big - it only evaluates the received string when enter is pressed.
- *	\todo		Maybe disable RX for the PC while working on a command! I should switch from USART_TXBuffer_PutByte to send_string or evaluate the retval of USART_TXBuffer_PutByte.
+*  \brief		Implements a basic "shell" to communicate with the TPUART/KNX and Debug things. Data sheet KNX EIB TP-UART 2+ page 22 and following
+*  \author		Jan Baudis
+*	\date		03.12.2016 01:01:54
+*	\note		Buffer Size in the usart_driver.h has to be changed if the commands are too big - it only evaluates the received string when enter is pressed.
+*	\todo		Maybe disable RX for the PC while working on a command! I should switch from USART_TXBuffer_PutByte to send_string or evaluate the retval of USART_TXBuffer_PutByte.
 *****************************************************************************/
 
 #include "shell.h"
@@ -14,11 +14,11 @@ char command[33];
 
 
 /*! \brief Enter the "Shell"
- *
- *  In the "Shell" we can e.g. use the Services of the TPUART
- *
- *  \param USART_data The USART_data_t struct instance.
- */
+*
+*  In the "Shell" we can e.g. use the Services of the TPUART
+*
+*  \param USART_data The USART_data_t struct instance.
+*/
 void enter_shell(USART_data_t *USART_data) {
 	while (1) {
 		if (ret_pressed == 1) {
@@ -102,12 +102,12 @@ void enter_shell(USART_data_t *USART_data) {
 }
 
 /*! \brief Shell-Function for the U_reset.request-Service
- *
- *  Sends the U_reset.request to the TPUART and prints the Output as bits to the PC
- *
- *	\todo Look up why there is no Reset.Indication
- *
- */
+*
+*  Sends the U_reset.request to the TPUART and prints the Output as bits to the PC
+*
+*	\todo Look up why there is no Reset.Indication
+*
+*/
 void reset_request(void) {
 	
 	char response[USART_RX_BUFFER_SIZE+1];
@@ -146,10 +146,10 @@ void reset_request(void) {
 }
 
 /*! \brief Shell-Function for the U_state.request-Service
- *
- *  Sends the U_state.request to the TPUART and prints the Output as bits to the PC
- *
- */
+*
+*  Sends the U_state.request to the TPUART and prints the Output as bits to the PC
+*
+*/
 void state_request(void) {
 	
 	char response[USART_RX_BUFFER_SIZE+1];
@@ -188,13 +188,13 @@ void state_request(void) {
 }
 
 /*! \brief Shell-Function for the U_ActivateBusmon-Service
- *
- *  Sends the U_ActivateBusmon to the TPUART and prints the Output as bits to the PC. Listens till it receives any Key from the PC. Then it Resets the Chip since its the Only way to quit the Busmon-Mode of the TPUART.
- *
- *		\todo Implement an end of Packet detection to print out some useful Information for the Bits.
- *		\note ATM there is a (good) chance that the RX Buffer Overflows.
- *
- */
+*
+*  Sends the U_ActivateBusmon to the TPUART and prints the Output as bits to the PC. Listens till it receives any Key from the PC. Then it Resets the Chip since its the Only way to quit the Busmon-Mode of the TPUART.
+*
+*		\todo Implement an end of Packet detection to print out some useful Information for the Bits.
+*		\note ATM there is a (good) chance that the RX Buffer Overflows.
+*
+*/
 void act_busmon(void) {
 	
 	char response[USART_RX_BUFFER_SIZE+1];
@@ -218,47 +218,54 @@ void act_busmon(void) {
 	while (!USART_RXBufferData_Available(&USART_DATA_PC))
 	{
 		
-		while (!USART_RXBufferData_Available(&USART_DATA_TP));
-		response[0] = USART_RXBuffer_GetByte(&USART_DATA_TP);
+		while (!USART_RXBufferData_Available(&USART_DATA_TP)); //Blocks
+		response[0] = USART_RXBuffer_GetByte(&USART_DATA_TP);  //Blocks
 		
 		itoa(response[0],output,2);
 		strcat(output,"\n\r");
 		send_string_to_usart(&USART_DATA_PC, output);
 		
-		i++;
+		/*i++;
 		if (i == 4) {
-			_delay_us(300);
-			USART_TXBuffer_PutByte(&USART_DATA_TP, 0x11); //Sends the U_AckInformation-Service to the TPUART
+		_delay_us(2000);
+		USART_TXBuffer_PutByte(&USART_DATA_TP, 0x11); //Sends the U_AckInformation-Service to the TPUART
 		}
 		
-		/*// Collects the received Data every 50ms
-		_delay_ms(50);
+		//_delay_us(100);
+		//USART_TXBuffer_PutByte(&USART_DATA_TP, 0x11); //Sends the U_AckInformation-Service to the TPUART
+		
+		// Collects the received Data every 50ms
+		_delay_ms(1000);
 		receive_string_from_usart(&USART_DATA_TP, response);
+		int j = sizeof(response);
 
 		// Loops till response hits the \0 which the Function receive_string_from_usart Function appends
-		while (response[i])
+		while (i < j)
 		{
-			itoa(response[i],output,2);
-			strcat(output,"\n\r");
-			send_string_to_usart(&USART_DATA_PC, output);
-			i++;
+		itoa(response[i],output,2);
+		strcat(output,"\n\r");
+		send_string_to_usart(&USART_DATA_PC, output);
+		i++;
 		}
 		i = 0;*/
 	}
 	
 	// Flush the Buffer to remove the any key
-	flush_USART_RXBuffer(&USART_DATA_TP);
+	flush_USART_RXBuffer(&USART_DATA_PC);
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_ActivateBusmon finished!\n\r"));
 	reset_request();
 	
+	// Flush the Buffer to remove reset response
+	flush_USART_RXBuffer(&USART_DATA_TP);
+	
 }
 
 /*! \brief Shell-Function for the U_ProductID.request-Service
- *
- *  Sends the U_ProductID.request to the TPUART and prints the Output as bits to the PC
- *
- */
+*
+*  Sends the U_ProductID.request to the TPUART and prints the Output as bits to the PC
+*
+*/
 void prod_request(void) {
 	
 	char response[USART_RX_BUFFER_SIZE+1];
@@ -297,12 +304,12 @@ void prod_request(void) {
 }
 
 /*! \brief Shell-Function for the U_ActivateBusyMode
- *
- *  Sends the U_ActivateBusyMode to the TPUART.
- *	TP-UART responses on every Packet which is addressed to him with BUSY within 700ms (+-10ms). All Packets are send to the Host and if the Host confirms one with U_Ackinfo it will leave BusyMode as well when reseted.
- *
- *	\todo May add something; Dunno like a Listen Mode for 700ms;
- */
+*
+*  Sends the U_ActivateBusyMode to the TPUART.
+*	TP-UART responses on every Packet which is addressed to him with BUSY within 700ms (+-10ms). All Packets are send to the Host and if the Host confirms one with U_Ackinfo it will leave BusyMode as well when reseted.
+*
+*	\todo May add something; Dunno like a Listen Mode for 700ms;
+*/
 void act_busymode(void) {
 	
 	#ifdef DEBUG
@@ -323,10 +330,10 @@ void act_busymode(void) {
 
 
 /*! \brief Shell-Function for the U_ResetBusyMode
- *
- *  Sends the U_ResetBusyMode to the TPUART. So the TPUART immediately leaves the BUSY Mode.
- *
- */
+*
+*  Sends the U_ResetBusyMode to the TPUART. So the TPUART immediately leaves the BUSY Mode.
+*
+*/
 void res_busymode(void) {
 	
 	#ifdef DEBUG
@@ -346,17 +353,17 @@ void res_busymode(void) {
 }
 
 /*! \brief Shell-Function for the U_SetAddress
- *
- *  Sends the U_SetAddress to the TPUART and prompts for the Address to set.
- *	---------------------------------	---------------------------------
- *	| physical address high			|	| physical address low			|
- *	---------------------------------	---------------------------------
- *	| 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |	| 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
- *	---------------------------------	---------------------------------
- *	| a | a | a | a | l | l | l | l |	| d | d | d | d | d | d | d | d |
- *	---------------------------------	---------------------------------
- *
- */
+*
+*  Sends the U_SetAddress to the TPUART and prompts for the Address to set.
+*	---------------------------------	---------------------------------
+*	| physical address high			|	| physical address low			|
+*	---------------------------------	---------------------------------
+*	| 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |	| 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+*	---------------------------------	---------------------------------
+*	| a | a | a | a | l | l | l | l |	| d | d | d | d | d | d | d | d |
+*	---------------------------------	---------------------------------
+*
+*/
 void setaddress(void) {
 	
 	#ifdef DEBUG
@@ -390,7 +397,7 @@ void setaddress(void) {
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Use only Decimal Numbers and hit Return after it. It will be converted into Binary and shifted to right place.\n\r"));
 	
 	// a cant be higher than 16
-	do 
+	do
 	{
 		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Enter a(0-16):\n\r"));
 		
@@ -483,12 +490,12 @@ void setaddress(void) {
 }
 
 /*! \brief Shell-Function for the U_AckInformation-Service
- *
- *  Sends the U_AckInformation to the TPUART. This must be sent latest 2,8ms after receiving the address type octet of an addressed frame. Its used to evaluate the Address on the Host side. More on p. 25 ff off the TPUART 2+ Data sheet.
- *
- *	\todo Implement this as a feature for receiving Frames in general. Since it only makes sense if its send after 2,8ms of an addressed frame. Look up if it can set more than one Flag! - Maybe its also important to implement for the Bus-Sniffer
- *
- */
+*
+*  Sends the U_AckInformation to the TPUART. This must be sent latest 2,8ms after receiving the address type octet of an addressed frame. Its used to evaluate the Address on the Host side. More on p. 25 ff off the TPUART 2+ Data sheet.
+*
+*	\todo Implement this as a feature for receiving Frames in general. Since it only makes sense if its send after 2,8ms of an addressed frame. Look up if it can set more than one Flag! - Maybe its also important to implement for the Bus-Sniffer
+*
+*/
 void ackInfo(void) {
 	
 	#ifdef DEBUG
@@ -542,14 +549,14 @@ void ackInfo(void) {
 
 
 /*! \brief Shell-Function for the U_L_DataStart-Service, U_L_DataContinue-Service and U_L_DataEnd-Service to send a KNX-Frame
- *
- *  Sends the U_L_DataStart-Service, U_L_DataContinue-Service and U_L_DataEnd-Service to the TPUART. The Additional Information of the U_L_DataStart-Service contains the EIB-Controlfield Information. And in the the Case of U_L_DataContinue-Service it contains the Payload.
- *	The U_L_DataEnd-Service`s Additional Information contains the Checksum and the command also contains the length.
- *
- *	\note	Be aware the RingBuffer-Size is a limiting factor since the TPUART`s response will is the whole Packet.
- *	\todo	Rework Calc parity. Chance that the RX Buffer overflows!
- *
- */
+*
+*  Sends the U_L_DataStart-Service, U_L_DataContinue-Service and U_L_DataEnd-Service to the TPUART. The Additional Information of the U_L_DataStart-Service contains the EIB-Controlfield Information. And in the the Case of U_L_DataContinue-Service it contains the Payload.
+*	The U_L_DataEnd-Service`s Additional Information contains the Checksum and the command also contains the length.
+*
+*	\note	Be aware the RingBuffer-Size is a limiting factor since the TPUART`s response will is the whole Packet.
+*	\todo	Rework Calc parity. Chance that the RX Buffer overflows!
+*
+*/
 void send_data(void) {
 	
 	#ifdef DEBUG
@@ -668,15 +675,15 @@ void send_data(void) {
 	}
 	
 	/*for (int i = 7; i < 0; i--) {
-		uint8_t temp = 0;
-		for (int j = 1; j <= dataindex; j++) {
-			if ( (addinfo[j] & (0x01 << i)) == (0x01 << i) ) {
-				temp++;
-			}
-		}
-		if ( (temp & 0x01) == 0x00 ) {
-			parity = parity | ( 0x01 << i );
-		}
+	uint8_t temp = 0;
+	for (int j = 1; j <= dataindex; j++) {
+	if ( (addinfo[j] & (0x01 << i)) == (0x01 << i) ) {
+	temp++;
+	}
+	}
+	if ( (temp & 0x01) == 0x00 ) {
+	parity = parity | ( 0x01 << i );
+	}
 	}*/
 	
 	#ifdef DEBUG
@@ -698,7 +705,7 @@ void send_data(void) {
 	
 	// U_L_DataEnd
 	while(!USART_TXBuffer_FreeSpace(&USART_DATA_TP));
-	USART_TXBuffer_PutByte(&USART_DATA_TP, (0x40 | dataindex ) ); //Sends the U_L_DataEnd-Service to the TPUART
+	USART_TXBuffer_PutByte(&USART_DATA_TP, (0x40 | (dataindex+1) ) ); //Sends the U_L_DataEnd-Service to the TPUART
 	while(!USART_TXBuffer_FreeSpace(&USART_DATA_TP));
 	USART_TXBuffer_PutByte(&USART_DATA_TP, parity ); //Sends the U_L_DataEnd-Service to the TPUART
 	
@@ -706,16 +713,24 @@ void send_data(void) {
 	_delay_ms(200);
 	
 	// Collects the received Data
-	receive_string_from_usart(&USART_DATA_TP, response);
+	//receive_string_from_usart(&USART_DATA_TP, response);
 
 	// Loops till response hits the \0 which the Function receive_string_from_usart Function appends
-	while (response[r])	{
-		itoa(response[r],output,2);
+	/*while (response[r])	{
+	itoa(response[r],output,2);
+	strcat(output,"\n\r");
+	send_string_to_usart(&USART_DATA_PC, output);
+	r++;
+	}*/
+	
+	
+	while (USART_RXBufferData_Available(&USART_DATA_TP)){ //Blocks
+		response[0] = USART_RXBuffer_GetByte(&USART_DATA_TP);  //Blocks
+		
+		itoa(response[0],output,2);
 		strcat(output,"\n\r");
 		send_string_to_usart(&USART_DATA_PC, output);
-		r++;
 	}
-	
 	
 	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_L_DataStart-Service finished!\n\r"));
 	
