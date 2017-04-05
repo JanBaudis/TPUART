@@ -47,6 +47,10 @@ void enter_shell(USART_data_t *USART_data) {
 			{
 				state_request();
 			}
+			else if (strncmp(command, "act_busmon2",11) == 0)
+			{
+				act_busmon2();
+			}
 			else if (strncmp(command, "act_busmon",10) == 0)
 			{
 				act_busmon();
@@ -258,6 +262,80 @@ void act_busmon(void) {
 	
 	// Flush the Buffer to remove reset response
 	flush_USART_RXBuffer(&USART_DATA_TP);
+	
+}
+
+/*! \brief Shell-Function for the U_ActivateBusmon-Service
+*
+*  Sends the U_ActivateBusmon to the TPUART and prints the Output as bits to the PC. Listens till it receives any Key from the PC. Then it Resets the Chip since its the Only way to quit the Busmon-Mode of the TPUART.
+*
+*		\todo Implement an end of Packet detection to print out some useful Information for the Bits.
+*		\note ATM there is a (good) chance that the RX Buffer Overflows.
+*
+*/
+void act_busmon2(void) {
+	
+	char response[USART_RX_BUFFER_SIZE+1];
+	char output[9];
+	int i=0;
+	
+	#ifdef DEBUG
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Command:")); // Sends Debug Info to PC
+	send_string_to_usart(&USART_DATA_PC, command);
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r")); // Sends Debug Info to PC
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG - Entering act_busmon2()\n\r")); // Sends Debug Info to PC
+	#endif
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Sending U_ActivateBusmon...\n\r"));
+	
+	USART_TXBuffer_PutByte(&USART_DATA_TP_ext, 0x05); //Sends the U_ActivateBusmon-Service to the TPUART
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("Received Packets:\n\r"));
+	
+	while (!USART_RXBufferData_Available(&USART_DATA_PC))
+	{
+		
+		while (!USART_RXBufferData_Available(&USART_DATA_TP_ext)); //Blocks
+		response[0] = USART_RXBuffer_GetByte(&USART_DATA_TP_ext);  //Blocks
+		
+		itoa(response[0],output,2);
+		strcat(output,"\n\r");
+		send_string_to_usart(&USART_DATA_PC, output);
+		
+		/*i++;
+		if (i == 4) {
+		_delay_us(2000);
+		USART_TXBuffer_PutByte(&USART_DATA_TP, 0x11); //Sends the U_AckInformation-Service to the TPUART
+		}
+		
+		//_delay_us(100);
+		//USART_TXBuffer_PutByte(&USART_DATA_TP, 0x11); //Sends the U_AckInformation-Service to the TPUART
+		
+		// Collects the received Data every 50ms
+		_delay_ms(1000);
+		receive_string_from_usart(&USART_DATA_TP, response);
+		int j = sizeof(response);
+
+		// Loops till response hits the \0 which the Function receive_string_from_usart Function appends
+		while (i < j)
+		{
+		itoa(response[i],output,2);
+		strcat(output,"\n\r");
+		send_string_to_usart(&USART_DATA_PC, output);
+		i++;
+		}
+		i = 0;*/
+	}
+	
+	// Flush the Buffer to remove the any key
+	flush_USART_RXBuffer(&USART_DATA_PC);
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("U_ActivateBusmon finished!\n\r"));
+	reset_request();
+	
+	// Flush the Buffer to remove reset response
+	flush_USART_RXBuffer(&USART_DATA_TP_ext);
 	
 }
 

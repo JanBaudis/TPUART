@@ -21,6 +21,7 @@ void shell_help(void);
 void reset_request(void);
 void state_request(void);
 void act_busmon(void);
+void act_busmon2(void);
 void prod_request(void);
 void act_busymode(void);
 void res_busymode(void);

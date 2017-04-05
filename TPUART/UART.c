@@ -9,7 +9,9 @@
 #include "UART.h"
 
 volatile int ret_pressed = 0;
+volatile uint8_t ack_number = 0;
 
+volatile uint8_t parity = 0xFF;
 
 
 /*! \brief This Method enables and initializes the USART for the specific purpose to communicate with the TPUART1 Chip
@@ -53,6 +55,50 @@ void usart_init_tpuart(void){
 	PMIC.CTRL |= PMIC_LOLVLEX_bm;
 	
 }
+
+
+/*! \brief This Method enables and initializes the USART for the specific purpose to communicate with the TPUART1 Chip
+ *
+ *			It Uses the USARTD0 and:
+ *				- 8 bit character size
+ *				- Even parity
+ *				- 1 stop bit
+ *				- 19200 Baud
+ *
+ *		\todo Check if the TPUART2 Parity Specs from the DS also applies to the TPUART1 - TPUART1 Datasheet(p.10) is missing the parity specs - TPUART2 DS(p.21) says even, so lets try even; Maybe merge the Init functions
+ *		\note The Code is taken from the usart_example_interrupt.c-File and is edited to the needed values
+ *
+*/
+void usart_init_tpuart_ext(void){
+	
+	// Using the USART0 of Port C - so set the IO Pins as in- and output.
+	PORTD.DIRCLR   = PIN2_bm; // Sets PC2 (RXD0) as input.
+	PORTD.DIRSET   = PIN3_bm; // Sets PC3 (TXD0) as output.
+	
+	/* Use USARTC0 and initialize buffers. */
+	USART_InterruptDriver_Initialize(&USART_DATA_TP_ext, &USART_TP_ext, USART_DREINTLVL_LO_gc);
+	
+	/* USARTC0, 8 Data bits, Even Parity, 1 Stop bit. */
+	USART_Format_Set(USART_DATA_TP_ext.usart, USART_CHSIZE_8BIT_gc,USART_PMODE_EVEN_gc, false); //TPUART1 Datasheet(p.10) is missing the parity specs - TPUART2 DS(p.21) says even, so lets try even
+	
+	/* Enable RXC interrupt. */
+	USART_RxdInterruptLevel_Set(USART_DATA_TP_ext.usart, USART_RXCINTLVL_LO_gc);
+	
+	/* Set Baudrate to 19200 bps:
+	 * Use the 32MHz clock.
+	 * If ScaleFactor < 0 BSEL = (1/(2^(ScaleFactor)*16))*(((I/O clock frequency)/Baudrate)-1) is documented in the avr1307-docs but the excel sheet from atmel says 1651
+	 */
+	USART_Baudrate_Set(&USART_TP_ext, 1651 , 0x0C); // The third param uses uint8 - little bit confusing but as long as the 4bits for the BSCALE are set/coded correct (two`s complement)-7(1001) to +7(0111) - so i think its better to use the hexadecimal way
+	
+	/* Enable both RX and TX. */
+	USART_Rx_Enable(USART_DATA_TP_ext.usart);
+	USART_Tx_Enable(USART_DATA_TP_ext.usart);
+	
+	/* Enable PMIC interrupt level low. */
+	PMIC.CTRL |= PMIC_LOLVLEX_bm;
+	
+}
+
 
 /*! \brief This Method enables and initializes the USART for the specific purpose to communicate with e.g. a PC
  *
@@ -259,10 +305,9 @@ ISR(USARTC1_RXC_vect)
 {
 	USART_RXComplete(&USART_DATA_PC);
 	
-	/*! If it receives the Return-Key(13) it changes ret_pressed so the Shell can evalute the command */
 	if (USART_data_c1.buffer.RX[(USART_data_c1.buffer.RX_Head - 1) & USART_RX_BUFFER_MASK] == 0x0D) {
 		ret_pressed = 1;
-	} 
+	}
 }
 
 
@@ -278,4 +323,118 @@ ISR(USARTC1_RXC_vect)
 ISR(USARTC1_DRE_vect)
 {
 	USART_DataRegEmpty(&USART_DATA_PC);
+}
+
+/*! \brief Receive complete interrupt service routine.
+ *
+ *  Receive complete interrupt service routine.
+ *  Calls the common receive complete handler with pointer to the correct USART
+ *  as argument.
+ *
+ */
+ISR(USARTD0_RXC_vect)
+{
+	
+	#ifdef DEBUG
+	char debug_str[9];
+	#endif
+	
+	
+	//USART_RXComplete(&USART_DATA_TP_ext);
+	
+	uint8_t data = USART_DATA_TP_ext.usart->DATA;
+	
+	//USART_PutChar(&USART_PC, ack_number + 48 );
+	//USART_PutChar(&USART_PC, data + 48 );
+	
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("D-B:"));
+	itoa(data, debug_str, 2);
+	send_string_to_usart(&USART_DATA_PC, debug_str );
+	send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r"));
+	
+	// Send Ack
+	if (ack_number == 6)
+	{
+		while(!USART_IsTXDataRegisterEmpty(&USART_TP_ext));
+		_delay_us(200);
+		USART_PutChar(&USART_TP_ext, 0x11); // A lil bit ugly - and this could become a deadlock. TODO!
+		//USART_TXBuffer_PutByte(&USART_DATA_TP_ext, 0x11);
+		
+		//send_string_pgm_to_usart(&USART_DATA_PC, PSTR("D: Ack\n\r"));
+		//ack_number = 0;
+	}
+	
+	if (ack_number == 8) // Ugly hack cause we dont get the chechsum TODO
+	{
+		// Ugly hack cause we dont get the chechsum TODO
+		// Send all data to the other TPUART
+		/*while(!USART_IsTXDataRegisterEmpty(&USART_TP));
+		USART_PutChar(&USART_TP, (0x80 | ack_number ) ); //Sends the U_L_DataStart/Continue-Service to the TPUART
+		while(!USART_IsTXDataRegisterEmpty(&USART_TP));
+		USART_PutChar(&USART_TP, USART_data_d0.buffer.RX[(USART_data_d0.buffer.RX_Head - 1) & USART_RX_BUFFER_MASK]); // A lil bit ugly - and this could become a deadlock. TODO!
+		
+		if (USART_data_d0.buffer.RX[(USART_data_d0.buffer.RX_Head - 1) & USART_RX_BUFFER_MASK] == 0x80) {
+			parity = 0x19;
+		} else {
+			parity = 0x18;
+		}*/
+		
+		parity = data;
+		
+		// Send all data to the other TPUART
+		while(!USART_TXBuffer_FreeSpace(&USART_DATA_TP));
+		USART_TXBuffer_PutByte(&USART_DATA_TP, (0x40 | (ack_number) ) ); //Sends the U_L_DataEnd-Service to the TPUART
+		while(!USART_TXBuffer_FreeSpace(&USART_DATA_TP));
+		USART_TXBuffer_PutByte(&USART_DATA_TP, parity ); //Sends the U_L_DataEnd-Service to the TPUART
+		
+		//send_string_pgm_to_usart(&USART_DATA_PC, PSTR("D: F-End!\n\r"));
+		
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("DEBUG: Last_Byte:"));
+		itoa(data, debug_str, 2);
+		send_string_to_usart(&USART_DATA_PC, debug_str );
+		send_string_pgm_to_usart(&USART_DATA_PC, PSTR("\n\r"));
+		
+		parity = 0xFF;
+		
+		ack_number = 0;
+	}
+	
+	/* Count - TODO: ATM really dirty hack for the presentation */
+	if (ack_number > 0)
+	{
+		
+		// Send all data to the other TPUART
+		while(!USART_IsTXDataRegisterEmpty(&USART_TP));
+		USART_PutChar(&USART_TP, (0x80 | ack_number ) ); //Sends the U_L_DataStart/Continue-Service to the TPUART
+		while(!USART_IsTXDataRegisterEmpty(&USART_TP));
+		USART_PutChar(&USART_TP, data ); // A lil bit ugly - and this could become a deadlock. TODO!
+		
+		ack_number++;
+	}
+	
+	/*! If it receives the Controlframe it changes ack_number so i can count to send the ack_info for the address acknowledge */
+	if (data == 0xBC) {
+		
+		// Send all data to the other TPUART
+		while(!USART_IsTXDataRegisterEmpty(&USART_TP));
+		USART_PutChar(&USART_TP, (0x80 | 0 ) ); //Sends the U_L_DataStart/Continue-Service to the TPUART
+		while(!USART_IsTXDataRegisterEmpty(&USART_TP));
+		USART_PutChar(&USART_TP, data); // A lil bit ugly - and this could become a deadlock. TODO!
+		
+		ack_number = 1;
+	}
+	
+}
+
+
+/*! \brief Data register empty  interrupt service routine.
+ *
+ *  Data register empty  interrupt service routine.
+ *  Calls the common data register empty complete handler with pointer to the
+ *  correct USART as argument.
+ *
+ */
+ISR(USARTD0_DRE_vect)
+{
+	USART_DataRegEmpty(&USART_DATA_TP_ext);
 }

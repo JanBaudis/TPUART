@@ -33,6 +33,7 @@ int main(void)
 	//Simple Delay cause the TPUART may need some time if both started simultaneously
 	_delay_ms(200);
 	usart_init_tpuart(); // Inits the USART and set it to the corresponding values to talk to the TPUART-Chip
+	usart_init_tpuart_ext(); // Inits the second TPUART
 	usart_init_pc(); // Inits the USART and set it to the corresponding values to talk to eg a PC - 57600 8Bit no parity 1start/stop bit
 	
 	/* Enable global interrupts. */
